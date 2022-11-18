@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --side-space: 5.5rem;
+    --nav-space: 5.5rem;
+
+    --color-primary: #324A9F;
+    --color-secondary: #D0E0FF;
+    --color-accent: #81C1FF;
+
+    --bgrad-primary: linear-gradient(to bottom, #373E7F, #364e9c);
+}
+
+/** HEADER **/
+
+header {
+    background-color: var(--color-primary);
+    width: 100%;
+    padding: 1rem var(--side-space);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-text {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    color: white;
+    text-align: center;
+    margin-left: .5rem;
+}
+
+.logo-subtext{
+    font-size: .75rem;
+    color: lightgray;
+}
+
+.logo-img {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-image: url('/images/if-logo.png');
+    background-size: cover;
+    filter: drop-shadow(0 0 0.1rem gray);
+}
+
+label[for="nav-toggle"] {
+    display: none;
+}
+
+#nav-toggle {
+    display: none;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    position: relative;
+    color: white;
+    font-size: 1rem;
+    opacity: .75;
+    transition: opacity .5s ease;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    opacity: 1;
+}
+
+.nav-item[current] {
+    font-weight: 500;
+}
+
+.nav-item[current]::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: .25rem;
+    background-color: var(--color-accent);
+}
+
+.nav-sub-toggler, .nav-sub-items {
+    display: none;
+}
+
+.nav-sub {
+    position: relative;
+    display: grid;
+}
+
+.nav-sub-toggler:checked+.nav-sub-items {
+    display: grid;
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 0;
+    width: max-content;
+    background-color: var(--color-secondary);
+    border-radius: .25rem;
+}
+
+.nav-sub-item {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--color-primary);
+    padding: .5rem;
+}
+
+/** FOOTER **/
+
+footer {
+    margin: 0 var(--side-space);
+    margin-top: 4rem;
+    padding: 2rem 0;
+    line-height: 1.5rem;
+    border-top: .1rem solid lightgray;
+}
+
+.school-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    background-color: transparent;
+}
+
+.school-name {
+    width: max-content;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+}
+
+.school-sub{
+    font-size: .75rem;
+}
+
+.school-address, .school-contact {
+    font-weight: 500;
+    color: #6b6b6b;
+}
+
+.school-socials {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.school-socials a {
+    text-decoration: none;
+    color: #6b6b6b;
+    font-size: 1.5rem;
+}
+
+/** KEYFRAMES **/
+
+@keyframes flash {
+    0% {
+        opacity: 0;
+    }
+    
+    55%{
+        opacity: 1;
+    }
+    
+    60%{
+        opacity: 0.15;
+    }
+    
+    65%{
+        opacity: 1;
+    }
+    
+    75%{
+        opacity: 0.45;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(50%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/** ADDITIONALS **/
+
+.page-title {
+    text-align: center;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    animation: flash 1.5s ease-out backwards;
+}
+
+.page-subtitle{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+    animation: flash 1.5s ease-out backwards;
+}
+
+.section-title {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+::selection {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+*:focus {
+    outline-color: var(--color-primary);
+}
+
+[data-aos][data-aos][data-aos-delay="3050"].aos-animate{
+    transition-delay: 3.05s;
+}
+
+/** MEDIA QUERY **/
+
+@media screen and (max-width:1050px) {
+    .school-info {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .school-name {
+        width: auto;
+    }
+
+    .school-socials {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:960px) {
+    :root {
+        --side-space: 3.5rem;
+    }
+
+    label[for="nav-toggle"] {
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: linear-gradient(to bottom, white, white 20%, transparent 20%, transparent 40%, white 40%, white 60%, transparent 60%, transparent 80%, white 80%, white);
+        cursor: pointer;
+        opacity: .75;
+        transition: opacity .5s ease;
+    }
+
+    label[for="nav-toggle"]:hover {
+        opacity: 1;
+    }
+
+    #nav-toggle:checked+label[for="nav-toggle"] {
+        background: linear-gradient(45deg, transparent, transparent 40%, white 40%, white 60%, transparent 60%, transparent), linear-gradient(-45deg, transparent, transparent 40%, white 40%, white 60%, transparent 60%, transparent);
+    }
+
+    #nav-toggle:checked+label[for="nav-toggle"]+nav {
+        height: 100vh;
+    }
+
+    nav {
+        display: grid;
+        grid-auto-rows: max-content;
+        height: 0;
+        background-color: var(--color-secondary);
+        position: absolute;
+        top: var(--nav-space);
+        left: 0;
+        right: 0;
+        gap: 0;
+        overflow: hidden;
+        transition: height .5s ease;
+    }
+
+    .nav-item {
+        background-color: var(--color-secondary);
+        color: black;
+        opacity: 1;
+        padding: 1rem var(--side-space);
+        transition: background-color .25s ease-in;
+    }
+
+    .nav-item:hover {
+        background-color: white;
+    }
+
+    .nav-item[current]::after {
+        display: none;
+    }
+
+    .nav-sub-toggler:checked+.nav-sub-items {
+        width: 100%;
+        position: static;
+        padding: 0 var(--side-space);
+        background-color: #e7e7e7;
+    }
+
+    .nav-sub-item {
+        padding: 1rem 1rem;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width:375px) {
+    html {
+        font-size: 10px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+}

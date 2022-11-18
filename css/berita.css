@@ -1,0 +1,58 @@
+@import url('./global.css');
+@import url('./search-and-pagination.css');
+
+.page-title {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.berita-grid {
+    padding: 4rem var(--side-space);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1rem;
+}
+
+.berita-item {
+    border-radius: .5rem;
+    padding: 2rem;
+    background-image: var(--bgrad-primary);
+}
+
+.berita-title {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+.berita-info {
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #dfdfdf;
+}
+
+.berita-btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: .75rem 2rem;
+    border-radius: .25rem;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    transition: box-shadow .25s ease;
+}
+
+.berita-btn:hover {
+    box-shadow: 0 0 1rem 0 var(--color-accent);
+}
+
+
+
+@media screen and (max-width:600px) {
+    .berita-grid {
+        grid-template-columns: 1fr;
+    }
+}

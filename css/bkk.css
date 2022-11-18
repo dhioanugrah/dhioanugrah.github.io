@@ -1,0 +1,50 @@
+@import url('./global.css');
+@import url('./search-and-pagination.css');
+
+.page-title {
+    padding: 4rem var(--side-space) 0 var(--side-space);
+}
+
+.page-subtitle{
+    padding: 0 var(--side-space) 4rem var(--side-space);
+}
+
+.table-container{
+    margin: 4rem var(--side-space);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table{
+    width: 100%;
+}
+
+th, td{
+    padding: 1rem;
+}
+
+th{
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+}
+
+td{
+    background-color: #F5F5F5;
+    color: black;
+}
+
+.total-label, .total-value{
+    background-color: #DBDBDB;
+    text-align: center;
+}
+
+.total-label{
+    font-weight: 600;
+}
+
+@media screen and (max-width:768px) {
+    table{
+        width: max-content;
+    }
+}

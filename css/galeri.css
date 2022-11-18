@@ -1,0 +1,60 @@
+@import url('./global.css');
+
+.page-title{
+    padding: 4rem var(--side-space);
+}
+
+/* .page-title {
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 4rem;
+    color: transparent;
+    background-color: var(--color-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    filter: drop-shadow(0 0 1rem white);
+} */
+
+.galeri-column {
+    padding: 0 var(--side-space);
+    /* margin-top: 4rem; */
+    columns: 5 320px;
+    gap: 1.5rem;
+}
+
+.galeri-img {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: box-shadow .25s ease;
+}
+
+.galeri-img:hover {
+    box-shadow: 0 0 2rem 0rem hsla(0, 0%, 0%, 0.521);
+}
+
+.lightbox[hidden]{
+    display: none;
+}
+
+.lightbox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.548);
+    display: grid;
+    place-items: center;
+    z-index: 1001;
+}
+
+/* .lightbox img{
+    width: 75vw;
+    height: 75vh;
+    object-fit: contain;
+} */

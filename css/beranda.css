@@ -1,0 +1,352 @@
+@import url('./global.css');
+
+header {
+    background-color: transparent;
+    position: relative;
+}
+
+/** HERO **/
+
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to top, #373e7ec7, #373e7e8c), url('/images/hero-img.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-top: calc(var(--nav-space)*-1);
+    padding: var(--nav-space) var(--side-space) .0rem var(--side-space);
+    display: grid;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 60%;
+    min-width: 32rem;
+}
+
+.hero-content h1 {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.25em;
+    color: white;
+    animation: flash 1.5s ease-out forwards, floatUp .5s 1.5s ease-in-out backwards;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: hsla(0, 0%, 100%, 0.75);
+    margin: 2rem 0;
+}
+
+.hero-content .cta-btn {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: .25em;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    padding: 1rem 2rem;
+    background-color: var(--color-accent);
+    transition: box-shadow .25s ease;
+}
+
+.hero-content .cta-btn:hover {
+    box-shadow: 0 0 1em 0 var(--color-accent);
+}
+
+/** PROSPEK **/
+
+.prospek-section {
+    padding: 6rem var(--side-space);
+}
+
+
+.prospek-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 2rem;
+    border-radius: .5em;
+    background-image: var(--bgrad-primary);
+}
+
+.prospek-item {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.prospek-icon {
+    width: 80%;
+    justify-self: center;
+}
+
+.prospek-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.prospek-btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: .25em;
+    font-size: .75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background-color: var(--color-accent);
+    padding: .5em 1em;
+    transition: box-shadow .25s ease;
+}
+
+.prospek-btn:hover {
+    box-shadow: 0 0 1rem 0 var(--color-accent);
+}
+
+/** GROUPED SECTION **/
+
+.grouped-section {
+    padding: 0 var(--side-space);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    gap: 2rem;
+}
+
+.grouped-section .section-title {
+    padding-bottom: 1.5rem;
+}
+
+/** BERITA SECTION **/
+
+.berita-section {
+    flex: 1;
+    align-self: flex-start;
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    min-width: 20rem;
+    position: sticky;
+    top: 1rem;
+    height: calc(100vh - 2rem);
+    background-color: var(--color-secondary);
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.berita-list {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.berita-item {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.berita-img {
+    border-radius: .25rem;
+    background-color: gray;
+    width: 4rem;
+    height: 4rem;
+}
+
+.berita-link {
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    transition: color .25s ease-out;
+}
+
+.berita-link:hover {
+    color: #3b9b93;
+}
+
+.berita-btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background-color: black;
+    font-weight: 500;
+    color: white;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: .25rem;
+}
+
+/** GALERI SECTION **/
+
+.galeri-section {
+    flex: 3;
+    /* min-width: 25rem; */
+    background-color: transparent;
+    padding: 2rem 0;
+}
+
+.galeri-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+}
+
+.galeri-grid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: -5rem;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to top, white 7rem, transparent 15rem);
+    pointer-events: none;
+}
+
+.galeri-img {
+    position: relative;
+}
+
+.galeri-img::after {
+    display: block;
+    content: '';
+    padding-bottom: 100%;
+}
+
+.galeri-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem;
+}
+
+.galeri-btn {
+    display: inline-block;
+    width: max-content;
+    position: relative;
+    display: block;
+    margin: auto;
+    margin-top: -2rem;
+    text-decoration: none;
+    border-radius: .25rem;
+    background-color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    padding: 1rem;
+    transition: background-color .25s ease;
+}
+
+.galeri-btn:hover {
+    background-color: #3b9b93;
+    ;
+}
+
+
+
+@media screen and (max-width:890px) {
+
+    /** HERO SECTION **/
+
+    .hero-section {
+        padding-top: 15rem;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        min-width: 0;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content h1 br {
+        content: ' ';
+    }
+
+    .hero-content h1 br::after {
+        content: ' ';
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-content .cta-btn {
+        font-size: 1rem;
+    }
+
+    /** PROSPEK SECTION **/
+
+    .prospek-list {
+        grid-template-columns: 1fr;
+    }
+
+    .prospek-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .prospek-icon {
+        width: 40%;
+    }
+
+    /** GROUPED SECTION **/
+
+    .grouped-section {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    /** BERITA SECTION **/
+
+    .berita-section {
+        min-width: 0;
+        align-self: stretch;
+        position: static;
+    }
+
+    /** GALERI SECTION **/
+}
+
+@media screen and (max-height:530px) {
+
+    /** HERO SECTION **/
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content h1 br {
+        content: ' ';
+    }
+
+    .hero-content h1 br::after {
+        content: ' ';
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-content .cta-btn {
+        font-size: 1rem;
+    }
+}

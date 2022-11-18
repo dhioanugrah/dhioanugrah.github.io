@@ -1,0 +1,38 @@
+@import url('./global.css');
+
+.page-title {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+main {
+    padding: 0 var(--side-space);
+}
+
+.page-title {
+    text-transform: capitalize;
+    /* text-align: left; */
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.berita-img {
+    width: 100%;
+}
+
+.berita-content>p {
+    line-height: 2em;
+    margin: 1rem 0;
+}
+
+.berita-info {
+    display: inline-block;
+    padding: 1rem;
+    background-color: var(--color-secondary);
+    border-radius: .5rem;
+    font-weight: 500;
+}
+
+.berita-info>span {
+    font-weight: 600;
+}

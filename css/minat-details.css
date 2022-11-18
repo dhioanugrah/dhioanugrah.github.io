@@ -1,0 +1,62 @@
+@import url('./global.css');
+
+:root {
+    --pk-image: gray;
+}
+
+header {
+    background: linear-gradient(to top, #373e7e8c, #373e7e8c), var(--pk-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.hero-section {
+    height: 12.5rem;
+    background: linear-gradient(to top, #373e7e8c, #373e7e8c), var(--pk-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.minat-content {
+    padding: 0 var(--side-space);
+    width: 100%;
+    display: grid;
+    justify-items: center;
+}
+
+.minat-content>* {
+    line-height: 2em;
+}
+
+.page-title {
+    line-height: 1.25em;
+    margin: 1rem 0;
+}
+
+.minat-icon {
+    height: 12.5rem;
+    margin-top: -6.25rem;
+    pointer-events: none;
+}
+
+.subsection-title {
+    width: 100%;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.subsection-list {
+    width: 100%;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.peluang-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+}

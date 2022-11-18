@@ -1,0 +1,104 @@
+@import url('./global.css');
+
+section {
+    padding: 0 var(--side-space);
+}
+
+.hero-section{
+    width: 100%;
+    background-color: var(--color-primary);
+}
+
+.page-title {
+    color: white;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.section-title+* {
+    line-height: 2em;
+}
+
+.visi-section {
+    box-shadow: inset var(--side-space) 0 var(--color-primary);
+}
+
+.visi-section>.section-title,
+.misi-section>.section-title,
+.struktur-section>.section-title,
+.lokasi-section>.section-title {
+    text-align: left;
+}
+
+.visi-section>.section-title,
+.misi-section>.section-title,
+.tujuan-section>.section-title,
+.struktur-section>.section-title {
+    padding: 4rem 0 0 5rem;
+}
+
+.struktur-section,
+.lokasi-section,
+.visi-section>p,
+.misi-section>ul,
+.tujuan-section>ul {
+    padding-top: 2rem;
+}
+
+.visi-section>p {
+    padding-left: 5rem;
+}
+
+.visi-section>p,
+.misi-section>ul,
+.tujuan-section>ul{
+    color: #5a5a5a;
+    font-weight: 400;
+}
+
+.misi-list,
+.tujuan-list {
+    padding-left: 6rem;
+}
+
+.misi-section {
+    box-shadow: inset var(--side-space) 0 var(--color-secondary);
+    padding-bottom: 4rem;
+}
+
+.tujuan-section {
+    background-color: var(--color-secondary);
+    padding-bottom: 4rem;
+}
+
+.struktur-img {
+    width: 100%;
+    height: 100%;
+    margin-top: 1.5rem;
+}
+
+.struktur-img>img{
+    width: 100%;
+}
+
+.lokasi-section {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.lokasi-section .section-title {
+    text-align: center;
+    padding: 4rem var(--side-space) 0 var(--side-space);
+}
+
+.lokasi-map {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+@media screen and (max-width:582px) {
+    .struktur-section .section-title{
+        padding-left: 0;
+        text-align: center;
+    }
+}
