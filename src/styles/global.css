@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "DM Mono", monospace;
+
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+}
+
+:root {
+  color-scheme: light;
+
+  --paper: #f3f1eb;
+  --ink: #111111;
+  --line: #d7d4cc;
+  --accent: #3058ff;
+  --muted: #6b6b67;
+
+  --nav-bg: #111111;
+  --nav-fg: #f3f1eb;
+  --nav-border: rgba(243, 241, 235, 0.16);
+
+  --nav-active-bg: #f3f1eb;
+  --nav-active-fg: #111111;
+
+  --nav-hover: rgba(243, 241, 235, 0.1);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #0c0c0e;
+  --ink: #f5f4ef;
+  --line: #303034;
+  --accent: #9baaff;
+  --muted: #a6a6ad;
+
+  --nav-bg: #f5f4ef;
+  --nav-fg: #111111;
+  --nav-border: rgba(17, 17, 17, 0.12);
+
+  --nav-active-bg: #111111;
+  --nav-active-fg: #f5f4ef;
+
+  --nav-hover: rgba(17, 17, 17, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+.container-main {
+  width: min(100% - 32px, 1240px);
+  margin-inline: auto;
+}
+
+.section-line {
+  border-top: 1px solid var(--line);
+}
+
+.label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.2rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.project-link:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+/* Navbar */
+.nav-shell {
+  background: var(--nav-bg);
+  color: var(--nav-fg);
+  border: 1px solid var(--nav-border);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.nav-link {
+  border-radius: 999px;
+  padding: 0.58rem 0.95rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  line-height: 1;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+  background: var(--nav-active-bg);
+  color: var(--nav-active-fg);
+}
+
+.nav-github {
+  padding: 0.45rem 0.35rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.nav-github:hover {
+  opacity: 1;
+}
+
+.theme-toggle {
+  display: grid;
+  width: 2.15rem;
+  height: 2.15rem;
+  place-items: center;
+  border: 1px solid var(--nav-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--nav-fg);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--nav-hover);
+  transform: rotate(12deg);
+}
+
+.theme-icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
+/* Research section */
+
+/* Default: mode terang = research hitam, teks putih */
+.research-section {
+  background: #111111;
+  color: #f5f4ef;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.research-accent {
+  color: #a4b1ff;
+}
+
+.research-muted {
+  color: #c6c6c3;
+}
+
+.research-metrics {
+  background: #3a3a38;
+}
+
+.research-metric {
+  background: #111111;
+}
+
+.research-tag {
+  border: 1px solid #4c4c48;
+  color: #d9d9d5;
+}
+
+/* Mode gelap = research putih, teks hitam */
+:root[data-theme="dark"] .research-section {
+  background: #f7f6f2;
+  color: #111111;
+}
+
+:root[data-theme="dark"] .research-accent {
+  color: #5c73ff;
+}
+
+:root[data-theme="dark"] .research-muted {
+  color: #555555;
+}
+
+:root[data-theme="dark"] .research-metrics {
+  background: #c8c8c8;
+}
+
+:root[data-theme="dark"] .research-metric {
+  background: #f7f6f2;
+}
+
+:root[data-theme="dark"] .research-tag {
+  border-color: #a8a8a8;
+  color: #333333;
+}
+
+@media (max-width: 640px) {
+  .nav-github {
+    display: none;
+  }
+}
