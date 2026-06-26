@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 
+const githubUrl = "https://github.com/dhioanugrah";
+
 const featuredProjects = [
   {
     number: "01",
@@ -12,7 +14,7 @@ const featuredProjects = [
     role: "Merancang REST API, struktur database, alur status pesanan, role pengguna, notifikasi penugasan, serta integrasi data antar-divisi dan cabang.",
     tech: ["Laravel", "MySQL", "REST API", "Laravel Queue", "Postman"],
     image: "/projects/klinklin-cover.webp",
-    visual: "image",
+    links: [{ label: "GitHub", href: githubUrl }],
   },
   {
     number: "02",
@@ -24,7 +26,7 @@ const featuredProjects = [
     role: "Mengembangkan backend sistem menggunakan Laravel dan Filament, mengatur workflow pengembangan, serta mengoordinasikan pengerjaan tim selama proyek berlangsung.",
     tech: ["Laravel", "Filament", "MySQL", "PHP", "Git"],
     image: "/projects/warehouse-cover.webp",
-    visual: "image",
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/final-kp" }],
   },
   {
     number: "03",
@@ -36,7 +38,7 @@ const featuredProjects = [
     role: "Membantu pengembangan fitur backend, struktur data, dan integrasi sistem dalam tim berbasis Laravel.",
     tech: ["Laravel", "PHP", "MySQL", "Git"],
     image: "/projects/summit-itk-cover.webp",
-    visual: "image",
+    links: [{ label: "Kunjungi", href: "https://summit.itk.ac.id/" }],
   },
   {
     number: "04",
@@ -46,9 +48,9 @@ const featuredProjects = [
     description:
       "Membangun API untuk mengelola data pelanggan dan pesanan pada layanan cuci sepatu dengan perhatian pada konsistensi serta efisiensi pengolahan data.",
     role: "Membuat REST API, melakukan pengujian endpoint melalui Postman, serta memanfaatkan function, trigger, dan view untuk mendukung integritas database.",
-    tech: ["Laravel", "MySQL", "REST API", "Database Trigger", "Postman"],
-    image: "",
-    visual: "database",
+    tech: ["JavaScript","MVC", "MySQL", "REST API", "Database Trigger", "Postman"],
+    image: "/projects/ERD.png",
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/mbd/tree/main" }],
   },
 ];
 
@@ -59,8 +61,9 @@ const mobileProjects = [
     context: "Fullstack Mobile Developer · Agustus — Desember 2025",
     description:
       "Membangun aplikasi Flutter yang terhubung ke Laravel API untuk membantu pengunjung mengakses informasi saat berada di Kebun Raya Balikpapan.",
-    tech: ["Flutter", "Dart", "Laravel API", "MySQL"],
+    tech: ["Flutter", "Dart", "Drift", "GoRoute"],
     image: "/projects/botanical-mobile.webp",
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/Mobile_KRB" }],
   },
   {
     title: "Aplikasi Mobile Katalog Produk Sepatu",
@@ -68,7 +71,7 @@ const mobileProjects = [
     context: "Fullstack Mobile Developer · Maret — Juni 2025",
     description:
       "Membangun aplikasi mobile untuk menampilkan katalog dan informasi produk sepatu melalui integrasi Flutter dengan Laravel API.",
-    tech: ["Flutter", "Dart", "Laravel API", "MySQL"],
+    tech: ["Flutter", "Dart", "Drift", "GoRoute"],
     image: "/projects/shoe-store-mobile.webp",
   },
 ];
@@ -80,6 +83,7 @@ const otherProjects = [
     description:
       "Mengembangkan dan melakukan pemeliharaan project digital untuk kebutuhan klien PT Berkat Doa Kaltim.",
     tech: ["Laravel", "Backend Development", "Maintenance"],
+    links: [{ label: "Kunjungi", href: "https://www.kaltimfact.com/" }],
   },
   {
     title: "Backend Online Learning Platform",
@@ -94,6 +98,7 @@ const otherProjects = [
     description:
       "Membangun website informasi wisata mangrove Margomulyo untuk mendukung penyampaian informasi kepada pengunjung.",
     tech: ["Laravel", "Web Development", "Database"],
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/kkn" }],
   },
   {
     title: "E-Commerce Terintegrasi AI",
@@ -101,6 +106,7 @@ const otherProjects = [
     description:
       "Membangun e-commerce dengan Laravel sebagai backend, Vue.js sebagai frontend, serta integrasi model Hugging Face untuk analisis rating produk.",
     tech: ["Laravel", "Vue.js", "Hugging Face", "AI Integration"],
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/toko_elektronik_AI" }],
   },
 ];
 
@@ -117,8 +123,8 @@ const backgroundItems = [
   },
   {
     number: "03",
-    title: "Pencapaian",
-    text: "Meraih Juara 3 LKS tingkat provinsi bidang Software Engineering dengan nilai terbaik sekolah 95 dari 100.",
+    title: "Pencapaian SMKzz",
+    text: "Meraih Juara 3 LKS tingkat provinsi bidang Teknik Desain Laman dan medapatkan nilai UKK terbaik Ke 3 sekolah dengan nilai 95 dari 100.",
   },
 ];
 
@@ -395,57 +401,32 @@ const skills = [
                         ))
                       }
                     </div>
+
+                    {
+                      project.links && (
+                        <div class="mt-7 flex flex-wrap gap-3">
+                          {project.links.map((link) => (
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                            >
+                              {link.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )
+                    }
                   </div>
 
-                  {
-                    project.visual === "image" ? (
-                      <div class="self-start overflow-hidden rounded-2xl border border-line bg-paper">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          class="block aspect-[4/3] w-full object-contain transition duration-500 md:hover:scale-[1.02]"
-                        />
-                      </div>
-                    ) : (
-                      <div class="flex aspect-[4/3] flex-col justify-between rounded-2xl border border-line bg-ink p-6 text-paper">
-                        <div class="flex items-center justify-between">
-                          <span class="font-mono text-xs text-[#a4b1ff]">
-                            DATABASE FLOW
-                          </span>
-                          <span class="font-mono text-xs text-[#a4b1ff]">
-                            API
-                          </span>
-                        </div>
-
-                        <div class="space-y-3">
-                          <div class="rounded-lg border border-[#444] p-3">
-                            <p class="font-mono text-xs text-[#a4b1ff]">
-                              CUSTOMERS
-                            </p>
-                            <p class="mt-1 text-sm">Data Pelanggan</p>
-                          </div>
-
-                          <div class="ml-8 rounded-lg border border-[#444] p-3">
-                            <p class="font-mono text-xs text-[#a4b1ff]">
-                              ORDERS
-                            </p>
-                            <p class="mt-1 text-sm">Pesanan Layanan</p>
-                          </div>
-
-                          <div class="ml-16 rounded-lg border border-[#444] p-3">
-                            <p class="font-mono text-xs text-[#a4b1ff]">
-                              HISTORY
-                            </p>
-                            <p class="mt-1 text-sm">Status & Riwayat</p>
-                          </div>
-                        </div>
-
-                        <p class="font-mono text-xs text-[#c6c6c3]">
-                          Functions · Triggers · Views
-                        </p>
-                      </div>
-                    )
-                  }
+                  <div class="self-start overflow-hidden rounded-2xl border border-line bg-paper">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      class="block aspect-[4/3] w-full object-contain transition duration-500 md:hover:scale-[1.02]"
+                    />
+                  </div>
                 </article>
               ))
             }
@@ -530,6 +511,17 @@ const skills = [
             ))
           }
         </div>
+
+        <div class="mt-8">
+          <a
+            href="https://github.com/dhioanugrah/borneo-endemic-flora-efficientnetv2-classification"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center rounded-full border border-current px-4 py-2 font-mono text-xs transition hover:bg-current hover:text-paper"
+          >
+            Repository GitHub ↗
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -589,6 +581,23 @@ const skills = [
                           ))
                         }
                       </div>
+
+                      {
+                        project.links && (
+                          <div class="mt-6 flex flex-wrap gap-3">
+                            {project.links.map((link) => (
+                              <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                              >
+                                {link.label} ↗
+                              </a>
+                            ))}
+                          </div>
+                        )
+                      }
                     </article>
                   ))
                 }
@@ -644,6 +653,23 @@ const skills = [
                         ))
                       }
                     </div>
+
+                    {
+                      project.links && (
+                        <div class="mt-6 flex flex-wrap gap-3">
+                          {project.links.map((link) => (
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                            >
+                              {link.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )
+                    }
                   </article>
                 ))
               }
@@ -726,7 +752,7 @@ const skills = [
           <div class="mt-12 flex flex-wrap gap-4">
             <a
               href="mailto:dhioanugrahh@gmail.com"
-              class="bg-white px-5 py-3 font-mono text-xs text-ink transition hover:bg-paper hover:text-white"
+              class="px-5 py-3 font-mono text-xs text-ink transition hover:bg-paper hover:text-white"
             >
               Kirim Email ↗
             </a>
