@@ -399,11 +399,11 @@ const skills = [
 
                   {
                     project.visual === "image" ? (
-                      <div class="overflow-hidden rounded-2xl border border-line">
+                      <div class="self-start overflow-hidden rounded-2xl border border-line bg-paper">
                         <img
                           src={project.image}
                           alt={project.title}
-                          class="aspect-[4/3] w-full object-cover transition duration-500 hover:scale-105"
+                          class="block aspect-[4/3] w-full object-contain transition duration-500 md:hover:scale-[1.02]"
                         />
                       </div>
                     ) : (
