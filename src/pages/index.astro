@@ -1,10 +1,43 @@
 ---
+import * as fs from "node:fs";
+import * as path from "node:path";
 import "../styles/global.css";
+
+// Auto-copy generated demo images from artifact folder to public/projects
+try {
+  const artifactDir = "/home/anugrah/.gemini/antigravity-ide/brain/9f2a3d07-19b5-421c-b0e1-d8e3d91ee8d0";
+  const targetDir = path.resolve("public/projects");
+  if (fs.existsSync(artifactDir)) {
+    const files = fs.readdirSync(artifactDir);
+    for (const file of files) {
+      if (file.endsWith(".png") || file.endsWith(".webp") || file.endsWith(".jpg")) {
+        let targetName = file;
+        if (file.startsWith("klinklin_dashboard_orders")) targetName = "klinklin_dashboard_orders.png";
+        else if (file.startsWith("warehouse_inventory_table")) targetName = "warehouse_inventory_table.png";
+        else if (file.startsWith("summit_admission_portal")) targetName = "summit_admission_portal.png";
+        else if (file.startsWith("shoe_wash_order_status")) targetName = "shoe_wash_order_status.png";
+        else if (file.startsWith("botanical_flora_detail")) targetName = "botanical_flora_detail.png";
+        else if (file.startsWith("shoe_store_catalog_grid")) targetName = "shoe_store_catalog_grid.png";
+        else if (file.startsWith("flora_ai_classification_demo")) targetName = "flora_ai_classification_demo.png";
+        else if (file.startsWith("summit_admin_verification")) targetName = "summit_admin_verification.png";
+        
+        const srcPath = path.join(artifactDir, file);
+        const dstPath = path.join(targetDir, targetName);
+        if (!fs.existsSync(dstPath) || fs.statSync(srcPath).mtimeMs > fs.statSync(dstPath).mtimeMs) {
+          fs.copyFileSync(srcPath, dstPath);
+        }
+      }
+    }
+  }
+} catch (e) {
+  // Silent fallback during static build
+}
 
 const githubUrl = "https://github.com/dhioanugrah";
 
 const featuredProjects = [
   {
+    id: "klinklin",
     number: "01",
     title: "Digitalisasi Operasional Layanan Kebersihan Multi-Cabang",
     client: "Klinklin Surabaya",
@@ -14,9 +47,14 @@ const featuredProjects = [
     role: "Merancang REST API, struktur database, alur status pesanan, role pengguna, notifikasi penugasan, serta integrasi data antar-divisi dan cabang.",
     tech: ["Laravel", "MySQL", "REST API", "Laravel Queue", "Postman"],
     image: "/projects/klinklin-cover.webp",
+    gallery: [
+      "/projects/klinklin-cover.webp",
+      "/projects/klinklin_dashboard_orders.png",
+    ],
     links: [{ label: "GitHub", href: githubUrl }],
   },
   {
+    id: "warehouse",
     number: "02",
     title: "Sistem Pengelolaan Stok dan Produk untuk Operasional Gudang",
     client: "PT Hidrolik Indomitra Teknologi",
@@ -26,9 +64,14 @@ const featuredProjects = [
     role: "Mengembangkan backend sistem menggunakan Laravel dan Filament, mengatur workflow pengembangan, serta mengoordinasikan pengerjaan tim selama proyek berlangsung.",
     tech: ["Laravel", "Filament", "MySQL", "PHP", "Git"],
     image: "/projects/warehouse-cover.webp",
+    gallery: [
+      "/projects/warehouse-cover.webp",
+      "/projects/warehouse_inventory_table.png",
+    ],
     links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/final-kp" }],
   },
   {
+    id: "summit-itk",
     number: "03",
     title: "Sistem Informasi Penerimaan Mahasiswa Jalur Mandiri",
     client: "Summit ITK",
@@ -38,9 +81,15 @@ const featuredProjects = [
     role: "Membantu pengembangan fitur backend, struktur data, dan integrasi sistem dalam tim berbasis Laravel.",
     tech: ["Laravel", "PHP", "MySQL", "Git"],
     image: "/projects/summit-itk-cover.webp",
+    gallery: [
+      "/projects/summit-itk-cover.webp",
+      "/projects/summit_admission_portal.png",
+      "/projects/summit_admin_verification.png",
+    ],
     links: [{ label: "Kunjungi", href: "https://summit.itk.ac.id/" }],
   },
   {
+    id: "shoe-wash",
     number: "04",
     title: "Backend Pengelolaan Pelanggan dan Pesanan Cuci Sepatu",
     client: "Shoe Washing Management System",
@@ -48,67 +97,127 @@ const featuredProjects = [
     description:
       "Membangun API untuk mengelola data pelanggan dan pesanan pada layanan cuci sepatu dengan perhatian pada konsistensi serta efisiensi pengolahan data.",
     role: "Membuat REST API, melakukan pengujian endpoint melalui Postman, serta memanfaatkan function, trigger, dan view untuk mendukung integritas database.",
-    tech: ["JavaScript","MVC", "MySQL", "REST API", "Database Trigger", "Postman"],
+    tech: ["JavaScript", "MVC", "MySQL", "REST API", "Database Trigger", "Postman"],
     image: "/projects/ERD.png",
+    gallery: [
+      "/projects/ERD.png",
+      "/projects/shoe_wash_order_status.png",
+    ],
     links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/mbd/tree/main" }],
   },
 ];
 
+const researchProject = {
+  id: "flora-ai",
+  number: "02",
+  title: "Klasifikasi Flora Endemik Kalimantan Menggunakan EfficientNetV2.",
+  client: "Kebun Raya Balikpapan · Tugas Akhir",
+  context: "Tugas Akhir · Deep Learning · 2026",
+  description:
+    "Penelitian klasifikasi 28 spesies flora endemik Kalimantan menggunakan 2.800 citra digital yang dikumpulkan di Kebun Raya Balikpapan. Pengujian dilakukan pada EfficientNetV2-S, EfficientNetV2-M, dan EfficientNetV2-L dengan akurasi terbaik mencapai 97,58%.",
+  role: "Mengumpulkan 2.800 citra dataset, merancang arsitektur klasifikasi deep learning EfficientNetV2, melatih model di Google Colab, dan mengevaluasi metrik F1-score serta inferensi.",
+  tech: ["Python", "TensorFlow", "EfficientNetV2", "Google Colab", "Computer Vision"],
+  image: "/projects/flora_ai_classification_demo.png",
+  gallery: [
+    "/projects/flora_ai_classification_demo.png",
+    "/projects/botanical-mobile.webp",
+  ],
+  links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/borneo-endemic-flora-efficientnetv2-classification" }],
+};
+
 const mobileProjects = [
   {
+    id: "botanical-mobile",
     title: "Aplikasi Panduan Digital Kebun Raya Balikpapan",
     client: "Botanical Garden Journal",
     context: "Fullstack Mobile Developer · Agustus — Desember 2025",
     description:
       "Membangun aplikasi Flutter yang terhubung ke Laravel API untuk membantu pengunjung mengakses informasi saat berada di Kebun Raya Balikpapan.",
+    role: "Membangun antarmuka mobile Flutter, integrasi state management, dan koneksi ke REST API Laravel untuk data flora endemik dan peta digital.",
     tech: ["Flutter", "Dart", "Drift", "GoRoute"],
     image: "/projects/botanical-mobile.webp",
+    gallery: [
+      "/projects/botanical-mobile.webp",
+      "/projects/botanical_flora_detail.png",
+    ],
     links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/Mobile_KRB" }],
   },
   {
+    id: "shoe-store-mobile",
     title: "Aplikasi Mobile Katalog Produk Sepatu",
     client: "Shoe Store",
     context: "Fullstack Mobile Developer · Maret — Juni 2025",
     description:
       "Membangun aplikasi mobile untuk menampilkan katalog dan informasi produk sepatu melalui integrasi Flutter dengan Laravel API.",
+    role: "Merancang mobile UI modern, implementasi katalog responsif, dan komunikasi ke server backend melalui REST API.",
     tech: ["Flutter", "Dart", "Drift", "GoRoute"],
     image: "/projects/shoe-store-mobile.webp",
+    gallery: [
+      "/projects/shoe-store-mobile.webp",
+      "/projects/shoe_store_catalog_grid.png",
+    ],
   },
 ];
 
 const otherProjects = [
   {
+    id: "kaltimfact",
     title: "KaltimFact",
+    client: "PT Berkat Doa Kaltim",
     context: "Backend Developer · Agency Project · Juni 2025 — Sekarang",
     description:
       "Mengembangkan dan melakukan pemeliharaan project digital untuk kebutuhan klien PT Berkat Doa Kaltim.",
+    role: "Pengembangan sistem backend, pemeliharaan database, serta optimasi performa web.",
     tech: ["Laravel", "Backend Development", "Maintenance"],
+    image: "/projects/summit-itk-cover.webp",
+    gallery: ["/projects/summit-itk-cover.webp"],
     links: [{ label: "Kunjungi", href: "https://www.kaltimfact.com/" }],
   },
   {
+    id: "online-learning",
     title: "Backend Online Learning Platform",
+    client: "EdTech Learning API",
     context: "Backend Developer · Agustus — November 2024",
     description:
       "Membangun backend dan API untuk komunikasi antara aplikasi pembelajaran online dengan frontend serta menguji endpoint menggunakan Postman.",
+    role: "Merancang skema database pembelajaran, autentikasi user, dan manajemen materi kursus.",
     tech: ["REST API", "Postman", "Backend Development"],
+    image: "/projects/ERD.png",
+    gallery: ["/projects/ERD.png"],
   },
   {
+    id: "mangrove",
     title: "Website Wisata Mangrove Margomulyo",
+    client: "Wisata Balikpapan",
     context: "Fullstack Developer · Maret — Juni 2025",
     description:
       "Membangun website informasi wisata mangrove Margomulyo untuk mendukung penyampaian informasi kepada pengunjung.",
+    role: "Pengembangan fullstack Laravel dari antarmuka hingga pengelolaan database wisata.",
     tech: ["Laravel", "Web Development", "Database"],
+    image: "/projects/botanical-mobile.webp",
+    gallery: ["/projects/botanical-mobile.webp"],
     links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/kkn" }],
   },
   {
+    id: "ecommerce-ai",
     title: "E-Commerce Terintegrasi AI",
+    client: "AI Tech Store",
     context: "Fullstack Developer · November 2025",
     description:
       "Membangun e-commerce dengan Laravel sebagai backend, Vue.js sebagai frontend, serta integrasi model Hugging Face untuk analisis rating produk.",
+    role: "Menghubungkan layanan NLP Hugging Face dengan backend Laravel untuk analisis sentimen ulasan produk.",
     tech: ["Laravel", "Vue.js", "Hugging Face", "AI Integration"],
+    image: "/projects/flora_ai_classification_demo.png",
+    gallery: ["/projects/flora_ai_classification_demo.png", "/projects/warehouse-cover.webp"],
     links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/toko_elektronik_AI" }],
   },
 ];
+
+// Create lookup map for client-side interactive modal
+const allProjectsMap = {};
+[...featuredProjects, researchProject, ...mobileProjects, ...otherProjects].forEach((p) => {
+  if (p.id) allProjectsMap[p.id] = p;
+});
 
 const backgroundItems = [
   {
@@ -252,7 +361,7 @@ const skills = [
         class="container-main py-16 md:py-24"
       >
         <div class="grid gap-10 md:grid-cols-[0.4fr_0.6fr] md:items-center md:gap-14">
-          <div class="order-1 md:order-none">
+          <div class="order-1 md:order-none reveal-on-scroll delay-100">
             <div class="overflow-hidden rounded-[20px] border border-line bg-paper">
               <div class="relative aspect-[4/5] w-full">
                 <img
@@ -276,7 +385,7 @@ const skills = [
             </div>
           </div>
 
-          <div class="order-2 max-w-3xl md:order-none md:pl-4">
+          <div class="order-2 max-w-3xl md:order-none md:pl-4 reveal-on-scroll delay-200">
             <p class="label mb-6 text-accent">BACKEND DEVELOPER · INDONESIA</p>
 
             <h1 class="max-w-2xl text-4xl font-medium leading-tight tracking-[-0.05em] md:text-5xl">
@@ -320,7 +429,7 @@ const skills = [
             </div>
           </div>
         </div>
-        <div class="mt-14 grid gap-6 border-t border-line pt-6 md:mt-16 md:grid-cols-3">
+        <div class="mt-14 grid gap-6 border-t border-line pt-6 md:mt-16 md:grid-cols-3 reveal-on-scroll delay-300">
           <div>
             <p class="label">Fokus</p>
             <p class="mt-2 text-sm">Backend System & REST API</p>
@@ -342,7 +451,7 @@ const skills = [
       <section id="project" class="section-line">
         <div class="container-main py-20 md:py-28">
           <div
-            class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end"
+            class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end reveal-on-scroll delay-100"
           >
             <div>
               <p class="label">01 / Project Unggulan</p>
@@ -356,14 +465,17 @@ const skills = [
 
             <p class="max-w-sm text-sm leading-relaxed text-muted">
               Setiap project menjelaskan kebutuhan yang diselesaikan, konteks
-              organisasi, peran saya, dan teknologi yang digunakan.
+              organisasi, peran saya, dan teknologi yang digunakan. <strong class="text-accent">Klik pada kartu project untuk melihat galeri foto dan detail sistem.</strong>
             </p>
           </div>
 
-          <div class="space-y-16">
+          <div class="space-y-12">
             {
-              featuredProjects.map((project) => (
-                <article class="grid gap-7 border-t border-line pt-6 md:grid-cols-[0.18fr_1fr_1fr]">
+              featuredProjects.map((project, index) => (
+                <article
+                  class={`grid gap-7 border-t border-line pt-8 md:grid-cols-[0.18fr_1fr_1fr] interactive-card reveal-on-scroll delay-${(index % 3 + 1) * 100}`}
+                  data-project-id={project.id}
+                >
                   <div>
                     <p class="font-mono text-sm text-accent">
                       {project.number}
@@ -395,7 +507,7 @@ const skills = [
                     <div class="mt-6 flex flex-wrap gap-2">
                       {
                         project.tech.map((item) => (
-                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
+                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem] bg-paper">
                             {item}
                           </span>
                         ))
@@ -411,6 +523,7 @@ const skills = [
                               target="_blank"
                               rel="noreferrer"
                               class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                              onclick="event.stopPropagation()"
                             >
                               {link.label} ↗
                             </a>
@@ -418,13 +531,20 @@ const skills = [
                         </div>
                       )
                     }
+
+                    <div class="mt-8 flex items-center justify-between border-t border-line/50 pt-4">
+                      <span class="interactive-badge">
+                        ✨ Klik untuk lihat {project.gallery?.length || 2} foto &amp; detail →
+                      </span>
+                      <span class="font-mono text-[0.7rem] font-medium text-accent">Buka Galeri ↗</span>
+                    </div>
                   </div>
 
                   <div class="self-start overflow-hidden rounded-2xl border border-line bg-paper">
                     <img
                       src={project.image}
                       alt={project.title}
-                      class="block aspect-[4/3] w-full object-contain transition duration-500 md:hover:scale-[1.02]"
+                      class="block aspect-[4/3] w-full object-cover card-img-zoom"
                     />
                   </div>
                 </article>
@@ -437,7 +557,7 @@ const skills = [
 <!-- RESEARCH -->
 <section id="riset" class="research-section">
   <div class="container-main py-20 md:py-28">
-    <div class="grid gap-12 md:grid-cols-[0.45fr_1fr]">
+    <div class="grid gap-12 md:grid-cols-[0.45fr_1fr] interactive-card reveal-on-scroll delay-100 rounded-[2rem] p-4 md:p-8 transition duration-300 hover:bg-paper/5" data-project-id="flora-ai">
       <p class="research-accent font-mono text-xs uppercase tracking-[0.12em]">
         02 / Research Highlight
       </p>
@@ -512,12 +632,16 @@ const skills = [
           }
         </div>
 
-        <div class="mt-8">
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line/40 pt-6">
+          <span class="interactive-badge !bg-accent !text-white !border-accent">
+            ✨ Klik untuk lihat Demo AI &amp; Galeri Foto →
+          </span>
           <a
             href="https://github.com/dhioanugrah/borneo-endemic-flora-efficientnetv2-classification"
             target="_blank"
             rel="noreferrer"
             class="inline-flex items-center rounded-full border border-current px-4 py-2 font-mono text-xs transition hover:bg-current hover:text-paper"
+            onclick="event.stopPropagation()"
           >
             Repository GitHub ↗
           </a>
@@ -530,7 +654,7 @@ const skills = [
       <!-- MOBILE -->
       <section id="mobile" class="section-line">
         <div class="container-main py-20 md:py-28">
-          <div class="grid gap-10 md:grid-cols-[0.45fr_1fr]">
+          <div class="grid gap-10 md:grid-cols-[0.45fr_1fr] reveal-on-scroll delay-100">
             <p class="label">03 / Aplikasi Mobile</p>
 
             <div>
@@ -543,18 +667,21 @@ const skills = [
               <p class="mt-6 max-w-2xl leading-relaxed text-muted">
                 Selain membangun API, saya juga memiliki pengalaman menghubungkan
                 backend Laravel dengan aplikasi Flutter untuk kebutuhan pengguna
-                di lapangan.
+                di lapangan. <strong class="text-accent">Klik kartu untuk lihat antarmuka aplikasi.</strong>
               </p>
 
               <div class="mt-14 grid gap-10 md:grid-cols-2">
                 {
-                  mobileProjects.map((project) => (
-                    <article>
+                  mobileProjects.map((project, index) => (
+                    <article
+                      class={`interactive-card reveal-on-scroll delay-${(index + 1) * 100} rounded-[2.2rem] p-4 border border-transparent transition duration-300 hover:border-line hover:bg-paper`}
+                      data-project-id={project.id}
+                    >
                       <div class="overflow-hidden rounded-[2rem] border border-line bg-ink p-2">
                         <img
                           src={project.image}
                           alt={project.title}
-                          class="aspect-[9/12] w-full rounded-[1.55rem] object-cover"
+                          class="aspect-[9/12] w-full rounded-[1.55rem] object-cover card-img-zoom"
                         />
                       </div>
 
@@ -575,7 +702,7 @@ const skills = [
                       <div class="mt-5 flex flex-wrap gap-2">
                         {
                           project.tech.map((item) => (
-                            <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
+                            <span class="border border-line px-3 py-1 font-mono text-[0.68rem] bg-paper">
                               {item}
                             </span>
                           ))
@@ -591,6 +718,7 @@ const skills = [
                                 target="_blank"
                                 rel="noreferrer"
                                 class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                                onclick="event.stopPropagation()"
                               >
                                 {link.label} ↗
                               </a>
@@ -598,6 +726,13 @@ const skills = [
                           </div>
                         )
                       }
+
+                      <div class="mt-6 flex items-center justify-between border-t border-line/50 pt-4">
+                        <span class="interactive-badge !text-[0.7rem]">
+                          ✨ Klik untuk lihat {project.gallery?.length || 2} foto →
+                        </span>
+                        <span class="font-mono text-[0.7rem] font-medium text-accent">Galeri ↗</span>
+                      </div>
                     </article>
                   ))
                 }
@@ -610,7 +745,7 @@ const skills = [
       <!-- OTHER PROJECTS -->
       <section class="section-line">
         <div class="container-main py-20 md:py-28">
-          <div class="grid gap-10 md:grid-cols-[0.45fr_1fr]">
+          <div class="grid gap-10 md:grid-cols-[0.45fr_1fr] reveal-on-scroll delay-100">
             <div>
               <p class="label">04 / Project Lainnya</p>
               <h2
@@ -623,7 +758,10 @@ const skills = [
             <div>
               {
                 otherProjects.map((project, index) => (
-                  <article class="border-t border-line py-7">
+                  <article
+                    class={`border-t border-line py-7 interactive-card reveal-on-scroll delay-${((index % 3) + 1) * 100}`}
+                    data-project-id={project.id}
+                  >
                     <div class="flex items-start justify-between gap-6">
                       <div>
                         <p class="font-mono text-xs text-accent">
@@ -647,7 +785,7 @@ const skills = [
                     <div class="mt-5 flex flex-wrap gap-2">
                       {
                         project.tech.map((item) => (
-                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
+                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem] bg-paper">
                             {item}
                           </span>
                         ))
@@ -663,6 +801,7 @@ const skills = [
                               target="_blank"
                               rel="noreferrer"
                               class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                              onclick="event.stopPropagation()"
                             >
                               {link.label} ↗
                             </a>
@@ -670,6 +809,13 @@ const skills = [
                         </div>
                       )
                     }
+
+                    <div class="mt-6 flex items-center justify-between border-t border-line/50 pt-3">
+                      <span class="interactive-badge !text-[0.7rem]">
+                        ✨ Klik untuk lihat detail &amp; foto →
+                      </span>
+                      <span class="font-mono text-[0.7rem] font-medium text-accent">Detail ↗</span>
+                    </div>
                   </article>
                 ))
               }
@@ -770,6 +916,95 @@ const skills = [
       </section>
     </main>
 
+    <!-- PROJECT DETAIL MODAL / DIALOG OVERLAY -->
+    <div id="project-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+      <div id="project-modal-card" class="p-6 md:p-10">
+        <div class="flex items-start justify-between gap-4 border-b border-line pb-6">
+          <div>
+            <span id="modal-client" class="label text-accent font-semibold">CLIENT / CONTEXT</span>
+            <h3 id="modal-title" class="mt-2 text-2xl font-medium tracking-tight md:text-3xl">
+              Project Title
+            </h3>
+          </div>
+          <button
+            id="modal-close"
+            type="button"
+            class="modal-close-btn"
+            aria-label="Tutup modal detail"
+            title="Tutup modal"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Interactive Photo Gallery -->
+        <div class="mt-8">
+          <div class="relative overflow-hidden rounded-2xl border border-line bg-ink/5 aspect-[16/10] md:aspect-[16/9] flex items-center justify-center">
+            <img
+              id="modal-main-img"
+              src=""
+              alt="Galeri Project"
+              class="max-h-full max-w-full object-contain"
+            />
+            <div id="modal-img-counter" class="absolute bottom-4 right-4 rounded-full bg-ink/80 px-3 py-1 font-mono text-xs text-paper backdrop-blur-md">
+              1 / 1
+            </div>
+          </div>
+
+          <!-- Thumbnail Carousel / Selector -->
+          <div id="modal-gallery-thumbs" class="mt-4 grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Project Details & Role -->
+        <div class="mt-8 grid gap-8 md:grid-cols-[1.3fr_0.7fr]">
+          <div>
+            <p class="label">Deskripsi Sistem</p>
+            <p id="modal-description" class="mt-3 text-base leading-relaxed text-muted">
+              Description goes here...
+            </p>
+
+            <div id="modal-role-container" class="mt-6">
+              <p class="label text-accent">Kontribusi &amp; Peran Saya</p>
+              <p id="modal-role" class="mt-2 text-sm leading-relaxed font-medium">
+                Role description...
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div>
+              <p class="label">Teknologi &amp; Tools</p>
+              <div id="modal-tech-tags" class="mt-3 flex flex-wrap gap-2">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <div id="modal-links-container">
+              <p class="label">Tautan Terkait</p>
+              <div id="modal-links" class="mt-3 flex flex-wrap gap-2">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex justify-end border-t border-line pt-6">
+          <button
+            id="modal-close-bottom"
+            type="button"
+            class="rounded-full bg-ink px-6 py-2.5 font-mono text-xs text-paper transition hover:bg-accent hover:text-white"
+          >
+            Tutup Detail Project ✕
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embedded Project Data Store for Client-Side JS -->
+    <script id="project-data-store" type="application/json" is:inline set:html={JSON.stringify(allProjectsMap)} />
+
     <footer
       class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between"
     >
@@ -848,6 +1083,148 @@ const skills = [
         );
 
         sections.forEach((section) => observer.observe(section));
+
+        // Modern Scroll Reveal Animation Observer
+        const revealElements = document.querySelectorAll(".reveal-on-scroll");
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-revealed");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+        );
+        revealElements.forEach((el) => revealObserver.observe(el));
+
+        // Interactive Project Detail Modal & Photo Gallery
+        const projectStoreEl = document.getElementById("project-data-store");
+        let projectDataMap = {};
+        try {
+          projectDataMap = projectStoreEl ? JSON.parse(projectStoreEl.textContent) : {};
+        } catch (e) {
+          console.error("Failed to parse project data", e);
+        }
+
+        const backdrop = document.getElementById("project-modal-backdrop");
+        const modalTitle = document.getElementById("modal-title");
+        const modalClient = document.getElementById("modal-client");
+        const modalDesc = document.getElementById("modal-description");
+        const modalRole = document.getElementById("modal-role");
+        const modalRoleContainer = document.getElementById("modal-role-container");
+        const modalTech = document.getElementById("modal-tech-tags");
+        const modalLinks = document.getElementById("modal-links");
+        const modalLinksContainer = document.getElementById("modal-links-container");
+        const mainImg = document.getElementById("modal-main-img");
+        const imgCounter = document.getElementById("modal-img-counter");
+        const thumbsContainer = document.getElementById("modal-gallery-thumbs");
+        const closeBtn = document.getElementById("modal-close");
+        const closeBtnBottom = document.getElementById("modal-close-bottom");
+
+        let currentGallery = [];
+        let currentImgIdx = 0;
+
+        function updateMainImage(idx) {
+          if (!currentGallery || !currentGallery.length) return;
+          currentImgIdx = idx;
+          mainImg.classList.add("is-changing");
+          setTimeout(() => {
+            mainImg.src = currentGallery[idx];
+            imgCounter.textContent = `${idx + 1} / ${currentGallery.length}`;
+            mainImg.classList.remove("is-changing");
+          }, 150);
+
+          const allThumbs = thumbsContainer.querySelectorAll(".gallery-thumb-btn");
+          allThumbs.forEach((btn, i) => {
+            btn.classList.toggle("is-active", i === idx);
+          });
+        }
+
+        function openModal(projectId) {
+          const data = projectDataMap[projectId];
+          if (!data) return;
+
+          modalTitle.textContent = data.title || "";
+          modalClient.textContent = `${data.client || ""} ${data.context ? "· " + data.context : ""}`;
+          modalDesc.textContent = data.description || "";
+
+          if (data.role) {
+            modalRole.textContent = data.role;
+            modalRoleContainer.style.display = "block";
+          } else {
+            modalRoleContainer.style.display = "none";
+          }
+
+          modalTech.innerHTML = (data.tech || [])
+            .map((t) => `<span class="border border-line px-3 py-1 font-mono text-[0.7rem] rounded-md bg-paper">${t}</span>`)
+            .join("");
+
+          if (data.links && data.links.length) {
+            modalLinks.innerHTML = data.links
+              .map(
+                (l) =>
+                  `<a href="${l.href}" target="_blank" rel="noreferrer" class="inline-flex items-center rounded-full border border-ink bg-ink text-paper px-4 py-2 font-mono text-xs transition hover:bg-accent hover:border-accent hover:text-white">${l.label} ↗</a>`
+              )
+              .join("");
+            modalLinksContainer.style.display = "block";
+          } else {
+            modalLinksContainer.style.display = "none";
+          }
+
+          currentGallery = data.gallery && data.gallery.length ? data.gallery : [data.image || "/profile/dhio-profile.webp"];
+          currentImgIdx = 0;
+
+          thumbsContainer.innerHTML = currentGallery
+            .map(
+              (imgUrl, idx) =>
+                `<button type="button" class="gallery-thumb-btn ${idx === 0 ? "is-active" : ""}" data-idx="${idx}">
+                  <img src="${imgUrl}" alt="Thumbnail ${idx + 1}" class="h-14 w-full object-cover rounded-xl block" />
+                </button>`
+            )
+            .join("");
+
+          const thumbBtns = thumbsContainer.querySelectorAll(".gallery-thumb-btn");
+          thumbBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const idx = parseInt(btn.getAttribute("data-idx"), 10);
+              updateMainImage(idx);
+            });
+          });
+
+          updateMainImage(0);
+
+          backdrop.classList.add("is-open");
+          backdrop.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+          backdrop.classList.remove("is-open");
+          backdrop.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        }
+
+        document.querySelectorAll(".interactive-card").forEach((card) => {
+          card.addEventListener("click", (e) => {
+            if (e.target.closest("a")) return; // Don't trigger modal if clicking an external link directly
+            const pid = card.getAttribute("data-project-id");
+            if (pid) openModal(pid);
+          });
+        });
+
+        closeBtn?.addEventListener("click", closeModal);
+        closeBtnBottom?.addEventListener("click", closeModal);
+        backdrop?.addEventListener("click", (e) => {
+          if (e.target === backdrop) closeModal();
+        });
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && backdrop.classList.contains("is-open")) {
+            closeModal();
+          }
+        });
       })();
     </script>
   </body>
