@@ -26,19 +26,13 @@ const featuredProjects = [
     role: "Mengembangkan backend sistem menggunakan Laravel dan Filament, mengatur workflow pengembangan, serta mengoordinasikan pengerjaan tim selama proyek berlangsung.",
     tech: ["Laravel", "Filament", "MySQL", "PHP", "Git"],
     image: "/projects/warehouse-cover.webp",
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/final-kp",
-      },
-    ],
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/final-kp" }],
   },
   {
     number: "03",
     title: "Sistem Informasi Penerimaan Mahasiswa Jalur Mandiri",
     client: "Summit ITK",
-    context:
-      "Backend Developer · Project Kolaboratif Bersama Dosen · 2023 — 2024",
+    context: "Backend Developer · Project Kolaboratif Bersama Dosen · 2023 — 2024",
     description:
       "Berkontribusi dalam pengembangan sistem informasi penerimaan mahasiswa jalur mandiri untuk mendukung kebutuhan platform Summit Institut Teknologi Kalimantan.",
     role: "Membantu pengembangan fitur backend, struktur data, dan integrasi sistem dalam tim berbasis Laravel.",
@@ -54,21 +48,9 @@ const featuredProjects = [
     description:
       "Membangun API untuk mengelola data pelanggan dan pesanan pada layanan cuci sepatu dengan perhatian pada konsistensi serta efisiensi pengolahan data.",
     role: "Membuat REST API, melakukan pengujian endpoint melalui Postman, serta memanfaatkan function, trigger, dan view untuk mendukung integritas database.",
-    tech: [
-      "JavaScript",
-      "MVC",
-      "MySQL",
-      "REST API",
-      "Database Trigger",
-      "Postman",
-    ],
+    tech: ["JavaScript","MVC", "MySQL", "REST API", "Database Trigger", "Postman"],
     image: "/projects/ERD.png",
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/mbd/tree/main",
-      },
-    ],
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/mbd/tree/main" }],
   },
 ];
 
@@ -81,12 +63,7 @@ const mobileProjects = [
       "Membangun aplikasi Flutter yang terhubung ke Laravel API untuk membantu pengunjung mengakses informasi saat berada di Kebun Raya Balikpapan.",
     tech: ["Flutter", "Dart", "Drift", "GoRoute"],
     image: "/projects/botanical-mobile.webp",
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/Mobile_KRB",
-      },
-    ],
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/Mobile_KRB" }],
   },
   {
     title: "Aplikasi Mobile Katalog Produk Sepatu",
@@ -121,12 +98,7 @@ const otherProjects = [
     description:
       "Membangun website informasi wisata mangrove Margomulyo untuk mendukung penyampaian informasi kepada pengunjung.",
     tech: ["Laravel", "Web Development", "Database"],
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/kkn",
-      },
-    ],
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/kkn" }],
   },
   {
     title: "E-Commerce Terintegrasi AI",
@@ -134,12 +106,7 @@ const otherProjects = [
     description:
       "Membangun e-commerce dengan Laravel sebagai backend, Vue.js sebagai frontend, serta integrasi model Hugging Face untuk analisis rating produk.",
     tech: ["Laravel", "Vue.js", "Hugging Face", "AI Integration"],
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/toko_elektronik_AI",
-      },
-    ],
+    links: [{ label: "Repository GitHub", href: "https://github.com/dhioanugrah/toko_elektronik_AI" }],
   },
 ];
 
@@ -192,7 +159,9 @@ const skills = [
         const savedTheme = localStorage.getItem("dhio-theme");
 
         const theme =
-          savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark";
+          savedTheme === "light" || savedTheme === "dark"
+            ? savedTheme
+            : "dark";
 
         document.documentElement.dataset.theme = theme;
       })();
@@ -251,7 +220,7 @@ const skills = [
               stroke-linecap="round"
               stroke-linejoin="round"
             >
-              <path d="M12 3a6.5 6.5 0 0 0 9 9A9 9 0 1 1 12 3z"></path>
+              <path d="M12 3a6.5 6.5 0 0 0 9 9A9 9 0 1 1 12 3z" />
             </svg>
 
             <svg
@@ -266,10 +235,10 @@ const skills = [
               stroke-linecap="round"
               stroke-linejoin="round"
             >
-              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="12" cy="12" r="4" />
               <path
                 d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-              ></path>
+              />
             </svg>
           </button>
         </div>
@@ -278,14 +247,13 @@ const skills = [
 
     <main class="pt-24 md:pt-28">
       <!-- HERO -->
-      <section id="beranda" class="container-main py-16 md:py-24">
-        <div
-          class="grid gap-10 md:grid-cols-[0.4fr_0.6fr] md:items-center md:gap-14"
-        >
+      <section
+        id="beranda"
+        class="container-main py-16 md:py-24"
+      >
+        <div class="grid gap-10 md:grid-cols-[0.4fr_0.6fr] md:items-center md:gap-14">
           <div class="order-1 md:order-none">
-            <div
-              class="overflow-hidden rounded-[20px] border border-line bg-paper"
-            >
+            <div class="overflow-hidden rounded-[20px] border border-line bg-paper">
               <div class="relative aspect-[4/5] w-full">
                 <img
                   src="/profile/dhio-profile.webp"
@@ -294,18 +262,12 @@ const skills = [
                   onerror="this.style.display='none'; this.nextElementSibling?.classList.remove('hidden')"
                 />
 
-                <div
-                  class="absolute inset-0 hidden items-center justify-center bg-ink text-paper"
-                >
+                <div class="absolute inset-0 hidden items-center justify-center bg-ink text-paper">
                   <div class="text-center">
-                    <div
-                      class="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-2xl border border-line bg-paper/5 text-sm font-mono uppercase tracking-[0.18em] text-muted"
-                    >
+                    <div class="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-2xl border border-line bg-paper/5 text-sm font-mono uppercase tracking-[0.18em] text-muted">
                       Foto Profil
                     </div>
-                    <p
-                      class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-muted"
-                    >
+                    <p class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-muted">
                       Placeholder lokal
                     </p>
                   </div>
@@ -317,41 +279,26 @@ const skills = [
           <div class="order-2 max-w-3xl md:order-none md:pl-4">
             <p class="label mb-6 text-accent">BACKEND DEVELOPER · INDONESIA</p>
 
-            <h1
-              class="max-w-2xl text-4xl font-medium leading-tight tracking-[-0.05em] md:text-5xl"
-            >
+            <h1 class="max-w-2xl text-4xl font-medium leading-tight tracking-[-0.05em] md:text-5xl">
               Halo, saya Dhio Anugrah.
             </h1>
 
-            <p
-              class="mt-6 max-w-2xl text-lg leading-relaxed text-muted md:text-xl"
-            >
-              Backend Developer yang membangun sistem terintegrasi untuk
-              membantu proses bisnis berjalan lebih rapi dan terukur.
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+              Backend Developer yang membangun sistem terintegrasi untuk membantu proses bisnis berjalan lebih rapi dan terukur.
             </p>
 
-            <p
-              class="mt-5 max-w-2xl leading-relaxed text-muted md:text-[1.02rem]"
-            >
-              Saya berfokus pada pengembangan REST API, database relasional,
-              alur proses bisnis, dan integrasi backend untuk website maupun
-              aplikasi mobile.
+            <p class="mt-5 max-w-2xl leading-relaxed text-muted md:text-[1.02rem]">
+              Saya berfokus pada pengembangan REST API, database relasional, alur proses bisnis, dan integrasi backend untuk website maupun aplikasi mobile.
             </p>
 
             <div class="mt-7 flex flex-wrap gap-2">
-              <span
-                class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-              >
+              <span class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted">
                 Laravel &amp; PHP
               </span>
-              <span
-                class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-              >
+              <span class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted">
                 REST API &amp; Database
               </span>
-              <span
-                class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-              >
+              <span class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted">
                 MySQL &amp; System Integration
               </span>
             </div>
@@ -373,9 +320,7 @@ const skills = [
             </div>
           </div>
         </div>
-        <div
-          class="mt-14 grid gap-6 border-t border-line pt-6 md:mt-16 md:grid-cols-3"
-        >
+        <div class="mt-14 grid gap-6 border-t border-line pt-6 md:mt-16 md:grid-cols-3">
           <div>
             <p class="label">Fokus</p>
             <p class="mt-2 text-sm">Backend System & REST API</p>
@@ -448,27 +393,31 @@ const skills = [
                     </div>
 
                     <div class="mt-6 flex flex-wrap gap-2">
-                      {project.tech.map((item) => (
-                        <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
-                          {item}
-                        </span>
-                      ))}
+                      {
+                        project.tech.map((item) => (
+                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
+                            {item}
+                          </span>
+                        ))
+                      }
                     </div>
 
-                    {project.links && (
-                      <div class="mt-7 flex flex-wrap gap-3">
-                        {project.links.map((link) => (
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
-                          >
-                            {link.label} ↗
-                          </a>
-                        ))}
-                      </div>
-                    )}
+                    {
+                      project.links && (
+                        <div class="mt-7 flex flex-wrap gap-3">
+                          {project.links.map((link) => (
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                            >
+                              {link.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )
+                    }
                   </div>
 
                   <div class="self-start overflow-hidden rounded-2xl border border-line bg-paper">
@@ -485,100 +434,98 @@ const skills = [
         </div>
       </section>
 
-      <!-- RESEARCH -->
-      <section id="riset" class="research-section">
-        <div class="container-main py-20 md:py-28">
-          <div class="grid gap-12 md:grid-cols-[0.45fr_1fr]">
-            <p
-              class="research-accent font-mono text-xs uppercase tracking-[0.12em]"
-            >
-              02 / Research Highlight
+<!-- RESEARCH -->
+<section id="riset" class="research-section">
+  <div class="container-main py-20 md:py-28">
+    <div class="grid gap-12 md:grid-cols-[0.45fr_1fr]">
+      <p class="research-accent font-mono text-xs uppercase tracking-[0.12em]">
+        02 / Research Highlight
+      </p>
+
+      <div>
+        <p class="research-accent font-mono text-xs">
+          Tugas Akhir · Deep Learning
+        </p>
+
+        <h2
+          class="mt-5 max-w-4xl text-4xl font-medium leading-[0.95] tracking-[-0.05em] md:text-6xl"
+        >
+          Klasifikasi Flora Endemik Kalimantan Menggunakan EfficientNetV2.
+        </h2>
+
+        <p class="research-muted mt-8 max-w-2xl leading-relaxed">
+          Penelitian klasifikasi 28 spesies flora endemik Kalimantan
+          menggunakan 2.800 citra digital yang dikumpulkan di Kebun Raya
+          Balikpapan. Pengujian dilakukan pada EfficientNetV2-S,
+          EfficientNetV2-M, dan EfficientNetV2-L.
+        </p>
+
+        <div class="research-metrics mt-12 grid gap-px md:grid-cols-4">
+          <div class="research-metric p-6">
+            <p class="research-accent font-mono text-3xl">2.800</p>
+            <p class="research-muted mt-2 font-mono text-xs">
+              Citra Dataset
             </p>
+          </div>
 
-            <div>
-              <p class="research-accent font-mono text-xs">
-                Tugas Akhir · Deep Learning
-              </p>
+          <div class="research-metric p-6">
+            <p class="research-accent font-mono text-3xl">28</p>
+            <p class="research-muted mt-2 font-mono text-xs">
+              Spesies Flora
+            </p>
+          </div>
 
-              <h2
-                class="mt-5 max-w-4xl text-4xl font-medium leading-[0.95] tracking-[-0.05em] md:text-6xl"
-              >
-                Klasifikasi Flora Endemik Kalimantan Menggunakan EfficientNetV2.
-              </h2>
+          <div class="research-metric p-6">
+            <p class="research-accent font-mono text-3xl">97,58%</p>
+            <p class="research-muted mt-2 font-mono text-xs">
+              Akurasi Terbaik
+            </p>
+          </div>
 
-              <p class="research-muted mt-8 max-w-2xl leading-relaxed">
-                Penelitian klasifikasi 28 spesies flora endemik Kalimantan
-                menggunakan 2.800 citra digital yang dikumpulkan di Kebun Raya
-                Balikpapan. Pengujian dilakukan pada EfficientNetV2-S,
-                EfficientNetV2-M, dan EfficientNetV2-L.
-              </p>
-
-              <div class="research-metrics mt-12 grid gap-px md:grid-cols-4">
-                <div class="research-metric p-6">
-                  <p class="research-accent font-mono text-3xl">2.800</p>
-                  <p class="research-muted mt-2 font-mono text-xs">
-                    Citra Dataset
-                  </p>
-                </div>
-
-                <div class="research-metric p-6">
-                  <p class="research-accent font-mono text-3xl">28</p>
-                  <p class="research-muted mt-2 font-mono text-xs">
-                    Spesies Flora
-                  </p>
-                </div>
-
-                <div class="research-metric p-6">
-                  <p class="research-accent font-mono text-3xl">97,58%</p>
-                  <p class="research-muted mt-2 font-mono text-xs">
-                    Akurasi Terbaik
-                  </p>
-                </div>
-
-                <div class="research-metric p-6">
-                  <p class="research-accent font-mono text-3xl">97,59%</p>
-                  <p class="research-muted mt-2 font-mono text-xs">
-                    F1-Score Terbaik
-                  </p>
-                </div>
-              </div>
-
-              <p class="research-muted mt-8 max-w-2xl text-sm leading-relaxed">
-                EfficientNetV2-L menghasilkan performa klasifikasi terbaik,
-                sedangkan EfficientNetV2-S memberikan waktu inferensi paling
-                cepat untuk kebutuhan yang lebih responsif.
-              </p>
-
-              <div class="mt-10 flex flex-wrap gap-2">
-                {
-                  [
-                    "Python",
-                    "TensorFlow",
-                    "EfficientNetV2",
-                    "Google Colab",
-                    "Computer Vision",
-                  ].map((item) => (
-                    <span class="research-tag px-3 py-1 font-mono text-[0.68rem]">
-                      {item}
-                    </span>
-                  ))
-                }
-              </div>
-
-              <div class="mt-8">
-                <a
-                  href="https://github.com/dhioanugrah/borneo-endemic-flora-efficientnetv2-classification"
-                  target="_blank"
-                  rel="noreferrer"
-                  class="inline-flex items-center rounded-full border border-current px-4 py-2 font-mono text-xs transition hover:bg-current hover:text-paper"
-                >
-                  Repository GitHub ↗
-                </a>
-              </div>
-            </div>
+          <div class="research-metric p-6">
+            <p class="research-accent font-mono text-3xl">97,59%</p>
+            <p class="research-muted mt-2 font-mono text-xs">
+              F1-Score Terbaik
+            </p>
           </div>
         </div>
-      </section>
+
+        <p class="research-muted mt-8 max-w-2xl text-sm leading-relaxed">
+          EfficientNetV2-L menghasilkan performa klasifikasi terbaik,
+          sedangkan EfficientNetV2-S memberikan waktu inferensi paling cepat
+          untuk kebutuhan yang lebih responsif.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-2">
+          {
+            [
+              "Python",
+              "TensorFlow",
+              "EfficientNetV2",
+              "Google Colab",
+              "Computer Vision",
+            ].map((item) => (
+              <span class="research-tag px-3 py-1 font-mono text-[0.68rem]">
+                {item}
+              </span>
+            ))
+          }
+        </div>
+
+        <div class="mt-8">
+          <a
+            href="https://github.com/dhioanugrah/borneo-endemic-flora-efficientnetv2-classification"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center rounded-full border border-current px-4 py-2 font-mono text-xs transition hover:bg-current hover:text-paper"
+          >
+            Repository GitHub ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- MOBILE -->
       <section id="mobile" class="section-line">
@@ -587,14 +534,16 @@ const skills = [
             <p class="label">03 / Aplikasi Mobile</p>
 
             <div>
-              <h2 class="text-4xl font-medium tracking-[-0.05em] md:text-6xl">
+              <h2
+                class="text-4xl font-medium tracking-[-0.05em] md:text-6xl"
+              >
                 Backend yang terhubung ke aplikasi mobile.
               </h2>
 
               <p class="mt-6 max-w-2xl leading-relaxed text-muted">
-                Selain membangun API, saya juga memiliki pengalaman
-                menghubungkan backend Laravel dengan aplikasi Flutter untuk
-                kebutuhan pengguna di lapangan.
+                Selain membangun API, saya juga memiliki pengalaman menghubungkan
+                backend Laravel dengan aplikasi Flutter untuk kebutuhan pengguna
+                di lapangan.
               </p>
 
               <div class="mt-14 grid gap-10 md:grid-cols-2">
@@ -624,27 +573,31 @@ const skills = [
                       </p>
 
                       <div class="mt-5 flex flex-wrap gap-2">
-                        {project.tech.map((item) => (
-                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
-                            {item}
-                          </span>
-                        ))}
+                        {
+                          project.tech.map((item) => (
+                            <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
+                              {item}
+                            </span>
+                          ))
+                        }
                       </div>
 
-                      {project.links && (
-                        <div class="mt-6 flex flex-wrap gap-3">
-                          {project.links.map((link) => (
-                            <a
-                              href={link.href}
-                              target="_blank"
-                              rel="noreferrer"
-                              class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
-                            >
-                              {link.label} ↗
-                            </a>
-                          ))}
-                        </div>
-                      )}
+                      {
+                        project.links && (
+                          <div class="mt-6 flex flex-wrap gap-3">
+                            {project.links.map((link) => (
+                              <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                              >
+                                {link.label} ↗
+                              </a>
+                            ))}
+                          </div>
+                        )
+                      }
                     </article>
                   ))
                 }
@@ -692,27 +645,31 @@ const skills = [
                     </p>
 
                     <div class="mt-5 flex flex-wrap gap-2">
-                      {project.tech.map((item) => (
-                        <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
-                          {item}
-                        </span>
-                      ))}
+                      {
+                        project.tech.map((item) => (
+                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
+                            {item}
+                          </span>
+                        ))
+                      }
                     </div>
 
-                    {project.links && (
-                      <div class="mt-6 flex flex-wrap gap-3">
-                        {project.links.map((link) => (
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
-                          >
-                            {link.label} ↗
-                          </a>
-                        ))}
-                      </div>
-                    )}
+                    {
+                      project.links && (
+                        <div class="mt-6 flex flex-wrap gap-3">
+                          {project.links.map((link) => (
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                            >
+                              {link.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )
+                    }
                   </article>
                 ))
               }
@@ -740,7 +697,9 @@ const skills = [
                 {
                   backgroundItems.map((item) => (
                     <article class="bg-paper p-6">
-                      <p class="font-mono text-sm text-accent">{item.number}</p>
+                      <p class="font-mono text-sm text-accent">
+                        {item.number}
+                      </p>
 
                       <h3 class="mt-8 text-xl font-medium">{item.title}</h3>
 
@@ -815,6 +774,7 @@ const skills = [
       class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between"
     >
       <p>© 2026 Dhio Anugrah Prakasa Putro</p>
+      
     </footer>
 
     <script is:inline>
@@ -831,19 +791,20 @@ const skills = [
 
           toggle?.setAttribute(
             "aria-label",
-            isDark ? "Aktifkan mode terang" : "Aktifkan mode gelap",
+            isDark ? "Aktifkan mode terang" : "Aktifkan mode gelap"
           );
 
           toggle?.setAttribute(
             "title",
-            isDark ? "Aktifkan mode terang" : "Aktifkan mode gelap",
+            isDark ? "Aktifkan mode terang" : "Aktifkan mode gelap"
           );
         }
 
         applyTheme(root.dataset.theme === "light" ? "light" : "dark");
 
         toggle?.addEventListener("click", () => {
-          const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+          const nextTheme =
+            root.dataset.theme === "dark" ? "light" : "dark";
 
           applyTheme(nextTheme);
         });
@@ -868,7 +829,7 @@ const skills = [
               .filter((entry) => entry.isIntersecting)
               .sort(
                 (first, second) =>
-                  second.intersectionRatio - first.intersectionRatio,
+                  second.intersectionRatio - first.intersectionRatio
               )[0];
 
             if (!visibleSection) return;
@@ -876,14 +837,14 @@ const skills = [
             navLinks.forEach((link) => {
               link.classList.toggle(
                 "is-active",
-                link.getAttribute("href") === `#${visibleSection.target.id}`,
+                link.getAttribute("href") === `#${visibleSection.target.id}`
               );
             });
           },
           {
             rootMargin: "-35% 0px -55% 0px",
             threshold: [0.01, 0.25, 0.5],
-          },
+          }
         );
 
         sections.forEach((section) => observer.observe(section));
