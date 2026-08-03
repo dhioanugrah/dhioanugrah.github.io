@@ -3,153 +3,13 @@ import "../styles/global.css";
 
 const githubUrl = "https://github.com/dhioanugrah";
 
-const featuredProjects = [
-  {
-    number: "01",
-    title: "Digitalisasi Operasional Layanan Kebersihan Multi-Cabang",
-    client: "Klinklin Surabaya",
-    context: "Fullstack Developer · Juni 2026 — Juli 2026",
-    description:
-      "Sistem ERP terintegrasi yang menghubungkan platform mobile dan website melalui satu API terpusat, dengan alur bisnis yang dirancang khusus menyesuaikan sistem kerja operasional PT Klinklin Surabaya.",
-    role: "Membangun REST API menggunakan Laravel, mengembangkan antarmuka website interaktif dengan Livewire dan Tailwind CSS, serta merancang implementasi alur bisnis aplikasi secara menyeluruh.",
-    tech: [
-      "Laravel",
-      "Livewire",
-      "Tailwind CSS",
-      "MySQL",
-      "REST API",
-      "queue woker",
-      "FCM",
-    ],
-    image: "/projects/klinklin-cover.webp",
-    links: [{ label: "GitHub", href: githubUrl }],
-  },
-  {
-    number: "02",
-    title: "Sistem Pengelolaan Stok dan Produk untuk Operasional Gudang",
-    client: "PT Hidrolik Indomitra Teknologi",
-    context: "Project Manager & Backend Developer · Magang 3 Bulan · 2025",
-    description:
-      "Mengembangkan Warehouse Management System untuk membantu pengelolaan produk dan stok, sekaligus memastikan alur pengerjaan tim berjalan terarah.",
-    role: "Mengembangkan backend sistem menggunakan Laravel dan Filament, mengatur workflow pengembangan, serta mengoordinasikan pengerjaan tim selama proyek berlangsung.",
-    tech: ["Laravel", "Filament", "MySQL", "PHP", "Git"],
-    image: "/projects/warehouse-cover.webp",
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/final-kp",
-      },
-    ],
-  },
-  {
-    number: "03",
-    title: "Sistem Informasi Penerimaan Mahasiswa Jalur Mandiri",
-    client: "Summit ITK",
-    context:
-      "Backend Developer · Project Kolaboratif Bersama Dosen · 2023 — 2024",
-    description:
-      "Berkontribusi dalam pengembangan sistem informasi penerimaan mahasiswa jalur mandiri untuk mendukung kebutuhan platform Summit Institut Teknologi Kalimantan.",
-    role: "Membantu pengembangan fitur backend, struktur data, dan integrasi sistem dalam tim berbasis Laravel.",
-    tech: ["Laravel", "PHP", "MySQL", "Git"],
-    image: "/projects/summit-itk-cover.webp",
-    links: [{ label: "Kunjungi", href: "https://summit.itk.ac.id/" }],
-  },
-  {
-    number: "04",
-    title: "Backend Pengelolaan Pelanggan dan Pesanan Cuci Sepatu",
-    client: "Shoe Washing Management System",
-    context: "REST API Project · Agustus — November 2024",
-    description:
-      "Membangun API untuk mengelola data pelanggan dan pesanan pada layanan cuci sepatu dengan perhatian pada konsistensi serta efisiensi pengolahan data.",
-    role: "Membuat REST API, melakukan pengujian endpoint melalui Postman, serta memanfaatkan function, trigger, dan view untuk mendukung integritas database.",
-    tech: [
-      "JavaScript",
-      "MVC",
-      "MySQL",
-      "REST API",
-      "Database Trigger",
-      "Postman",
-    ],
-    image: "/projects/ERD.png",
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/mbd/tree/main",
-      },
-    ],
-  },
-];
+import { projects } from "../data/projects.js";
 
-const mobileProjects = [
-  {
-    title: "Aplikasi Panduan Digital Kebun Raya Balikpapan",
-    client: "Botanical Garden Journal",
-    context: "Fullstack Mobile Developer · Agustus — Desember 2025",
-    description:
-      "Membangun aplikasi Flutter yang terhubung ke Laravel API untuk membantu pengunjung mengakses informasi saat berada di Kebun Raya Balikpapan.",
-    tech: ["Flutter", "Dart", "Drift", "GoRoute"],
-    image: "/projects/botanical-mobile.webp",
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/Mobile_KRB",
-      },
-    ],
-  },
-  {
-    title: "Aplikasi Mobile Katalog Produk Sepatu",
-    client: "Shoe Store",
-    context: "Fullstack Mobile Developer · Maret — Juni 2025",
-    description:
-      "Membangun aplikasi mobile untuk menampilkan katalog dan informasi produk sepatu melalui integrasi Flutter dengan Laravel API.",
-    tech: ["Flutter", "Dart", "Drift", "GoRoute"],
-    image: "/projects/shoe-store-mobile.webp",
-  },
-];
-
-const otherProjects = [
-  {
-    title: "KaltimFact",
-    context: "Backend Developer · Agency Project · Juni 2025 — Sekarang",
-    description:
-      "Mengembangkan dan melakukan pemeliharaan project digital untuk kebutuhan klien PT Berkat Doa Kaltim.",
-    tech: ["Laravel", "Backend Development", "Maintenance"],
-    links: [{ label: "Kunjungi", href: "https://www.kaltimfact.com/" }],
-  },
-  {
-    title: "Backend Online Learning Platform",
-    context: "Backend Developer · Agustus — November 2024",
-    description:
-      "Membangun backend dan API untuk komunikasi antara aplikasi pembelajaran online dengan frontend serta menguji endpoint menggunakan Postman.",
-    tech: ["REST API", "Postman", "Backend Development"],
-  },
-  {
-    title: "Website Wisata Mangrove Margomulyo",
-    context: "Fullstack Developer · Maret — Juni 2025",
-    description:
-      "Membangun website informasi wisata mangrove Margomulyo untuk mendukung penyampaian informasi kepada pengunjung.",
-    tech: ["Laravel", "Web Development", "Database"],
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/kkn",
-      },
-    ],
-  },
-  {
-    title: "E-Commerce Terintegrasi AI",
-    context: "Fullstack Developer · November 2025",
-    description:
-      "Membangun e-commerce dengan Laravel sebagai backend, Vue.js sebagai frontend, serta integrasi model Hugging Face untuk analisis rating produk.",
-    tech: ["Laravel", "Vue.js", "Hugging Face", "AI Integration"],
-    links: [
-      {
-        label: "Repository GitHub",
-        href: "https://github.com/dhioanugrah/toko_elektronik_AI",
-      },
-    ],
-  },
-];
+const featuredProjects = projects.filter((p) => p.featured);
+const mobileProjects = projects.filter((p) => p.category === "Mobile");
+const otherProjects = projects.filter(
+  (p) => !p.featured && p.category !== "Mobile",
+);
 
 const backgroundItems = [
   {
@@ -169,20 +29,9 @@ const backgroundItems = [
   },
 ];
 
-const skills = [
-  "Laravel",
-  "PHP",
-  "MySQL",
-  "REST API",
-  "Database Design",
-  "Laravel Sanctum",
-  "Laravel Queue",
-  "Filament",
-  "Git",
-  "Postman",
-  "Flutter",
-  "TensorFlow",
-];
+const rawSkills = projects.flatMap(p => p.tech || []);
+const uniqueSkills = [...new Set(rawSkills.map(skill => skill.trim()))];
+const skills = uniqueSkills.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 ---
 
 <html lang="id">
@@ -192,7 +41,7 @@ const skills = [
 
     <meta
       name="description"
-      content="Portfolio Dhio Anugrah Prakasa Putro — Backend Developer."
+      content="Portfolio Dhio Anugrah Prakasa Putro — Fullstack Developer."
     />
 
     <script is:inline>
@@ -206,13 +55,14 @@ const skills = [
       })();
     </script>
 
-    <title>Dhio Anugrah — Backend Developer</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Dhio Anugrah — Fullstack Developer</title>
   </head>
 
   <body>
     <header class="fixed inset-x-0 top-4 z-50 px-4">
       <div
-        class="nav-shell mx-auto flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-3 md:px-5"
+        class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between rounded-full px-4 py-3 md:px-6 lg:py-4"
       >
         <a href="#beranda" class="font-mono text-sm font-medium tracking-tight">
           DHIO<span class="text-accent">.</span>
@@ -224,8 +74,8 @@ const skills = [
         >
           <a href="#beranda" class="nav-link is-active">Beranda</a>
           <a href="#project" class="nav-link">Project</a>
+          <a href="/sertifikat" class="nav-link">Sertifikat</a>
           <a href="#riset" class="nav-link">Riset</a>
-          <a href="#mobile" class="nav-link">Mobile</a>
           <a href="#latar" class="nav-link">Profil</a>
           <a href="#kontak" class="nav-link">Kontak</a>
         </nav>
@@ -288,9 +138,15 @@ const skills = [
       <!-- HERO -->
       <section id="beranda" class="container-main py-16 md:py-24">
         <div
-          class="grid gap-10 md:grid-cols-[0.4fr_0.6fr] md:items-center md:gap-14"
+          class="grid gap-12 md:grid-cols-[0.38fr_0.62fr] md:items-center lg:gap-20"
         >
-          <div class="order-1 md:order-none">
+          <div class="order-1 md:order-none gsap-hero-reveal relative">
+            <!-- Subtle glow behind the image -->
+            <div
+              class="absolute inset-0 bg-accent/20 blur-3xl rounded-full translate-y-1/4 scale-90 -z-10"
+            >
+            </div>
+
             <div
               class="overflow-hidden rounded-[20px] border border-line bg-paper"
             >
@@ -323,45 +179,81 @@ const skills = [
           </div>
 
           <div class="order-2 max-w-3xl md:order-none md:pl-4">
-            <p class="label mb-6 text-accent">BACKEND DEVELOPER · INDONESIA</p>
+            <p class="label mb-6 text-accent">
+              Fullstack Developer · INDONESIA
+            </p>
 
             <h1
-              class="max-w-2xl text-4xl font-medium leading-tight tracking-[-0.05em] md:text-5xl"
+              class="max-w-3xl text-5xl font-serif font-medium leading-[1.05] tracking-[-0.05em] md:text-6xl lg:text-7xl xl:text-[5.5rem] gsap-hero-reveal"
             >
               Halo, saya Dhio Anugrah.
             </h1>
 
             <p
-              class="mt-6 max-w-2xl text-lg leading-relaxed text-muted md:text-xl"
+              class="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl lg:text-2xl gsap-hero-reveal"
             >
-              Backend Developer yang membangun sistem terintegrasi untuk
-              membantu proses bisnis berjalan lebih rapi dan terukur.
+              Fullstack Developer yang berspesialisasi dalam mendigitalisasi proses bisnis operasional melalui sistem yang terintegrasi dan terukur.
             </p>
 
             <p
               class="mt-5 max-w-2xl leading-relaxed text-muted md:text-[1.02rem]"
             >
-              Saya berfokus pada pengembangan REST API, database relasional,
-              alur proses bisnis, dan integrasi backend untuk website maupun
-              aplikasi mobile.
+              Berpengalaman dalam membangun sistem ERP, Warehouse Management, dan arsitektur REST API secara <i>end-to-end</i> menggunakan ekosistem Laravel. Mampu mengintegrasikan layanan <i>backend</i> yang solid dengan antarmuka <i>website</i> maupun aplikasi <i>mobile</i> berbasis Flutter.
             </p>
 
-            <div class="mt-7 flex flex-wrap gap-2">
-              <span
-                class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-              >
-                Laravel &amp; PHP
-              </span>
-              <span
-                class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-              >
-                REST API &amp; Database
-              </span>
-              <span
-                class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-              >
-                MySQL &amp; System Integration
-              </span>
+            <div class="mt-7 w-full marquee-container gsap-hero-reveal">
+              <div class="marquee-content">
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >Laravel</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >PHP</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >MySQL</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >REST API</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >Tailwind CSS</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >Flutter</span
+                >
+              </div>
+              <div class="marquee-content" aria-hidden="true">
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >Laravel</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >PHP</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >MySQL</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >REST API</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >Tailwind CSS</span
+                >
+                <span
+                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                  >Flutter</span
+                >
+              </div>
             </div>
 
             <div class="mt-10 flex flex-wrap gap-3">
@@ -386,17 +278,17 @@ const skills = [
         >
           <div>
             <p class="label">Fokus</p>
-            <p class="mt-2 text-sm">Backend System & REST API</p>
+            <p class="mt-2 text-sm">Digitalisasi Bisnis & Pengembangan API</p>
           </div>
 
           <div>
             <p class="label">Teknologi Utama</p>
-            <p class="mt-2 text-sm">Laravel · MySQL · PHP</p>
+            <p class="mt-2 text-sm">Laravel · Flutter · MySQL</p>
           </div>
 
           <div>
-            <p class="label">Domisili</p>
-            <p class="mt-2 text-sm">Balikpapan, Indonesia</p>
+            <p class="label">Domisili Sekarang</p>
+            <p class="mt-2 text-sm">Surabaya, Indonesia</p>
           </div>
         </div>
       </section>
@@ -411,22 +303,30 @@ const skills = [
               <p class="label">01 / Project Unggulan</p>
 
               <h2
-                class="mt-4 text-4xl font-medium tracking-[-0.05em] md:text-6xl"
+                class="mt-4 text-5xl font-serif font-medium tracking-[-0.05em] md:text-6xl lg:text-[4.5rem] lg:leading-[1.1] gsap-section-title"
               >
                 Sistem yang saya bantu bangun.
               </h2>
             </div>
 
-            <p class="max-w-sm text-sm leading-relaxed text-muted">
-              Setiap project menjelaskan kebutuhan yang diselesaikan, konteks
-              organisasi, peran saya, dan teknologi yang digunakan.
-            </p>
+            <div class="max-w-sm">
+              <p class="text-sm leading-relaxed text-muted">
+                Setiap project menjelaskan kebutuhan yang diselesaikan, konteks
+                organisasi, peran saya, dan teknologi yang digunakan.
+              </p>
+              <a
+                href="/projects"
+                class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-xs uppercase tracking-widest text-ink transition hover:text-accent hover:border-accent"
+              >
+                Lihat Semua Project ↗
+              </a>
+            </div>
           </div>
 
           <div class="space-y-16">
             {
               featuredProjects.map((project) => (
-                <article class="grid gap-7 border-t border-line pt-6 md:grid-cols-[0.18fr_1fr_1fr]">
+                <article class="group grid gap-7 border-t border-line pt-6 md:grid-cols-[0.18fr_1fr_1fr] gsap-project-reveal">
                   <div>
                     <p class="font-mono text-sm text-accent">
                       {project.number}
@@ -440,7 +340,7 @@ const skills = [
                   <div>
                     <p class="label">{project.client}</p>
 
-                    <h3 class="mt-4 text-2xl font-medium leading-tight tracking-[-0.04em] md:text-4xl">
+                    <h3 class="mt-4 text-2xl font-serif font-medium leading-tight tracking-[-0.04em] md:text-4xl">
                       {project.title}
                     </h3>
 
@@ -465,6 +365,12 @@ const skills = [
 
                     {project.links && (
                       <div class="mt-7 flex flex-wrap gap-3">
+                        <a
+                          href={`/projects/${project.slug}`}
+                          class="inline-flex items-center rounded-full bg-ink px-4 py-2 font-mono text-xs text-paper transition hover:bg-accent"
+                        >
+                          Lihat Detail ↗
+                        </a>
                         {project.links.map((link) => (
                           <a
                             href={link.href}
@@ -477,18 +383,157 @@ const skills = [
                         ))}
                       </div>
                     )}
+                    {!project.links && (
+                      <div class="mt-7 flex flex-wrap gap-3">
+                        <a
+                          href={`/projects/${project.slug}`}
+                          class="inline-flex items-center rounded-full bg-ink px-4 py-2 font-mono text-xs text-paper transition hover:bg-accent"
+                        >
+                          Lihat Detail ↗
+                        </a>
+                      </div>
+                    )}
                   </div>
 
-                  <div class="self-start overflow-hidden rounded-2xl border border-line bg-paper">
+                  <a
+                    href={`/projects/${project.slug}`}
+                    class="self-start overflow-hidden rounded-2xl border border-line bg-paper transition duration-700 md:group-hover:-translate-y-2 md:group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] md:group-hover:border-accent/40"
+                  >
                     <img
                       src={project.image}
                       alt={project.title}
-                      class="block aspect-[4/3] w-full object-contain transition duration-500 md:hover:scale-[1.02]"
+                      class="block aspect-[4/3] w-full object-cover transition duration-700 md:group-hover:scale-[1.05] md:group-hover:-rotate-1"
                     />
-                  </div>
+                  </a>
                 </article>
               ))
             }
+          </div>
+        </div>
+      </section>
+
+      <!-- OTHER PROJECTS -->
+      <section class="section-line overflow-hidden relative">
+        <div class="container-main py-20 md:py-28">
+          <div class="max-w-2xl mb-16" data-aos="fade-up">
+            <p class="label">02 / Project Lainnya</p>
+            <h2
+              class="mt-4 text-4xl font-medium tracking-[-0.05em] md:text-5xl"
+            >
+              Pengalaman di berbagai Industri.
+            </h2>
+          </div>
+
+          <div class="w-full marquee-container" data-aos="fade-up" data-aos-delay="100">
+            <div
+              class="marquee-content items-stretch"
+              style="animation-duration: 40s; gap: 1.5rem;"
+            >
+              {
+                otherProjects.map((project, index) => (
+                  <article class="w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
+                    <div>
+                      <p class="font-mono text-xs text-accent">0{index + 1}</p>
+                      
+                      {project.image && (
+                        <div class="mt-5 mb-2 overflow-hidden rounded-[1rem] bg-[#1a1a1a] h-32 w-full">
+                          <img src={project.image} alt={project.title} class="h-full w-full object-cover opacity-70 transition duration-500 hover:opacity-100 hover:scale-105" />
+                        </div>
+                      )}
+                      
+                      <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2">
+                        {project.title}
+                      </h3>
+                      <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted">
+                        {project.context}
+                      </p>
+                      <p class="mt-5 text-sm leading-relaxed text-muted line-clamp-3">
+                        {project.description}
+                      </p>
+                    </div>
+                    <div class="mt-8">
+                      <div class="flex flex-wrap gap-2 mb-6">
+                        {project.tech.slice(0, 3).map((item) => (
+                          <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
+                            {item}
+                          </span>
+                        ))}
+                        {project.tech.length > 3 && (
+                          <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
+                            +{project.tech.length - 3}
+                          </span>
+                        )}
+                      </div>
+                      <a
+                        href={`/projects/${project.slug}`}
+                        class="inline-flex items-center rounded-full bg-paper px-5 py-2.5 font-mono text-xs text-ink transition hover:bg-accent hover:text-white w-full justify-center"
+                      >
+                        Lihat Detail ↗
+                      </a>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+
+            <!-- Clone for infinite loop -->
+            <div
+              class="marquee-content items-stretch"
+              aria-hidden="true"
+              style="animation-duration: 40s; gap: 1.5rem;"
+            >
+              {
+                otherProjects.map((project, index) => (
+                  <article class="w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
+                    <div>
+                      <p class="font-mono text-xs text-accent">0{index + 1}</p>
+                      
+                      {project.image && (
+                        <div class="mt-5 mb-2 overflow-hidden rounded-[1rem] bg-[#1a1a1a] h-32 w-full">
+                          <img src={project.image} alt={project.title} class="h-full w-full object-cover opacity-70 transition duration-500 hover:opacity-100 hover:scale-105" />
+                        </div>
+                      )}
+                      
+                      <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2">
+                        {project.title}
+                      </h3>
+                      <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted">
+                        {project.context}
+                      </p>
+                      <p class="mt-5 text-sm leading-relaxed text-muted line-clamp-3">
+                        {project.description}
+                      </p>
+                    </div>
+                    <div class="mt-8">
+                      <div class="flex flex-wrap gap-2 mb-6">
+                        {project.tech.slice(0, 3).map((item) => (
+                          <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
+                            {item}
+                          </span>
+                        ))}
+                        {project.tech.length > 3 && (
+                          <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
+                            +{project.tech.length - 3}
+                          </span>
+                        )}
+                      </div>
+                      <a
+                        href={`/projects/${project.slug}`}
+                        class="inline-flex items-center rounded-full bg-paper px-5 py-2.5 font-mono text-xs text-ink transition hover:bg-accent hover:text-white w-full justify-center"
+                      >
+                        Lihat Detail ↗
+                      </a>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+          
+          <div class="mt-14 flex justify-center">
+            <a href="/projects" class="inline-flex items-center rounded-full border border-line bg-ink px-8 py-3.5 font-mono text-sm text-paper transition hover:bg-paper hover:border-accent hover:text-ink">
+              Lihat Semua Project ↗
+            </a>
           </div>
         </div>
       </section>
@@ -500,7 +545,7 @@ const skills = [
             <p
               class="research-accent font-mono text-xs uppercase tracking-[0.12em]"
             >
-              02 / Research Highlight
+              03 / Research Highlight
             </p>
 
             <div>
@@ -514,14 +559,14 @@ const skills = [
                 Klasifikasi Flora Endemik Kalimantan Menggunakan EfficientNetV2.
               </h2>
 
-              <p class="research-muted mt-8 max-w-2xl leading-relaxed">
+              <p class="research-muted mt-8 max-w-2xl leading-relaxed" data-aos="fade-up" data-aos-delay="100">
                 Penelitian klasifikasi 28 spesies flora endemik Kalimantan
                 menggunakan 2.800 citra digital yang dikumpulkan di Kebun Raya
                 Balikpapan. Pengujian dilakukan pada EfficientNetV2-S,
                 EfficientNetV2-M, dan EfficientNetV2-L.
               </p>
 
-              <div class="research-metrics mt-12 grid gap-px md:grid-cols-4">
+              <div class="research-metrics mt-12 grid gap-px md:grid-cols-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="research-metric p-6">
                   <p class="research-accent font-mono text-3xl">2.800</p>
                   <p class="research-muted mt-2 font-mono text-xs">
@@ -573,7 +618,7 @@ const skills = [
                 }
               </div>
 
-              <div class="mt-8">
+              <div class="mt-8" data-aos="fade-up" data-aos-delay="300">
                 <a
                   href="https://github.com/dhioanugrah/borneo-endemic-flora-efficientnetv2-classification"
                   target="_blank"
@@ -588,153 +633,12 @@ const skills = [
         </div>
       </section>
 
-      <!-- MOBILE -->
-      <section id="mobile" class="section-line">
-        <div class="container-main py-20 md:py-28">
-          <div class="grid gap-10 md:grid-cols-[0.45fr_1fr]">
-            <p class="label">03 / Aplikasi Mobile</p>
-
-            <div>
-              <h2 class="text-4xl font-medium tracking-[-0.05em] md:text-6xl">
-                Backend yang terhubung ke aplikasi mobile.
-              </h2>
-
-              <p class="mt-6 max-w-2xl leading-relaxed text-muted">
-                Selain membangun API, saya juga memiliki pengalaman
-                menghubungkan backend Laravel dengan aplikasi Flutter untuk
-                kebutuhan pengguna di lapangan.
-              </p>
-
-              <div class="mt-14 grid gap-10 md:grid-cols-2">
-                {
-                  mobileProjects.map((project) => (
-                    <article>
-                      <div class="overflow-hidden rounded-[2rem] border border-line bg-ink p-2">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          class="aspect-[9/12] w-full rounded-[1.55rem] object-cover"
-                        />
-                      </div>
-
-                      <p class="label mt-6">{project.client}</p>
-
-                      <h3 class="mt-3 text-2xl font-medium tracking-[-0.04em]">
-                        {project.title}
-                      </h3>
-
-                      <p class="mt-2 font-mono text-xs text-accent">
-                        {project.context}
-                      </p>
-
-                      <p class="mt-4 text-sm leading-relaxed text-muted">
-                        {project.description}
-                      </p>
-
-                      <div class="mt-5 flex flex-wrap gap-2">
-                        {project.tech.map((item) => (
-                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-
-                      {project.links && (
-                        <div class="mt-6 flex flex-wrap gap-3">
-                          {project.links.map((link) => (
-                            <a
-                              href={link.href}
-                              target="_blank"
-                              rel="noreferrer"
-                              class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
-                            >
-                              {link.label} ↗
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </article>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- OTHER PROJECTS -->
-      <section class="section-line">
-        <div class="container-main py-20 md:py-28">
-          <div class="grid gap-10 md:grid-cols-[0.45fr_1fr]">
-            <div>
-              <p class="label">04 / Project Lainnya</p>
-              <h2
-                class="mt-4 text-4xl font-medium tracking-[-0.05em] md:text-5xl"
-              >
-                Pengalaman di berbagai kebutuhan digital.
-              </h2>
-            </div>
-
-            <div>
-              {
-                otherProjects.map((project, index) => (
-                  <article class="border-t border-line py-7">
-                    <div class="flex items-start justify-between gap-6">
-                      <div>
-                        <p class="font-mono text-xs text-accent">
-                          0{index + 1}
-                        </p>
-
-                        <h3 class="mt-3 text-2xl font-medium tracking-[-0.04em]">
-                          {project.title}
-                        </h3>
-
-                        <p class="mt-2 font-mono text-xs text-muted">
-                          {project.context}
-                        </p>
-                      </div>
-                    </div>
-
-                    <p class="mt-5 max-w-2xl text-sm leading-relaxed text-muted">
-                      {project.description}
-                    </p>
-
-                    <div class="mt-5 flex flex-wrap gap-2">
-                      {project.tech.map((item) => (
-                        <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-
-                    {project.links && (
-                      <div class="mt-6 flex flex-wrap gap-3">
-                        {project.links.map((link) => (
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
-                          >
-                            {link.label} ↗
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </article>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- PROFILE -->
       <section id="latar" class="section-line">
         <div class="container-main py-20 md:py-28">
           <div class="grid gap-10 md:grid-cols-[0.45fr_1fr]">
             <div>
-              <p class="label">05 / Latar Belakang</p>
+              <p class="label">04 / Latar Belakang</p>
 
               <h2
                 class="mt-4 text-4xl font-medium tracking-[-0.05em] md:text-5xl"
@@ -746,8 +650,8 @@ const skills = [
             <div>
               <div class="grid gap-px border border-line md:grid-cols-3">
                 {
-                  backgroundItems.map((item) => (
-                    <article class="bg-paper p-6">
+                  backgroundItems.map((item, index) => (
+                    <article class="bg-paper p-6" data-aos="fade-up" data-aos-delay={index * 100}>
                       <p class="font-mono text-sm text-accent">{item.number}</p>
 
                       <h3 class="mt-8 text-xl font-medium">{item.title}</h3>
@@ -763,10 +667,10 @@ const skills = [
               <div class="mt-12">
                 <p class="label">Tools & Keahlian</p>
 
-                <div class="mt-5 flex flex-wrap gap-2">
+                <div class="mt-5 flex flex-wrap gap-2" data-aos="fade-up" data-aos-delay="200">
                   {
                     skills.map((skill) => (
-                      <span class="border border-line px-3 py-2 font-mono text-[0.7rem]">
+                      <span class="border border-line px-3 py-2 font-mono text-[0.7rem]" data-aos="zoom-in" data-aos-delay="300">
                         {skill}
                       </span>
                     ))
@@ -784,21 +688,22 @@ const skills = [
           <p
             class="font-mono text-xs uppercase tracking-[0.12em] text-[#dbe2ff]"
           >
-            06 / Kontak
+            05 / Kontak
           </p>
 
           <h2
             class="mt-6 max-w-4xl text-4xl font-medium leading-[0.95] tracking-[-0.05em] md:text-7xl"
+            data-aos="fade-up"
           >
             Punya project atau peluang kerja yang ingin didiskusikan?
           </h2>
 
-          <p class="mt-7 max-w-xl leading-relaxed text-[#e3e7ff]">
+          <p class="mt-7 max-w-xl leading-relaxed text-[#e3e7ff]" data-aos="fade-up" data-aos-delay="100">
             Saya terbuka untuk berdiskusi mengenai pengembangan backend,
             integrasi API, sistem internal, maupun kebutuhan digital lainnya.
           </p>
 
-          <div class="mt-12 flex flex-wrap gap-4">
+          <div class="mt-12 flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="200">
             <a
               href="mailto:dhioanugrahh@gmail.com"
               class="px-5 py-3 font-mono text-xs text-ink transition hover:bg-paper hover:text-white"
@@ -866,7 +771,11 @@ const skills = [
         const sections = navLinks
           .map((link) => {
             const target = link.getAttribute("href");
-            return target ? document.querySelector(target) : null;
+            // Only observe links that point to an ID on the current page
+            if (target && target.startsWith("#")) {
+              return document.querySelector(target);
+            }
+            return null;
           })
           .filter(Boolean);
 
@@ -896,6 +805,106 @@ const skills = [
 
         sections.forEach((section) => observer.observe(section));
       })();
+    </script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script
+      is:inline
+      src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"
+    ></script>
+
+    <!-- GSAP -->
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ></script>
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+    ></script>
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize Lenis
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: true,
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Reveal
+        gsap.fromTo(
+          ".gsap-hero-reveal",
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.2,
+          },
+        );
+
+        // Section Title Reveal
+        gsap.utils.toArray(".gsap-section-title").forEach((title) => {
+          gsap.fromTo(
+            title,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: title,
+                start: "top 85%",
+              },
+            },
+          );
+        });
+
+        // Project Reveal
+        gsap.utils.toArray(".gsap-project-reveal").forEach((project) => {
+          gsap.fromTo(
+            project,
+            { y: 60, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: project,
+                start: "top 85%",
+              },
+            },
+          );
+        });
+      });
+    </script>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100,
+          easing: 'ease-out-cubic',
+        });
+      });
     </script>
   </body>
 </html>

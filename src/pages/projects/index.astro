@@ -1,0 +1,238 @@
+---
+import "../../styles/global.css";
+import { projects } from "../../data/projects.js";
+
+const githubUrl = "https://github.com/dhioanugrah";
+
+// We can just render all projects directly
+const allProjects = projects;
+---
+
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Portfolio Dhio Anugrah Prakasa Putro — All Projects."
+    />
+
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem("dhio-theme");
+
+        const theme =
+          savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark";
+
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>All Projects — Dhio Anugrah</title>
+  </head>
+
+  <body>
+    <header class="fixed inset-x-0 top-4 z-50 px-4">
+      <div
+        class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between rounded-full px-4 py-3 md:px-6 lg:py-4"
+      >
+        <a href="/" class="font-mono text-sm font-medium tracking-tight">
+          DHIO<span class="text-accent">.</span>
+        </a>
+
+        <nav
+          class="hidden items-center gap-1 md:flex"
+          aria-label="Navigasi utama"
+        >
+          <a href="/" class="nav-link">Beranda</a>
+          <a href="/projects" class="nav-link is-active">All Project</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <a
+            href="https://github.com/dhioanugrah"
+            target="_blank"
+            rel="noreferrer"
+            class="nav-github"
+          >
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen" style="padding-top: 9rem; padding-bottom: 5rem;">
+      <div class="container-main">
+        <div class="gsap-hero-reveal">
+          <p class="font-mono text-sm text-accent uppercase tracking-widest mb-6">Project Index / {allProjects.length < 10 ? '0' + allProjects.length : allProjects.length}</p>
+          <h1 class="text-6xl font-serif font-medium leading-[1.05] tracking-[-0.05em] md:text-7xl lg:text-[6rem]">
+            All projects.
+          </h1>
+          <p class="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl lg:text-2xl">
+            A growing archive of digital products, internal systems, and web experiences — from interface craft to fullstack delivery.
+          </p>
+        </div>
+
+        <!-- Filter Area -->
+        <div class="border-t border-line gsap-hero-reveal" style="margin-top: 5rem; padding-top: 2rem; padding-bottom: 3rem; display: flex; flex-direction: column; gap: 1.5rem;" class="md:flex-row md:items-center justify-between">
+          <div>
+            <p class="font-mono text-xs text-muted uppercase tracking-widest" style="margin-bottom: 1rem;">Filter by Discipline</p>
+            <div id="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <button class="filter-btn active rounded-full border border-ink bg-ink text-paper font-mono text-xs uppercase tracking-widest transition" data-filter="all" style="padding: 0.5rem 1.25rem;">
+                All Projects
+              </button>
+              <button class="filter-btn rounded-full border border-line bg-transparent text-ink hover:border-ink font-mono text-xs uppercase tracking-widest transition" data-filter="Backend" style="padding: 0.5rem 1.25rem;">
+                Backend
+              </button>
+              <button class="filter-btn rounded-full border border-line bg-transparent text-ink hover:border-ink font-mono text-xs uppercase tracking-widest transition" data-filter="Fullstack" style="padding: 0.5rem 1.25rem;">
+                Fullstack
+              </button>
+              <button class="filter-btn rounded-full border border-line bg-transparent text-ink hover:border-ink font-mono text-xs uppercase tracking-widest transition" data-filter="Mobile" style="padding: 0.5rem 1.25rem;">
+                Mobile
+              </button>
+            </div>
+          </div>
+          <p class="font-mono text-[0.65rem] text-muted uppercase tracking-widest" style="margin-top: 0.5rem;">Showing <span id="project-count">{allProjects.length}</span> projects</p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 4rem 2rem;" id="projects-grid">
+          {allProjects.map((project, index) => (
+            <div class="project-item gsap-project-reveal" data-category={project.category}>
+              <a href={`/projects/${project.slug}`} class="group block" style="text-decoration: none;">
+                <div class="transition duration-700 md:group-hover:-translate-y-2">
+                  <div style="position: relative; border-radius: 1rem; overflow: hidden; background: #111111; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      class="w-full h-auto object-cover transition duration-700 md:group-hover:scale-[1.05]"
+                      style="aspect-ratio: 16/10; opacity: 0.95;"
+                    />
+                    <div class="absolute bg-paper backdrop-blur-md rounded-full border border-line" style="top: 1.25rem; left: 1.25rem; padding: 0.35rem 0.85rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                      <span class="font-mono text-[0.6rem] uppercase tracking-widest text-ink font-bold">{project.category}</span>
+                    </div>
+                  </div>
+                  
+                  <div style="padding-top: 1.5rem;">
+                    <h3 class="text-2xl font-serif font-medium leading-tight tracking-[-0.03em] text-ink transition-colors group-hover:text-accent">
+                      {project.title}
+                    </h3>
+                    <p class="text-sm leading-relaxed text-muted line-clamp-2" style="margin-top: 0.75rem; opacity: 0.85;">
+                      {project.description}
+                    </p>
+                    <div class="flex items-center gap-2 font-mono text-[0.7rem] text-ink font-bold uppercase tracking-widest" style="margin-top: 1.5rem;">
+                      <span class="group-hover:underline underline-offset-4 transition-colors">Lihat Detail</span> 
+                      <span class="transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between border-t border-line mt-20"
+    >
+      <p>© 2026 Dhio Anugrah Prakasa Putro</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script is:inline src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize Lenis
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: true,
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Reveal
+        gsap.fromTo(".gsap-hero-reveal", 
+          { y: 40, opacity: 0 }, 
+          { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out" }
+        );
+
+        // Project Reveal
+        gsap.utils.toArray('.gsap-project-reveal').forEach(project => {
+          gsap.fromTo(project,
+            { y: 50, opacity: 0 },
+            { 
+              y: 0, opacity: 1, duration: 1, ease: "power3.out",
+              scrollTrigger: {
+                trigger: project,
+                start: "top 90%",
+              }
+            }
+          );
+        });
+
+        // Filtering logic
+        const buttons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.project-item');
+        const countDisplay = document.getElementById('project-count');
+
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            // Update active state
+            buttons.forEach(b => {
+              b.classList.remove('bg-ink', 'text-paper');
+              b.classList.add('bg-transparent', 'text-ink');
+            });
+            btn.classList.add('bg-ink', 'text-paper');
+            btn.classList.remove('bg-transparent', 'text-ink');
+
+            const filterValue = btn.getAttribute('data-filter');
+            let visibleCount = 0;
+
+            items.forEach(item => {
+              if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                item.style.display = 'block';
+                visibleCount++;
+                // Re-trigger animation nicely
+                gsap.fromTo(item, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5 });
+              } else {
+                item.style.display = 'none';
+              }
+            });
+
+            countDisplay.textContent = visibleCount < 10 ? '0' + visibleCount : visibleCount;
+            
+            // Refresh scrolltrigger since layout changed
+            ScrollTrigger.refresh();
+          });
+        });
+      });
+    </script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100,
+          easing: 'ease-out-cubic',
+        });
+      });
+    </script>
+  </body>
+</html>

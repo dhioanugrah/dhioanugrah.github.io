@@ -1,0 +1,508 @@
+---
+import "../../styles/global.css";
+import { projects } from "../../data/projects.js";
+
+export function getStaticPaths() {
+  return projects.map((project, index) => {
+    // Find prev and next project
+    const prev = index > 0 ? projects[index - 1] : projects[projects.length - 1];
+    const next = index < projects.length - 1 ? projects[index + 1] : projects[0];
+
+    return {
+      params: { slug: project.slug },
+      props: { project, prev, next },
+    };
+  });
+}
+
+const { project, prev, next } = Astro.props;
+---
+
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={`Detail Project: ${project.title}`} />
+    
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem("dhio-theme");
+        const theme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark";
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>{project.title} — Dhio Anugrah</title>
+    
+    <style>
+      /* Hide scrollbar for slider */
+      .slider-container::-webkit-scrollbar { display: none; }
+      .slider-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      /* Bulletproof Layout Classes */
+      .bp-flex-hero {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+      .bp-hero-left {
+        flex: 1;
+      }
+      .bp-hero-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+      
+      .bp-flex-story {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+      }
+      .bp-story-left {
+        flex: 1;
+      }
+      .bp-story-right {
+        width: 100%;
+      }
+      
+      .bp-flex-tech {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .bp-tech-left {
+        width: 100%;
+      }
+      .bp-tech-right {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      
+      .bp-flex-nav {
+        display: flex;
+        flex-direction: column;
+      }
+      .bp-nav-item {
+        width: 100%;
+        padding: 3rem 0;
+      }
+      .bp-nav-right {
+        text-align: left;
+      }
+
+      /* Desktop overrides */
+      @media (min-width: 768px) {
+        .bp-flex-hero {
+          flex-direction: row;
+          gap: 6rem;
+        }
+        .bp-hero-right {
+          width: 320px;
+          flex-shrink: 0;
+        }
+        
+        .bp-flex-story {
+          flex-direction: row;
+          gap: 6rem;
+        }
+        .bp-story-right {
+          width: 450px;
+          flex-shrink: 0;
+        }
+        
+        .bp-flex-tech {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .bp-tech-left {
+          width: 300px;
+        }
+        .bp-tech-right {
+          justify-content: flex-end;
+        }
+        
+        .bp-flex-nav {
+          flex-direction: row;
+        }
+        .bp-nav-item {
+          width: 50%;
+          padding: 4rem 2rem;
+        }
+        .bp-nav-right {
+          text-align: right;
+          align-items: flex-end;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="fixed inset-x-0 top-4 z-50 px-4">
+      <div class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between rounded-full px-4 py-3 md:px-6 lg:py-4">
+        <a href="/" class="font-mono text-sm font-medium tracking-tight">
+          DHIO<span class="text-accent">.</span>
+        </a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Navigasi utama">
+          <a href="/" class="nav-link">Beranda</a>
+          <a href="/projects" class="nav-link is-active">All Project</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="https://github.com/dhioanugrah" target="_blank" rel="noreferrer" class="nav-github">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <!-- Using inline style for padding to absolutely guarantee it works -->
+    <main style="min-height: 100vh; padding-top: 9rem; padding-bottom: 5rem;">
+      <div class="container-main max-w-[1440px] mx-auto px-4 md:px-8">
+        
+        <!-- Back Link -->
+        <div class="mb-12 gsap-hero-reveal">
+          <a href="/projects" class="inline-flex items-center gap-3 font-mono text-[0.65rem] md:text-xs uppercase tracking-[0.2em] text-muted hover:text-ink transition">
+            <span>←</span> ALL PROJECTS
+          </a>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="bp-flex-hero gsap-hero-reveal" style="margin-bottom: 4rem;">
+          <!-- Left: Title & Desc -->
+          <div class="bp-hero-left">
+            <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted mb-6">
+              PROJECT / {project.category}
+            </p>
+            <h1 class="font-display text-5xl md:text-6xl lg:text-[5rem] font-medium leading-[1.05] tracking-tight text-ink mb-10">
+              {project.title}
+            </h1>
+            <p class="max-w-2xl text-lg md:text-xl leading-relaxed text-muted mb-10">
+              {project.description}
+            </p>
+            {/* Moved links from here to the right column */}
+          </div>
+          
+          <!-- Right: Meta Info -->
+          <div class="bp-hero-right pt-2 md:pt-14">
+            <div>
+              <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted mb-2">ROLE</p>
+              <p class="font-sans text-sm md:text-base font-medium text-ink leading-relaxed">
+                {project.context.split('·')[0].trim()}
+              </p>
+            </div>
+            <div>
+              <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted mb-2">CLIENT / RELATED ENTITY</p>
+              <p class="font-sans text-sm md:text-base font-medium text-ink leading-relaxed">{project.client} ↗</p>
+            </div>
+            
+            <!-- Project Links (Moved to Right Column) -->
+            {project.links && project.links.length > 0 && (
+              <div class="mt-4 flex flex-wrap gap-3">
+                {project.links.map((link) => (
+                  <a href={link.href} target="_blank" rel="noreferrer" class="inline-flex items-center rounded-full border border-ink px-5 py-2.5 font-mono text-[0.65rem] md:text-xs text-ink transition hover:bg-ink hover:text-paper font-medium">
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Slider Section -->
+        {project.gallery && project.gallery.length > 0 && (
+          <div class="mt-20 w-full gsap-project-reveal">
+            <div class="relative w-full overflow-hidden">
+              
+              <!-- Bulletproof Slider implementation -->
+              <div 
+                class="slider-container"
+                style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; width: 100%; border-radius: 1.5rem; background: rgba(128,128,128,0.05); border: 1px solid rgba(128,128,128,0.2);"
+              >
+                {project.gallery.map((imgUrl, i) => (
+                  <div 
+                    class="slide-item"
+                    style="flex: 0 0 100%; height: 70vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem;"
+                  >
+                    <img 
+                      src={imgUrl} 
+                      alt={`Slide ${i+1}`} 
+                      style="width: 100%; height: 100%; object-fit: contain; border-radius: 1rem;" 
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              <!-- Slider Caption & Dots -->
+              <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem;">
+                <div>
+                  <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-muted mb-2">
+                    01 / 0{project.gallery.length}
+                  </p>
+                  <p class="font-mono text-xs uppercase tracking-[0.15em] text-ink font-bold" style="margin: 0;">
+                    PROJECT OVERVIEW
+                  </p>
+                </div>
+                
+                <!-- Dots Pagination -->
+                {project.gallery.length > 1 && (
+                  <div class="slider-dots" style="display: flex; gap: 0.5rem; align-items: center;">
+                    {project.gallery.map((_, i) => (
+                      <button style="width: 8px; height: 8px; border-radius: 50%; background-color: rgba(128,128,128,0.3); transition: all 0.3s ease; border: none; padding: 0; cursor: pointer;" data-index={i} aria-label={`Go to slide ${i+1}`}></button>
+                    ))}
+                  </div>
+                )}
+
+                <div class="text-sm text-muted max-w-sm leading-relaxed" style="opacity: 0.8;">
+                  Geser (swipe) atau klik navigasi untuk melihat dokumentasi layar lainnya.
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <!-- Contribution & Impact -->
+        <div class="border-t border-line gsap-project-reveal" style="margin-top: 3.5rem; padding-top: 2.5rem;">
+          
+          <!-- Section Header -->
+          <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(128,128,128,0.2); padding-bottom: 2rem;" class="md:flex-row md:justify-between md:items-start">
+            <div>
+              <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted mb-4">PROJECT STORY</p>
+              <h2 class="font-display text-4xl md:text-5xl font-medium tracking-tight text-ink">
+                Contribution & impact
+              </h2>
+            </div>
+            <div class="md:text-right max-w-sm mt-4 md:mt-10">
+              <p class="text-sm text-muted leading-relaxed">
+                What I owned throughout delivery and what changed after the platform was introduced.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Section Content -->
+          <div class="bp-flex-story">
+            <!-- Left: Contribution List -->
+            <div class="bp-story-left">
+              <h3 class="font-mono text-sm md:text-base text-ink mb-10 border-b border-line pb-4">My Contribution</h3>
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li class="gsap-list-item" style="display: flex; align-items: flex-start; gap: 1.5rem; border-bottom: 1px solid rgba(128,128,128,0.2); padding: 1.5rem 0;">
+                  <span class="font-mono text-[0.65rem] text-muted" style="width: 2rem; flex-shrink: 0; padding-top: 0.2rem;">01</span>
+                  <p class="text-base leading-relaxed text-muted font-sans" style="flex: 1;">
+                    {project.role}
+                  </p>
+                </li>
+                <li class="gsap-list-item" style="display: flex; align-items: flex-start; gap: 1.5rem; border-bottom: 1px solid rgba(128,128,128,0.2); padding: 1.5rem 0;">
+                  <span class="font-mono text-[0.65rem] text-muted" style="width: 2rem; flex-shrink: 0; padding-top: 0.2rem;">02</span>
+                  <p class="text-base leading-relaxed text-muted font-sans" style="flex: 1;">
+                    Mengintegrasikan sistem dengan praktik terbaik dalam {project.category.toLowerCase()} development, memastikan skalabilitas dan performa yang optimal.
+                  </p>
+                </li>
+                <li class="gsap-list-item" style="display: flex; align-items: flex-start; gap: 1.5rem; border-bottom: 1px solid rgba(128,128,128,0.2); padding: 1.5rem 0;">
+                  <span class="font-mono text-[0.65rem] text-muted" style="width: 2rem; flex-shrink: 0; padding-top: 0.2rem;">03</span>
+                  <p class="text-base leading-relaxed text-muted font-sans" style="flex: 1;">
+                    Terlibat secara proaktif dalam diskusi teknis, evaluasi kebutuhan operasional, serta pengujian sistem menyeluruh sebelum perilisan (UAT).
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Right: Impact Card -->
+            <div class="bp-story-right">
+              <div style="background-color: #111111; color: #f5f5f5; border-radius: 2rem; padding: 3rem; display: flex; flex-direction: column; height: 100%; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+                <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] mb-10" style="color: rgba(255,255,255,0.4);">IMPACT</p>
+                <h4 class="font-display font-normal leading-snug mb-12 text-2xl md:text-3xl">
+                  {project.impact[0] || "Meningkatkan efisiensi sistem dan stabilitas operasional secara keseluruhan."}
+                </h4>
+                
+                <div style="margin-top: auto;">
+                  <ul style="list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+                    {project.impact.map((imp) => (
+                      <li style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+                        <span style="color: rgba(255,255,255,0.3); font-size: 0.65rem; padding-top: 0.3rem;">■</span>
+                        <span style="line-height: 1.6; color: rgba(255,255,255,0.7); font-size: 0.9rem;">{imp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="border-t border-line gsap-project-reveal" style="margin-top: 5rem; padding-top: 3rem;">
+          <div class="bp-flex-tech">
+            <div class="bp-tech-left">
+              <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted mb-2">TECHNOLOGY</p>
+              <p class="text-xs text-muted">Core tools used to deliver the platform.</p>
+            </div>
+            <div class="bp-tech-right">
+              {project.tech.map((item) => (
+                <span style="border: 1px solid rgba(128,128,128,0.3); border-radius: 999px; padding: 0.5rem 1rem; font-size: 0.65rem; font-family: monospace;">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Next / Prev Project Navigation -->
+        <div class="border-t border-line bp-flex-nav gsap-project-reveal" style="margin-top: 5rem; padding-top: 3rem; padding-bottom: 3rem;">
+          <a href={`/projects/${prev.slug}`} class="bp-nav-item group" style="display: flex; flex-direction: column; align-items: flex-start;">
+            <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted mb-4 flex items-center gap-3 transition-transform group-hover:-translate-x-2">
+              <span>←</span> PREVIOUS PROJECT
+            </p>
+            <h3 class="font-display font-medium tracking-tight text-ink transition-colors group-hover:text-accent text-3xl md:text-4xl">
+              {prev.title}
+            </h3>
+          </a>
+          
+          <a href={`/projects/${next.slug}`} class="bp-nav-item bp-nav-right group" style="display: flex; flex-direction: column;">
+            <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted mb-4 flex items-center gap-3 transition-transform group-hover:translate-x-2">
+              NEXT PROJECT <span>→</span>
+            </p>
+            <h3 class="font-display font-medium tracking-tight text-ink transition-colors group-hover:text-accent text-3xl md:text-4xl">
+              {next.title}
+            </h3>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script is:inline src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize Lenis
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: true,
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.fromTo(".gsap-hero-reveal", 
+          { y: 20, opacity: 0 }, 
+          { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out" }
+        );
+
+        gsap.utils.toArray('.gsap-project-reveal').forEach(section => {
+          gsap.fromTo(section,
+            { y: 30, opacity: 0 },
+            { 
+              y: 0, opacity: 1, duration: 1, ease: "power3.out",
+              scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+              }
+            }
+          );
+        });
+
+        // List Items Stagger
+        gsap.utils.toArray('ul').forEach(list => {
+          const items = list.querySelectorAll('.gsap-list-item');
+          if (items.length > 0) {
+            gsap.fromTo(items,
+              { y: 20, opacity: 0 },
+              {
+                y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out",
+                scrollTrigger: {
+                  trigger: list,
+                  start: "top 90%",
+                }
+              }
+            );
+          }
+        });
+
+        // Tech Pills Pop-in Stagger
+        const techContainer = document.querySelector('.bp-tech-right');
+        if (techContainer) {
+          const pills = techContainer.querySelectorAll('.gsap-tech-item');
+          gsap.fromTo(pills,
+            { scale: 0.8, opacity: 0 },
+            {
+              scale: 1, opacity: 1, duration: 0.6, stagger: 0.05, ease: "back.out(1.5)",
+              scrollTrigger: {
+                trigger: techContainer,
+                start: "top 90%",
+              }
+            }
+          );
+        }
+
+        // Slider Dots Logic
+        const sliderContainer = document.querySelector('.slider-container');
+        const dots = document.querySelectorAll('.slider-dots button');
+        
+        if (sliderContainer && dots.length > 0) {
+          // Initialize first dot as active
+          dots[0].style.backgroundColor = 'var(--ink, #ffffff)';
+          dots[0].style.transform = 'scale(1.25)';
+
+          // Update dots on scroll
+          sliderContainer.addEventListener('scroll', () => {
+            const scrollLeft = sliderContainer.scrollLeft;
+            const slideWidth = sliderContainer.offsetWidth;
+            const activeIndex = Math.round(scrollLeft / slideWidth);
+            
+            dots.forEach((dot, i) => {
+              if (i === activeIndex) {
+                dot.style.backgroundColor = 'var(--ink, #ffffff)';
+                dot.style.transform = 'scale(1.25)';
+              } else {
+                dot.style.backgroundColor = 'rgba(128,128,128,0.3)';
+                dot.style.transform = 'scale(1)';
+              }
+            });
+          });
+
+          // Click dot to scroll
+          dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+              const slideWidth = sliderContainer.offsetWidth;
+              sliderContainer.scrollTo({
+                left: slideWidth * i,
+                behavior: 'smooth'
+              });
+            });
+          });
+        }
+        
+      });
+    </script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100,
+          easing: 'ease-out-cubic',
+        });
+      });
+    </script>
+  </body>
+</html>
