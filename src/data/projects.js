@@ -111,8 +111,7 @@ export const projects = [
     ],
     image: "/projects/ERD.png",
     gallery: [
-      "/projects/ERD.png",
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200"
+      "/projects/ERD.png"
     ],
     links: [
       {
@@ -138,8 +137,7 @@ export const projects = [
     tech: ["Flutter", "Dart", "Drift", "GoRoute"],
     image: "/projects/botanical-mobile.webp",
     gallery: [
-      "/projects/botanical-mobile.webp",
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1200"
+      "/projects/botanical-mobile.webp"
     ],
     links: [
       {
