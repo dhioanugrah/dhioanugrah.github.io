@@ -49,10 +49,14 @@ export const projects = [
       "Berhasil melakukan transisi digitalisasi untuk proses Warehouse Management perusahaan yang sebelumnya sepenuhnya masih manual."
     ],
     tech: ["Laravel", "Filament", "MySQL", "PHP", "Git"],
-    image: "/projects/warehouse-cover.webp",
+    image: "/projects/warehouse management/warehouse1.jpg",
     gallery: [
-      "/projects/warehouse-cover.webp",
-      "/projects/warehouse slide 2.jpg"
+      "/projects/warehouse management/warehouse1.jpg",
+      "/projects/warehouse management/warehouse2.jpg",
+      "/projects/warehouse management/warehouse3.jpg",
+      "/projects/warehouse management/warehouse4.jpg",
+      "/projects/warehouse management/warehouse5.jpg",
+      "/projects/warehouse management/warehouse6.jpg"
     ],
     links: [
       {
