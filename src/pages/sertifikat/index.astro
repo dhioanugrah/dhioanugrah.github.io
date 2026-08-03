@@ -59,43 +59,50 @@ const certificates = [
 
   <body>
     <header class="fixed inset-x-0 top-4 z-50 px-4">
-      <div
-        class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between rounded-full px-4 py-3 md:px-6 lg:py-4"
-      >
-        <a href="/" class="font-mono text-sm font-medium tracking-tight">
+      <div class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between gap-2 rounded-full px-4 py-3 md:px-6 lg:py-4 relative z-[60]">
+        <a href="/" class="font-mono text-sm font-medium tracking-tight shrink-0">
           DHIO<span class="text-accent">.</span>
         </a>
 
-        <nav
-          class="hidden items-center gap-1 md:flex"
-          aria-label="Navigasi utama"
-        >
+        <!-- Desktop Nav -->
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Navigasi utama">
           <a href="/" class="nav-link">Beranda</a>
-          <a href="/projects" class="nav-link">Project</a>
           <a href="/sertifikat" class="nav-link is-active">Sertifikat</a>
-          <a href="/#riset" class="nav-link">Riset</a>
-          <a href="/#latar" class="nav-link">Profil</a>
-          <a href="/#kontak" class="nav-link">Kontak</a>
         </nav>
 
-        <div class="flex items-center gap-2">
-          <a
-            href="https://github.com/dhioanugrah"
-            target="_blank"
-            rel="noreferrer"
-            class="nav-github"
-          >
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="https://github.com/dhioanugrah" target="_blank" rel="noreferrer" class="nav-github hidden md:block">
             GitHub ↗
           </a>
+
+          <!-- Hamburger Button -->
+          <button id="mobile-menu-btn" type="button" class="md:hidden flex flex-col justify-center gap-[4px] w-8 h-8 items-center rounded-full bg-transparent border border-nav-border" aria-label="Menu">
+            <span class="w-3.5 h-[1.5px] bg-nav-fg transition-transform duration-300"></span>
+            <span class="w-3.5 h-[1.5px] bg-nav-fg transition-transform duration-300"></span>
+          </button>
         </div>
       </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-50 bg-paper/95 backdrop-blur-md flex flex-col justify-center items-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
+      <nav class="flex flex-col items-center gap-6 text-xl font-serif" aria-label="Navigasi mobile">
+        <a href="/" class="nav-link">Beranda</a>
+        <a href="/sertifikat" class="nav-link is-active">Sertifikat</a>
+      </nav>
+      <div class="mt-8">
+        <a href="https://github.com/dhioanugrah" target="_blank" rel="noreferrer" class="font-mono text-xs border border-line px-5 py-2.5 rounded-full transition hover:bg-ink hover:text-paper">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="overflow-x-hidden w-full">
     <main class="min-h-screen" style="padding-top: 9rem; padding-bottom: 5rem;">
       <div class="container-main">
         <div class="gsap-hero-reveal">
           <p class="font-mono text-sm text-accent uppercase tracking-widest mb-6">Pencapaian & Sertifikasi</p>
-          <h1 class="text-6xl font-serif font-medium leading-[1.05] tracking-[-0.05em] md:text-7xl lg:text-[6rem]">
+          <h1 class="text-4xl sm:text-5xl font-serif font-medium leading-[1.05] tracking-[-0.05em] md:text-7xl lg:text-[6rem]">
             Sertifikat.
           </h1>
           <p class="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl lg:text-2xl">
@@ -107,7 +114,7 @@ const certificates = [
         </div>
 
         <!-- Sertifikat Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 4rem 2rem;" id="sertifikat-grid">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 4rem 2rem;" id="sertifikat-grid">
           {certificates.map((cert) => (
             <div class="gsap-project-reveal">
               <button class="group block w-full text-left cursor-pointer" onclick={`openModal('${cert.id}')`} style="border: none; background: transparent; padding: 0; outline: none;">
@@ -141,6 +148,7 @@ const certificates = [
         </div>
       </div>
     </main>
+    </div>
 
     <!-- Modal Lightbox (Card Style) -->
     <div id="cert-modal" class="fixed inset-0 hidden items-center justify-center bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4" style="z-index: 999999;">
@@ -181,9 +189,7 @@ const certificates = [
       </div>
     </div>
 
-    <footer
-      class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between border-t border-line mt-20"
-    >
+    <footer class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between border-t border-line mt-20">
       <p>© 2026 Dhio Anugrah Prakasa Putro</p>
     </footer>
 
@@ -229,6 +235,39 @@ const certificates = [
               }
             }
           );
+        });
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menuOverlay = document.getElementById('mobile-menu-overlay');
+        const menuLines = menuBtn?.querySelectorAll('span');
+        let isMenuOpen = false;
+
+        menuBtn?.addEventListener('click', () => {
+          isMenuOpen = !isMenuOpen;
+          if (isMenuOpen) {
+            menuOverlay.classList.remove('pointer-events-none', 'opacity-0');
+            menuOverlay.classList.add('opacity-100');
+            if (menuLines) {
+              menuLines[0].style.transform = 'translateY(2.75px) rotate(45deg)';
+              menuLines[1].style.transform = 'translateY(-2.75px) rotate(-45deg)';
+            }
+            document.body.style.overflow = 'hidden';
+          } else {
+            menuOverlay.classList.add('pointer-events-none', 'opacity-0');
+            menuOverlay.classList.remove('opacity-100');
+            if (menuLines) {
+              menuLines[0].style.transform = 'none';
+              menuLines[1].style.transform = 'none';
+            }
+            document.body.style.overflow = '';
+          }
+        });
+
+        menuOverlay?.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menuBtn?.click();
+          });
         });
       });
 

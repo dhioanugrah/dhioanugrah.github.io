@@ -35,39 +35,50 @@ const allProjects = projects;
 
   <body>
     <header class="fixed inset-x-0 top-4 z-50 px-4">
-      <div
-        class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between rounded-full px-4 py-3 md:px-6 lg:py-4"
-      >
-        <a href="/" class="font-mono text-sm font-medium tracking-tight">
+      <div class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between gap-2 rounded-full px-4 py-3 md:px-6 lg:py-4 relative z-[60]">
+        <a href="/" class="font-mono text-sm font-medium tracking-tight shrink-0">
           DHIO<span class="text-accent">.</span>
         </a>
 
-        <nav
-          class="hidden items-center gap-1 md:flex"
-          aria-label="Navigasi utama"
-        >
+        <!-- Desktop Nav -->
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Navigasi utama">
           <a href="/" class="nav-link">Beranda</a>
           <a href="/projects" class="nav-link is-active">All Project</a>
         </nav>
 
-        <div class="flex items-center gap-2">
-          <a
-            href="https://github.com/dhioanugrah"
-            target="_blank"
-            rel="noreferrer"
-            class="nav-github"
-          >
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="https://github.com/dhioanugrah" target="_blank" rel="noreferrer" class="nav-github hidden md:block">
             GitHub ↗
           </a>
+
+          <!-- Hamburger Button -->
+          <button id="mobile-menu-btn" type="button" class="md:hidden flex flex-col justify-center gap-[4px] w-8 h-8 items-center rounded-full bg-transparent border border-nav-border" aria-label="Menu">
+            <span class="w-3.5 h-[1.5px] bg-nav-fg transition-transform duration-300"></span>
+            <span class="w-3.5 h-[1.5px] bg-nav-fg transition-transform duration-300"></span>
+          </button>
         </div>
       </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-50 bg-paper/95 backdrop-blur-md flex flex-col justify-center items-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
+      <nav class="flex flex-col items-center gap-6 text-xl font-serif" aria-label="Navigasi mobile">
+        <a href="/" class="nav-link">Beranda</a>
+        <a href="/projects" class="nav-link is-active">All Project</a>
+      </nav>
+      <div class="mt-8">
+        <a href="https://github.com/dhioanugrah" target="_blank" rel="noreferrer" class="font-mono text-xs border border-line px-5 py-2.5 rounded-full transition hover:bg-ink hover:text-paper">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="overflow-x-hidden w-full">
     <main class="min-h-screen" style="padding-top: 9rem; padding-bottom: 5rem;">
       <div class="container-main">
         <div class="gsap-hero-reveal">
           <p class="font-mono text-sm text-accent uppercase tracking-widest mb-6">Project Index / {allProjects.length < 10 ? '0' + allProjects.length : allProjects.length}</p>
-          <h1 class="text-6xl font-serif font-medium leading-[1.05] tracking-[-0.05em] md:text-7xl lg:text-[6rem]">
+          <h1 class="text-4xl sm:text-5xl font-serif font-medium leading-[1.05] tracking-[-0.05em] md:text-7xl lg:text-[6rem]">
             All projects.
           </h1>
           <p class="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl lg:text-2xl">
@@ -76,7 +87,7 @@ const allProjects = projects;
         </div>
 
         <!-- Filter Area -->
-        <div class="border-t border-line gsap-hero-reveal" style="margin-top: 5rem; padding-top: 2rem; padding-bottom: 3rem; display: flex; flex-direction: column; gap: 1.5rem;" class="md:flex-row md:items-center justify-between">
+        <div class="border-t border-line gsap-hero-reveal flex flex-col gap-6 md:flex-row md:items-center justify-between" style="margin-top: 5rem; padding-top: 2rem; padding-bottom: 3rem;">
           <div>
             <p class="font-mono text-xs text-muted uppercase tracking-widest" style="margin-bottom: 1rem;">Filter by Discipline</p>
             <div id="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
@@ -98,7 +109,7 @@ const allProjects = projects;
         </div>
 
         <!-- Projects Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 4rem 2rem;" id="projects-grid">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 4rem 2rem;" id="projects-grid">
           {allProjects.map((project, index) => (
             <div class="project-item gsap-project-reveal" data-category={project.category}>
               <a href={`/projects/${project.slug}`} class="group block" style="text-decoration: none;">
@@ -135,11 +146,10 @@ const allProjects = projects;
       </div>
     </main>
 
-    <footer
-      class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between border-t border-line mt-20"
-    >
+    <footer class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between border-t border-line mt-20">
       <p>© 2026 Dhio Anugrah Prakasa Putro</p>
     </footer>
+    </div>
 
     <!-- Scripts -->
     <script is:inline src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -189,16 +199,14 @@ const allProjects = projects;
         const items = document.querySelectorAll('.project-item');
         const countDisplay = document.getElementById('project-count');
 
-        buttons.forEach(btn => {
+        filterBtns.forEach(btn => {
           btn.addEventListener('click', () => {
-            // Update active state
-            buttons.forEach(b => {
-              b.classList.remove('bg-ink', 'text-paper');
-              b.classList.add('bg-transparent', 'text-ink');
-            });
-            btn.classList.add('bg-ink', 'text-paper');
+            filterBtns.forEach(b => b.classList.remove('active', 'bg-ink', 'text-paper'));
+            filterBtns.forEach(b => b.classList.add('bg-transparent', 'text-ink'));
+            
+            btn.classList.add('active', 'bg-ink', 'text-paper');
             btn.classList.remove('bg-transparent', 'text-ink');
-
+            
             const filterValue = btn.getAttribute('data-filter');
             let visibleCount = 0;
 

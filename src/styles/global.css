@@ -11,6 +11,10 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
+
+  --color-nav-bg: var(--nav-bg);
+  --color-nav-fg: var(--nav-fg);
+  --color-nav-border: var(--nav-border);
 }
 
 :root {
@@ -54,6 +58,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--paper);
+  overflow-x: hidden;
 }
 
 body {
@@ -61,6 +66,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: "Space Grotesk", sans-serif;
+  overflow-x: hidden;
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
@@ -129,6 +135,7 @@ body {
   font-family: "DM Mono", monospace;
   font-size: 0.7rem;
   line-height: 1;
+  white-space: nowrap;
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
@@ -281,4 +288,14 @@ body {
 .gsap-reveal {
   opacity: 0;
   visibility: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
