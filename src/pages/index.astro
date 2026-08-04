@@ -29,9 +29,11 @@ const backgroundItems = [
   },
 ];
 
-const rawSkills = projects.flatMap(p => p.tech || []);
-const uniqueSkills = [...new Set(rawSkills.map(skill => skill.trim()))];
-const skills = uniqueSkills.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+const rawSkills = projects.flatMap((p) => p.tech || []);
+const uniqueSkills = [...new Set(rawSkills.map((skill) => skill.trim()))];
+const skills = uniqueSkills.sort((a, b) =>
+  a.toLowerCase().localeCompare(b.toLowerCase()),
+);
 ---
 
 <html lang="id">
@@ -55,19 +57,27 @@ const skills = uniqueSkills.sort((a, b) => a.toLowerCase().localeCompare(b.toLow
       })();
     </script>
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <title>Dhio Anugrah — Fullstack Developer</title>
   </head>
 
   <body>
     <header class="fixed inset-x-0 top-4 z-50 px-4">
-      <div class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between rounded-full px-4 py-3 md:px-6 lg:py-4 relative z-[60]">
-        <a href="#beranda" class="font-mono text-sm font-medium tracking-tight shrink-0">
+      <div
+        class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between rounded-full px-4 py-3 md:px-6 lg:py-4 relative z-[60]"
+      >
+        <a
+          href="#beranda"
+          class="font-mono text-sm font-medium tracking-tight shrink-0"
+        >
           DHIO<span class="text-accent">.</span>
         </a>
 
         <!-- Desktop Nav -->
-        <nav class="hidden items-center gap-1 md:flex" aria-label="Navigasi utama">
+        <nav
+          class="hidden items-center gap-1 md:flex"
+          aria-label="Navigasi utama"
+        >
           <a href="#beranda" class="nav-link is-active">Beranda</a>
           <a href="#project" class="nav-link">Project</a>
           <a href="/sertifikat" class="nav-link">Sertifikat</a>
@@ -78,32 +88,82 @@ const skills = uniqueSkills.sort((a, b) => a.toLowerCase().localeCompare(b.toLow
 
         <!-- Right Side -->
         <div class="flex items-center gap-2 shrink-0">
-          <a href="https://github.com/dhioanugrah" target="_blank" rel="noreferrer" class="nav-github hidden md:block">
+          <a
+            href="https://github.com/dhioanugrah"
+            target="_blank"
+            rel="noreferrer"
+            class="nav-github hidden md:block"
+          >
             GitHub ↗
           </a>
 
-          <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Ubah tema" title="Ubah tema">
-            <svg class="theme-icon theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="theme-toggle"
+            aria-label="Ubah tema"
+            title="Ubah tema"
+          >
+            <svg
+              class="theme-icon theme-icon-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M12 3a6.5 6.5 0 0 0 9 9A9 9 0 1 1 12 3z"></path>
             </svg>
-            <svg class="theme-icon theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              class="theme-icon theme-icon-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              ></path>
             </svg>
           </button>
 
           <!-- Hamburger Button -->
-          <button id="mobile-menu-btn" type="button" class="md:hidden flex flex-col justify-center gap-[4px] w-8 h-8 items-center rounded-full bg-transparent border border-nav-border" aria-label="Menu">
-            <span class="w-3.5 h-[1.5px] bg-nav-fg transition-transform duration-300"></span>
-            <span class="w-3.5 h-[1.5px] bg-nav-fg transition-transform duration-300"></span>
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="md:hidden flex flex-col justify-center gap-[4px] w-8 h-8 items-center rounded-full bg-transparent border border-nav-border"
+            aria-label="Menu"
+          >
+            <span
+              class="w-3.5 h-[1.5px] bg-nav-fg transition-transform duration-300"
+            ></span>
+            <span
+              class="w-3.5 h-[1.5px] bg-nav-fg transition-transform duration-300"
+            ></span>
           </button>
         </div>
       </div>
     </header>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 z-50 bg-paper/95 backdrop-blur-md flex flex-col justify-center items-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
-      <nav class="flex flex-col items-center gap-6 text-xl font-serif" aria-label="Navigasi mobile">
+    <div
+      id="mobile-menu-overlay"
+      class="fixed inset-0 z-50 bg-paper/95 backdrop-blur-md flex flex-col justify-center items-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+    >
+      <nav
+        class="flex flex-col items-center gap-6 text-xl font-serif"
+        aria-label="Navigasi mobile"
+      >
         <a href="#beranda" class="nav-link">Beranda</a>
         <a href="#project" class="nav-link">Project</a>
         <a href="/sertifikat" class="nav-link">Sertifikat</a>
@@ -112,596 +172,683 @@ const skills = uniqueSkills.sort((a, b) => a.toLowerCase().localeCompare(b.toLow
         <a href="#kontak" class="nav-link">Kontak</a>
       </nav>
       <div class="mt-8">
-        <a href="https://github.com/dhioanugrah" target="_blank" rel="noreferrer" class="font-mono text-xs border border-line px-5 py-2.5 rounded-full transition hover:bg-ink hover:text-paper">
+        <a
+          href="https://github.com/dhioanugrah"
+          target="_blank"
+          rel="noreferrer"
+          class="font-mono text-xs border border-line px-5 py-2.5 rounded-full transition hover:bg-ink hover:text-paper"
+        >
           GitHub ↗
         </a>
       </div>
     </div>
 
     <div class="overflow-x-hidden w-full">
-    <main class="pt-24 md:pt-28">
-      <!-- HERO -->
-      <section id="beranda" class="container-main py-16 md:py-24">
-        <div
-          class="grid gap-12 md:grid-cols-[0.38fr_0.62fr] md:items-center lg:gap-20"
-        >
-          <div class="order-2 md:order-none gsap-hero-reveal relative">
-            <!-- Subtle glow behind the image -->
-            <div
-              class="absolute inset-0 bg-accent/20 blur-3xl rounded-full translate-y-1/4 scale-90 -z-10"
-            >
-            </div>
-
-            <div class="overflow-hidden rounded-[20px] border border-line bg-paper relative">
-              <img
-                src="/profile/dhio-profile.webp"
-                alt="Foto profil Dhio Anugrah"
-                class="w-full h-auto"
-                onerror="this.style.display='none'; this.nextElementSibling?.classList.remove('hidden')"
-              />
-
-              <div class="absolute inset-0 hidden items-center justify-center bg-ink text-paper">
-                <div class="text-center">
-                  <div class="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-2xl border border-line bg-paper/5 text-sm font-mono uppercase tracking-[0.18em] text-muted">
-                    Foto Profil
-                  </div>
-                  <p class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-muted">
-                    Placeholder lokal
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="order-1 max-w-3xl md:order-none md:pl-4">
-            <p class="label mb-6 text-accent">
-              Fullstack Developer · INDONESIA
-            </p>
-
-            <h1
-              class="max-w-3xl text-4xl sm:text-5xl font-serif font-medium leading-[1.05] tracking-[-0.05em] md:text-6xl lg:text-7xl xl:text-[5.5rem] gsap-hero-reveal"
-            >
-              Halo, saya Dhio Anugrah.
-            </h1>
-
-            <p
-              class="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl lg:text-2xl gsap-hero-reveal"
-            >
-              Fullstack Developer yang berspesialisasi dalam mendigitalisasi proses bisnis operasional melalui sistem yang terintegrasi dan terukur.
-            </p>
-
-            <p
-              class="mt-5 max-w-2xl leading-relaxed text-muted md:text-[1.02rem]"
-            >
-              Berpengalaman dalam membangun sistem ERP, Warehouse Management, dan arsitektur REST API secara <i>end-to-end</i> menggunakan ekosistem Laravel. Mampu mengintegrasikan layanan <i>backend</i> yang solid dengan antarmuka <i>website</i> maupun aplikasi <i>mobile</i> berbasis Flutter.
-            </p>
-
-            <div class="mt-7 w-full marquee-container gsap-hero-reveal">
-              <div class="marquee-content">
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >Laravel</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >PHP</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >MySQL</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >REST API</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >Tailwind CSS</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >Flutter</span
-                >
-              </div>
-              <div class="marquee-content" aria-hidden="true">
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >Laravel</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >PHP</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >MySQL</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >REST API</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >Tailwind CSS</span
-                >
-                <span
-                  class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
-                  >Flutter</span
-                >
-              </div>
-            </div>
-
-            <div class="mt-10 flex flex-wrap gap-3">
-              <a
-                href="#project"
-                class="bg-ink px-5 py-3 font-mono text-xs text-paper transition hover:bg-accent"
-              >
-                Lihat Project ↓
-              </a>
-
-              <a
-                href="mailto:dhioanugrahh@gmail.com"
-                class="border border-line px-5 py-3 font-mono text-xs transition hover:border-accent hover:text-accent"
-              >
-                Hubungi Saya ↗
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="mt-14 grid gap-6 border-t border-line pt-6 md:mt-16 md:grid-cols-3"
-        >
-          <div>
-            <p class="label">Fokus</p>
-            <p class="mt-2 text-sm">Digitalisasi Bisnis & Pengembangan API</p>
-          </div>
-
-          <div>
-            <p class="label">Teknologi Utama</p>
-            <p class="mt-2 text-sm">Laravel · Flutter · MySQL</p>
-          </div>
-
-          <div>
-            <p class="label">Domisili Sekarang</p>
-            <p class="mt-2 text-sm">Surabaya, Indonesia</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- FEATURED PROJECTS -->
-      <section id="project" class="section-line">
-        <div class="container-main py-20 md:py-28">
+      <main class="pt-20 md:pt-28">
+        <!-- HERO -->
+        <section id="beranda" class="container-main pt-10 pb-16 md:py-24">
           <div
-            class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end"
+            class="grid grid-cols-1 gap-10 md:gap-12 md:grid-cols-[0.38fr_0.62fr] md:items-center lg:gap-20"
           >
-            <div>
-              <p class="label">01 / Project Unggulan</p>
-
-              <h2
-                class="mt-4 text-4xl sm:text-5xl font-serif font-medium tracking-[-0.05em] md:text-6xl lg:text-[4.5rem] lg:leading-[1.1] gsap-section-title"
-              >
-                Sistem yang saya bantu bangun.
-              </h2>
-            </div>
-
-            <div class="max-w-sm">
-              <p class="text-sm leading-relaxed text-muted">
-                Setiap project menjelaskan kebutuhan yang diselesaikan, konteks
-                organisasi, peran saya, dan teknologi yang digunakan.
-              </p>
-              <a
-                href="/projects"
-                class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-xs uppercase tracking-widest text-ink transition hover:text-accent hover:border-accent"
-              >
-                Lihat Semua Project ↗
-              </a>
-            </div>
-          </div>
-
-          <div class="space-y-16">
-            {
-              featuredProjects.map((project) => (
-                <article class="group grid gap-7 border-t border-line pt-6 md:grid-cols-[0.18fr_1fr_1fr] gsap-project-reveal">
-                  <div>
-                    <p class="font-mono text-sm text-accent">
-                      {project.number}
-                    </p>
-
-                    <p class="mt-3 font-mono text-xs text-muted">
-                      {project.context}
-                    </p>
-                  </div>
-
-                  <div>
-                    <p class="label">{project.client}</p>
-
-                    <h3 class="mt-4 text-2xl font-serif font-medium leading-tight tracking-[-0.04em] md:text-4xl">
-                      {project.title}
-                    </h3>
-
-                    <p class="mt-5 max-w-xl leading-relaxed text-muted">
-                      {project.description}
-                    </p>
-
-                    <div class="mt-6">
-                      <p class="label">Kontribusi Saya</p>
-                      <p class="mt-2 max-w-xl text-sm leading-relaxed">
-                        {project.role}
-                      </p>
-                    </div>
-
-                    <div class="mt-6 flex flex-wrap gap-2">
-                      {project.tech.map((item) => (
-                        <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-
-                    {project.links && (
-                      <div class="mt-7 flex flex-wrap gap-3">
-                        <a
-                          href={`/projects/${project.slug}`}
-                          class="inline-flex items-center rounded-full bg-ink px-4 py-2 font-mono text-xs text-paper transition hover:bg-accent"
-                        >
-                          Lihat Detail ↗
-                        </a>
-                        {project.links.map((link) => (
-                          <a
-                            href={link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
-                          >
-                            {link.label} ↗
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                    {!project.links && (
-                      <div class="mt-7 flex flex-wrap gap-3">
-                        <a
-                          href={`/projects/${project.slug}`}
-                          class="inline-flex items-center rounded-full bg-ink px-4 py-2 font-mono text-xs text-paper transition hover:bg-accent"
-                        >
-                          Lihat Detail ↗
-                        </a>
-                      </div>
-                    )}
-                  </div>
-
-                  <a
-                    href={`/projects/${project.slug}`}
-                    class="self-start overflow-hidden rounded-2xl border border-line bg-paper transition duration-700 md:group-hover:-translate-y-2 md:group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] md:group-hover:border-accent/40"
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      class="block aspect-[4/3] w-full object-cover transition duration-700 md:group-hover:scale-[1.05] md:group-hover:-rotate-1"
-                    />
-                  </a>
-                </article>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-
-      <!-- OTHER PROJECTS -->
-      <section class="section-line overflow-hidden relative">
-        <div class="container-main py-20 md:py-28">
-          <div class="max-w-2xl mb-16" data-aos="fade-up">
-            <p class="label">02 / Project Lainnya</p>
-            <h2
-              class="mt-4 text-3xl font-medium tracking-[-0.05em] md:text-5xl"
-            >
-              Pengalaman di berbagai Industri.
-            </h2>
-          </div>
-
-          <div class="w-full marquee-container" data-aos="fade-up" data-aos-delay="100">
             <div
-              class="marquee-content items-stretch"
-              style="animation-duration: 40s; gap: 1.5rem;"
+              class="order-2 mx-auto w-[85%] max-w-[320px] md:mx-0 md:w-full md:max-w-none md:order-none gsap-hero-reveal relative"
             >
-              {
-                otherProjects.map((project, index) => (
-                  <article class="w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
-                    <div>
-                      <p class="font-mono text-xs text-accent">0{index + 1}</p>
-                      
-                      {project.image && (
-                        <div class="mt-5 mb-2 overflow-hidden rounded-[1rem] bg-[#1a1a1a] h-32 w-full">
-                          <img src={project.image} alt={project.title} class="h-full w-full object-cover opacity-70 transition duration-500 hover:opacity-100 hover:scale-105" />
-                        </div>
-                      )}
-                      
-                      <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2">
-                        {project.title}
-                      </h3>
-                      <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted">
-                        {project.context}
-                      </p>
-                      <p class="mt-5 text-sm leading-relaxed text-muted line-clamp-3">
-                        {project.description}
-                      </p>
-                    </div>
-                    <div class="mt-8">
-                      <div class="flex flex-wrap gap-2 mb-6">
-                        {project.tech.slice(0, 3).map((item) => (
-                          <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
-                            {item}
-                          </span>
-                        ))}
-                        {project.tech.length > 3 && (
-                          <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
-                            +{project.tech.length - 3}
-                          </span>
-                        )}
-                      </div>
-                      <a
-                        href={`/projects/${project.slug}`}
-                        class="inline-flex items-center rounded-full bg-paper px-5 py-2.5 font-mono text-xs text-ink transition hover:bg-accent hover:text-white w-full justify-center"
-                      >
-                        Lihat Detail ↗
-                      </a>
-                    </div>
-                  </article>
-                ))
-              }
-            </div>
-
-            <!-- Clone for infinite loop -->
-            <div
-              class="marquee-content items-stretch"
-              aria-hidden="true"
-              style="animation-duration: 40s; gap: 1.5rem;"
-            >
-              {
-                otherProjects.map((project, index) => (
-                  <article class="w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
-                    <div>
-                      <p class="font-mono text-xs text-accent">0{index + 1}</p>
-                      
-                      {project.image && (
-                        <div class="mt-5 mb-2 overflow-hidden rounded-[1rem] bg-[#1a1a1a] h-32 w-full">
-                          <img src={project.image} alt={project.title} class="h-full w-full object-cover opacity-70 transition duration-500 hover:opacity-100 hover:scale-105" />
-                        </div>
-                      )}
-                      
-                      <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2">
-                        {project.title}
-                      </h3>
-                      <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted">
-                        {project.context}
-                      </p>
-                      <p class="mt-5 text-sm leading-relaxed text-muted line-clamp-3">
-                        {project.description}
-                      </p>
-                    </div>
-                    <div class="mt-8">
-                      <div class="flex flex-wrap gap-2 mb-6">
-                        {project.tech.slice(0, 3).map((item) => (
-                          <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
-                            {item}
-                          </span>
-                        ))}
-                        {project.tech.length > 3 && (
-                          <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
-                            +{project.tech.length - 3}
-                          </span>
-                        )}
-                      </div>
-                      <a
-                        href={`/projects/${project.slug}`}
-                        class="inline-flex items-center rounded-full bg-paper px-5 py-2.5 font-mono text-xs text-ink transition hover:bg-accent hover:text-white w-full justify-center"
-                      >
-                        Lihat Detail ↗
-                      </a>
-                    </div>
-                  </article>
-                ))
-              }
-            </div>
-          </div>
-          
-          <div class="mt-14 flex justify-center">
-            <a href="/projects" class="inline-flex items-center rounded-full border border-line bg-ink px-8 py-3.5 font-mono text-sm text-paper transition hover:bg-paper hover:border-accent hover:text-ink">
-              Lihat Semua Project ↗
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- RESEARCH -->
-      <section id="riset" class="research-section">
-        <div class="container-main py-20 md:py-28">
-          <div class="grid gap-12 md:grid-cols-[0.45fr_1fr]">
-            <p
-              class="research-accent font-mono text-xs uppercase tracking-[0.12em]"
-            >
-              03 / Research Highlight
-            </p>
-
-            <div>
-              <p class="research-accent font-mono text-xs">
-                Tugas Akhir · Deep Learning
-              </p>
-
-              <h2
-                class="mt-5 max-w-4xl text-3xl sm:text-4xl font-medium leading-[1.05] tracking-[-0.05em] md:text-6xl"
+              <!-- Subtle glow behind the image -->
+              <div
+                class="absolute inset-0 bg-accent/20 blur-3xl rounded-full translate-y-1/4 scale-90 -z-10"
               >
-                Klasifikasi Flora Endemik Kalimantan Menggunakan EfficientNetV2.
-              </h2>
-
-              <p class="research-muted mt-8 max-w-2xl leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-                Penelitian klasifikasi 28 spesies flora endemik Kalimantan
-                menggunakan 2.800 citra digital yang dikumpulkan di Kebun Raya
-                Balikpapan. Pengujian dilakukan pada EfficientNetV2-S,
-                EfficientNetV2-M, dan EfficientNetV2-L.
-              </p>
-
-              <div class="research-metrics mt-12 grid grid-cols-2 gap-px md:grid-cols-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="research-metric p-6">
-                  <p class="research-accent font-mono text-2xl md:text-3xl">2.800</p>
-                  <p class="research-muted mt-2 font-mono text-xs">
-                    Citra Dataset
-                  </p>
-                </div>
-
-                <div class="research-metric p-6">
-                  <p class="research-accent font-mono text-2xl md:text-3xl">28</p>
-                  <p class="research-muted mt-2 font-mono text-xs">
-                    Spesies Flora
-                  </p>
-                </div>
-
-                <div class="research-metric p-6">
-                  <p class="research-accent font-mono text-2xl md:text-3xl">97,58%</p>
-                  <p class="research-muted mt-2 font-mono text-xs">
-                    Akurasi Terbaik
-                  </p>
-                </div>
-
-                <div class="research-metric p-6">
-                  <p class="research-accent font-mono text-2xl md:text-3xl">97,59%</p>
-                  <p class="research-muted mt-2 font-mono text-xs">
-                    F1-Score Terbaik
-                  </p>
-                </div>
               </div>
 
-              <p class="research-muted mt-8 max-w-2xl text-sm leading-relaxed">
-                EfficientNetV2-L menghasilkan performa klasifikasi terbaik,
-                sedangkan EfficientNetV2-S memberikan waktu inferensi paling
-                cepat untuk kebutuhan yang lebih responsif.
-              </p>
+              <div
+                class="overflow-hidden rounded-[20px] border border-line bg-paper relative"
+              >
+                <img
+                  src="/profile/dhio-profile.webp"
+                  alt="Foto profil Dhio Anugrah"
+                  class="w-full h-auto"
+                  onerror="this.style.display='none'; this.nextElementSibling?.classList.remove('hidden')"
+                />
 
-              <div class="mt-10 flex flex-wrap gap-2">
-                {
-                  [
-                    "Python",
-                    "TensorFlow",
-                    "EfficientNetV2",
-                    "Google Colab",
-                    "Computer Vision",
-                  ].map((item) => (
-                    <span class="research-tag px-3 py-1 font-mono text-[0.68rem]">
-                      {item}
-                    </span>
-                  ))
-                }
-              </div>
-
-              <div class="mt-8" data-aos="fade-up" data-aos-delay="300">
-                <a
-                  href="https://github.com/dhioanugrah/borneo-endemic-flora-efficientnetv2-classification"
-                  target="_blank"
-                  rel="noreferrer"
-                  class="inline-flex items-center rounded-full border border-current px-4 py-2 font-mono text-xs transition hover:bg-current hover:text-paper"
+                <div
+                  class="absolute inset-0 hidden items-center justify-center bg-ink text-paper"
                 >
-                  Repository GitHub ↗
+                  <div class="text-center">
+                    <div
+                      class="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-2xl border border-line bg-paper/5 text-sm font-mono uppercase tracking-[0.18em] text-muted"
+                    >
+                      Foto Profil
+                    </div>
+                    <p
+                      class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-muted"
+                    >
+                      Placeholder lokal
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="order-1 max-w-3xl md:order-none md:pl-4">
+              <p class="label mb-4 md:mb-6 text-accent">
+                Fullstack Developer · INDONESIA
+              </p>
+
+              <h1
+                class="max-w-3xl text-4xl sm:text-5xl font-serif font-medium leading-[1.1] md:leading-[1.05] tracking-[-0.05em] md:text-6xl lg:text-7xl xl:text-[5.5rem] gsap-hero-reveal"
+              >
+                Halo, saya Dhio Anugrah.
+              </h1>
+
+              <p
+                class="mt-6 md:mt-8 max-w-2xl text-[1.05rem] leading-relaxed text-muted md:text-xl lg:text-2xl gsap-hero-reveal"
+              >
+                Fullstack Developer yang berspesialisasi dalam mendigitalisasi
+                proses bisnis operasional melalui sistem yang terintegrasi dan
+                terukur.
+              </p>
+
+              <p
+                class="mt-4 md:mt-5 max-w-2xl text-[0.95rem] leading-relaxed text-muted md:text-[1.02rem]"
+              >
+                Berpengalaman dalam membangun sistem ERP, Warehouse Management,
+                dan arsitektur REST API secara <i>end-to-end</i> menggunakan ekosistem
+                Laravel. Mampu mengintegrasikan layanan <i>backend</i> yang solid
+                dengan antarmuka <i>website</i> maupun aplikasi <i>mobile</i> berbasis
+                Flutter.
+              </p>
+
+              <div
+                class="mt-6 md:mt-7 w-full marquee-container gsap-hero-reveal"
+              >
+                <div class="marquee-content">
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >Laravel</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >PHP</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >MySQL</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >REST API</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >Tailwind CSS</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >Flutter</span
+                  >
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >Laravel</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >PHP</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >MySQL</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >REST API</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >Tailwind CSS</span
+                  >
+                  <span
+                    class="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted"
+                    >Flutter</span
+                  >
+                </div>
+              </div>
+
+              <div class="mt-8 md:mt-10 flex flex-wrap gap-3">
+                <a
+                  href="#project"
+                  class="bg-ink px-5 py-3 font-mono text-xs text-paper transition hover:bg-accent"
+                >
+                  Lihat Project ↓
+                </a>
+
+                <a
+                  href="mailto:dhioanugrahh@gmail.com"
+                  class="border border-line px-5 py-3 font-mono text-xs transition hover:border-accent hover:text-accent"
+                >
+                  Hubungi Saya ↗
                 </a>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- PROFILE -->
-      <section id="latar" class="section-line">
-        <div class="container-main py-20 md:py-28">
-          <div class="grid gap-10 md:grid-cols-[0.45fr_1fr]">
+          <div
+            class="mt-12 md:mt-16 grid grid-cols-1 gap-5 md:gap-6 border-t border-line pt-6 md:grid-cols-3"
+          >
             <div>
-              <p class="label">04 / Latar Belakang</p>
-
-              <h2
-                class="mt-4 text-3xl font-medium tracking-[-0.05em] md:text-5xl"
-              >
-                Fondasi yang membentuk cara saya bekerja.
-              </h2>
+              <p class="label">Fokus</p>
+              <p class="mt-2 text-sm">Digitalisasi Bisnis & Pengembangan API</p>
             </div>
 
             <div>
-              <div class="grid gap-px border border-line md:grid-cols-3">
-                {
-                  backgroundItems.map((item, index) => (
-                    <article class="bg-paper p-6" data-aos="fade-up" data-aos-delay={index * 100}>
-                      <p class="font-mono text-sm text-accent">{item.number}</p>
+              <p class="label">Teknologi Utama</p>
+              <p class="mt-2 text-sm">Laravel · Flutter · MySQL</p>
+            </div>
 
-                      <h3 class="mt-8 text-xl font-medium">{item.title}</h3>
+            <div>
+              <p class="label">Domisili Sekarang</p>
+              <p class="mt-2 text-sm">Surabaya, Indonesia</p>
+            </div>
+          </div>
+        </section>
 
-                      <p class="mt-4 text-sm leading-relaxed text-muted">
-                        {item.text}
+        <!-- FEATURED PROJECTS -->
+        <section id="project" class="section-line">
+          <div class="container-main py-20 md:py-28">
+            <div
+              class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end"
+            >
+              <div>
+                <p class="label">01 / Project Unggulan</p>
+
+                <h2
+                  class="mt-4 text-4xl sm:text-5xl font-serif font-medium tracking-[-0.05em] md:text-6xl lg:text-[4.5rem] lg:leading-[1.1] gsap-section-title"
+                >
+                  Sistem yang saya bantu bangun.
+                </h2>
+              </div>
+
+              <div class="max-w-sm">
+                <p class="text-sm leading-relaxed text-muted">
+                  Setiap project menjelaskan kebutuhan yang diselesaikan,
+                  konteks organisasi, peran saya, dan teknologi yang digunakan.
+                </p>
+                <a
+                  href="/projects"
+                  class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-xs uppercase tracking-widest text-ink transition hover:text-accent hover:border-accent"
+                >
+                  Lihat Semua Project ↗
+                </a>
+              </div>
+            </div>
+
+            <div class="space-y-16">
+              {
+                featuredProjects.map((project) => (
+                  <article class="group grid grid-cols-1 gap-7 border-t border-line pt-6 md:grid-cols-[0.18fr_1fr_1fr] gsap-project-reveal">
+                    <div>
+                      <p class="font-mono text-sm text-accent">
+                        {project.number}
                       </p>
+
+                      <p class="mt-3 font-mono text-xs text-muted">
+                        {project.context}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p class="label">{project.client}</p>
+
+                      <h3 class="mt-4 text-2xl font-serif font-medium leading-tight tracking-[-0.04em] md:text-4xl">
+                        {project.title}
+                      </h3>
+
+                      <p class="mt-5 max-w-xl leading-relaxed text-muted">
+                        {project.description}
+                      </p>
+
+                      <div class="mt-6">
+                        <p class="label">Kontribusi Saya</p>
+                        <p class="mt-2 max-w-xl text-sm leading-relaxed">
+                          {project.role}
+                        </p>
+                      </div>
+
+                      <div class="mt-6 flex flex-wrap gap-2">
+                        {project.tech.map((item) => (
+                          <span class="border border-line px-3 py-1 font-mono text-[0.68rem]">
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+
+                      {project.links && (
+                        <div class="mt-7 flex flex-wrap gap-3">
+                          <a
+                            href={`/projects/${project.slug}`}
+                            class="inline-flex items-center rounded-full bg-ink px-4 py-2 font-mono text-xs text-paper transition hover:bg-accent"
+                          >
+                            Lihat Detail ↗
+                          </a>
+                          {project.links.map((link) => (
+                            <a
+                              href={link.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              class="inline-flex items-center rounded-full border border-ink px-4 py-2 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
+                            >
+                              {link.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      {!project.links && (
+                        <div class="mt-7 flex flex-wrap gap-3">
+                          <a
+                            href={`/projects/${project.slug}`}
+                            class="inline-flex items-center rounded-full bg-ink px-4 py-2 font-mono text-xs text-paper transition hover:bg-accent"
+                          >
+                            Lihat Detail ↗
+                          </a>
+                        </div>
+                      )}
+                    </div>
+
+                    <a
+                      href={`/projects/${project.slug}`}
+                      class="self-start overflow-hidden rounded-2xl border border-line bg-paper transition duration-700 md:group-hover:-translate-y-2 md:group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] md:group-hover:border-accent/40"
+                    >
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        class="block aspect-[4/3] w-full object-cover transition duration-700 md:group-hover:scale-[1.05] md:group-hover:-rotate-1"
+                      />
+                    </a>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- OTHER PROJECTS -->
+        <section class="section-line overflow-hidden relative">
+          <div class="container-main py-20 md:py-28">
+            <div class="max-w-2xl mb-16" data-aos="fade-up">
+              <p class="label">02 / Project Lainnya</p>
+              <h2
+                class="mt-4 text-3xl font-medium tracking-[-0.05em] md:text-5xl"
+              >
+                Pengalaman di berbagai Industri.
+              </h2>
+            </div>
+
+            <div
+              class="w-full marquee-container"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div
+                class="marquee-content items-stretch"
+                style="animation-duration: 40s; gap: 1.5rem;"
+              >
+                {
+                  otherProjects.map((project, index) => (
+                    <article class="w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
+                      <div>
+                        <p class="font-mono text-xs text-accent">
+                          0{index + 1}
+                        </p>
+
+                        {project.image && (
+                          <div class="mt-5 mb-2 overflow-hidden rounded-[1rem] bg-[#1a1a1a] h-32 w-full">
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              class="h-full w-full object-cover opacity-70 transition duration-500 hover:opacity-100 hover:scale-105"
+                            />
+                          </div>
+                        )}
+
+                        <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2">
+                          {project.title}
+                        </h3>
+                        <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted">
+                          {project.context}
+                        </p>
+                        <p class="mt-5 text-sm leading-relaxed text-muted line-clamp-3">
+                          {project.description}
+                        </p>
+                      </div>
+                      <div class="mt-8">
+                        <div class="flex flex-wrap gap-2 mb-6">
+                          {project.tech.slice(0, 3).map((item) => (
+                            <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
+                              {item}
+                            </span>
+                          ))}
+                          {project.tech.length > 3 && (
+                            <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
+                              +{project.tech.length - 3}
+                            </span>
+                          )}
+                        </div>
+                        <a
+                          href={`/projects/${project.slug}`}
+                          class="inline-flex items-center rounded-full bg-paper px-5 py-2.5 font-mono text-xs text-ink transition hover:bg-accent hover:text-white w-full justify-center"
+                        >
+                          Lihat Detail ↗
+                        </a>
+                      </div>
                     </article>
                   ))
                 }
               </div>
 
-              <div class="mt-12">
-                <p class="label">Tools & Keahlian</p>
+              <!-- Clone for infinite loop -->
+              <div
+                class="marquee-content items-stretch"
+                aria-hidden="true"
+                style="animation-duration: 40s; gap: 1.5rem;"
+              >
+                {
+                  otherProjects.map((project, index) => (
+                    <article class="w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
+                      <div>
+                        <p class="font-mono text-xs text-accent">
+                          0{index + 1}
+                        </p>
 
-                <div class="mt-5 flex flex-wrap gap-2" data-aos="fade-up" data-aos-delay="200">
+                        {project.image && (
+                          <div class="mt-5 mb-2 overflow-hidden rounded-[1rem] bg-[#1a1a1a] h-32 w-full">
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              class="h-full w-full object-cover opacity-70 transition duration-500 hover:opacity-100 hover:scale-105"
+                            />
+                          </div>
+                        )}
+
+                        <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2">
+                          {project.title}
+                        </h3>
+                        <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted">
+                          {project.context}
+                        </p>
+                        <p class="mt-5 text-sm leading-relaxed text-muted line-clamp-3">
+                          {project.description}
+                        </p>
+                      </div>
+                      <div class="mt-8">
+                        <div class="flex flex-wrap gap-2 mb-6">
+                          {project.tech.slice(0, 3).map((item) => (
+                            <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
+                              {item}
+                            </span>
+                          ))}
+                          {project.tech.length > 3 && (
+                            <span class="border border-line px-3 py-1 font-mono text-[0.65rem] rounded-full text-muted">
+                              +{project.tech.length - 3}
+                            </span>
+                          )}
+                        </div>
+                        <a
+                          href={`/projects/${project.slug}`}
+                          class="inline-flex items-center rounded-full bg-paper px-5 py-2.5 font-mono text-xs text-ink transition hover:bg-accent hover:text-white w-full justify-center"
+                        >
+                          Lihat Detail ↗
+                        </a>
+                      </div>
+                    </article>
+                  ))
+                }
+              </div>
+            </div>
+
+            <div class="mt-14 flex justify-center">
+              <a
+                href="/projects"
+                class="inline-flex items-center rounded-full border border-line bg-ink px-8 py-3.5 font-mono text-sm text-paper transition hover:bg-paper hover:border-accent hover:text-ink"
+              >
+                Lihat Semua Project ↗
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESEARCH -->
+        <section id="riset" class="research-section">
+          <div class="container-main py-20 md:py-28">
+            <div class="grid grid-cols-1 gap-12 md:grid-cols-[0.45fr_1fr]">
+              <p
+                class="research-accent font-mono text-xs uppercase tracking-[0.12em]"
+              >
+                03 / Research Highlight
+              </p>
+
+              <div>
+                <p class="research-accent font-mono text-xs">
+                  Tugas Akhir · Deep Learning
+                </p>
+
+                <h2
+                  class="mt-5 max-w-4xl text-3xl sm:text-4xl font-medium leading-[1.05] tracking-[-0.05em] md:text-6xl"
+                >
+                  Klasifikasi Flora Endemik Kalimantan Menggunakan
+                  EfficientNetV2.
+                </h2>
+
+                <p
+                  class="research-muted mt-8 max-w-2xl leading-relaxed"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                >
+                  Penelitian klasifikasi 28 spesies flora endemik Kalimantan
+                  menggunakan 2.800 citra digital yang dikumpulkan di Kebun Raya
+                  Balikpapan. Pengujian dilakukan pada EfficientNetV2-S,
+                  EfficientNetV2-M, dan EfficientNetV2-L.
+                </p>
+
+                <div
+                  class="research-metrics mt-12 grid grid-cols-2 gap-px md:grid-cols-4"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  <div class="research-metric p-6">
+                    <p class="research-accent font-mono text-2xl md:text-3xl">
+                      2.800
+                    </p>
+                    <p class="research-muted mt-2 font-mono text-xs">
+                      Citra Dataset
+                    </p>
+                  </div>
+
+                  <div class="research-metric p-6">
+                    <p class="research-accent font-mono text-2xl md:text-3xl">
+                      28
+                    </p>
+                    <p class="research-muted mt-2 font-mono text-xs">
+                      Spesies Flora
+                    </p>
+                  </div>
+
+                  <div class="research-metric p-6">
+                    <p class="research-accent font-mono text-2xl md:text-3xl">
+                      97,58%
+                    </p>
+                    <p class="research-muted mt-2 font-mono text-xs">
+                      Akurasi Terbaik
+                    </p>
+                  </div>
+
+                  <div class="research-metric p-6">
+                    <p class="research-accent font-mono text-2xl md:text-3xl">
+                      97,59%
+                    </p>
+                    <p class="research-muted mt-2 font-mono text-xs">
+                      F1-Score Terbaik
+                    </p>
+                  </div>
+                </div>
+
+                <p
+                  class="research-muted mt-8 max-w-2xl text-sm leading-relaxed"
+                >
+                  EfficientNetV2-L menghasilkan performa klasifikasi terbaik,
+                  sedangkan EfficientNetV2-S memberikan waktu inferensi paling
+                  cepat untuk kebutuhan yang lebih responsif.
+                </p>
+
+                <div class="mt-10 flex flex-wrap gap-2">
                   {
-                    skills.map((skill) => (
-                      <span class="border border-line px-3 py-2 font-mono text-[0.7rem]" data-aos="zoom-in" data-aos-delay="300">
-                        {skill}
+                    [
+                      "Python",
+                      "TensorFlow",
+                      "EfficientNetV2",
+                      "Google Colab",
+                      "Deep Learning",
+                    ].map((item) => (
+                      <span class="research-tag px-3 py-1 font-mono text-[0.68rem]">
+                        {item}
                       </span>
                     ))
                   }
                 </div>
+
+                <div class="mt-8" data-aos="fade-up" data-aos-delay="300">
+                  <a
+                    href="https://github.com/dhioanugrah/borneo-endemic-flora-efficientnetv2-classification"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="inline-flex items-center rounded-full border border-current px-4 py-2 font-mono text-xs transition hover:bg-current hover:text-paper"
+                  >
+                    Repository GitHub ↗
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- CONTACT -->
-      <section id="kontak" class="bg-accent text-white">
-        <div class="container-main py-20 md:py-28">
-          <p
-            class="font-mono text-xs uppercase tracking-[0.12em] text-[#dbe2ff]"
-          >
-            05 / Kontak
-          </p>
+        <!-- PROFILE -->
+        <section id="latar" class="section-line">
+          <div class="container-main py-20 md:py-28">
+            <div class="grid grid-cols-1 gap-10 md:grid-cols-[0.45fr_1fr]">
+              <div>
+                <p class="label">04 / Latar Belakang</p>
 
-          <h2
-            class="mt-6 max-w-4xl text-3xl sm:text-4xl font-medium leading-[1.05] tracking-[-0.05em] md:text-7xl"
-            data-aos="fade-up"
-          >
-            Punya project atau peluang kerja yang ingin didiskusikan?
-          </h2>
+                <h2
+                  class="mt-4 text-3xl font-medium tracking-[-0.05em] md:text-5xl"
+                >
+                  Fondasi yang membentuk cara saya bekerja.
+                </h2>
+              </div>
 
-          <p class="mt-7 max-w-xl leading-relaxed text-[#e3e7ff]" data-aos="fade-up" data-aos-delay="100">
-            Saya terbuka untuk berdiskusi mengenai pengembangan backend,
-            integrasi API, sistem internal, maupun kebutuhan digital lainnya.
-          </p>
+              <div>
+                <div
+                  class="grid grid-cols-1 gap-px border border-line md:grid-cols-3"
+                >
+                  {
+                    backgroundItems.map((item, index) => (
+                      <article
+                        class="bg-paper p-6"
+                        data-aos="fade-up"
+                        data-aos-delay={index * 100}
+                      >
+                        <p class="font-mono text-sm text-accent">
+                          {item.number}
+                        </p>
 
-          <div class="mt-12 flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="200">
-            <a
-              href="mailto:dhioanugrahh@gmail.com"
-              class="px-5 py-3 font-mono text-xs text-ink transition hover:bg-paper hover:text-white"
-            >
-              Kirim Email ↗
-            </a>
+                        <h3 class="mt-8 text-xl font-medium">{item.title}</h3>
 
-            <a
-              href="https://github.com/dhioanugrah"
-              target="_blank"
-              rel="noreferrer"
-              class="border border-white px-5 py-3 font-mono text-xs transition hover:bg-white hover:text-ink"
-            >
-              GitHub ↗
-            </a>
+                        <p class="mt-4 text-sm leading-relaxed text-muted">
+                          {item.text}
+                        </p>
+                      </article>
+                    ))
+                  }
+                </div>
+
+                <div class="mt-12">
+                  <p class="label">Tools & Keahlian</p>
+
+                  <div
+                    class="mt-5 flex flex-wrap gap-2"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    {
+                      skills.map((skill) => (
+                        <span
+                          class="border border-line px-3 py-2 font-mono text-[0.7rem]"
+                          data-aos="zoom-in"
+                          data-aos-delay="300"
+                        >
+                          {skill}
+                        </span>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
 
-    <footer class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between">
-      <p>© 2026 Dhio Anugrah Prakasa Putro</p>
-    </footer>
+        <!-- CONTACT -->
+        <section id="kontak" class="bg-accent text-white">
+          <div class="container-main py-20 md:py-28">
+            <p
+              class="font-mono text-xs uppercase tracking-[0.12em] text-[#dbe2ff]"
+            >
+              05 / Kontak
+            </p>
+
+            <h2
+              class="mt-6 max-w-4xl text-3xl sm:text-4xl font-medium leading-[1.05] tracking-[-0.05em] md:text-7xl"
+              data-aos="fade-up"
+            >
+              Punya project atau peluang kerja yang ingin didiskusikan?
+            </h2>
+
+            <p
+              class="mt-7 max-w-xl leading-relaxed text-[#e3e7ff]"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              Saya terbuka untuk berdiskusi mengenai pengembangan backend,
+              integrasi API, sistem internal, maupun kebutuhan digital lainnya.
+            </p>
+
+            <div
+              class="mt-12 flex flex-wrap gap-4"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <a
+                href="mailto:dhioanugrahh@gmail.com"
+                class="px-5 py-3 font-mono text-xs text-ink transition hover:bg-paper hover:text-white"
+              >
+                Kirim Email ↗
+              </a>
+
+              <a
+                href="https://github.com/dhioanugrah"
+                target="_blank"
+                rel="noreferrer"
+                class="border border-white px-5 py-3 font-mono text-xs transition hover:bg-white hover:text-ink"
+              >
+                GitHub ↗
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer
+        class="container-main flex flex-col gap-3 py-7 font-mono text-xs text-muted md:flex-row md:justify-between"
+      >
+        <p>© 2026 Dhio Anugrah Prakasa Putro</p>
+      </footer>
     </div>
 
     <script is:inline>
@@ -743,34 +890,35 @@ const skills = uniqueSkills.sort((a, b) => a.toLowerCase().localeCompare(b.toLow
         });
 
         // Mobile Menu Logic
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const menuOverlay = document.getElementById('mobile-menu-overlay');
-        const menuLines = menuBtn?.querySelectorAll('span');
+        const menuBtn = document.getElementById("mobile-menu-btn");
+        const menuOverlay = document.getElementById("mobile-menu-overlay");
+        const menuLines = menuBtn?.querySelectorAll("span");
         let isMenuOpen = false;
 
-        menuBtn?.addEventListener('click', () => {
+        menuBtn?.addEventListener("click", () => {
           isMenuOpen = !isMenuOpen;
           if (isMenuOpen) {
-            menuOverlay.classList.remove('pointer-events-none', 'opacity-0');
-            menuOverlay.classList.add('opacity-100');
+            menuOverlay.classList.remove("pointer-events-none", "opacity-0");
+            menuOverlay.classList.add("opacity-100");
             if (menuLines) {
-              menuLines[0].style.transform = 'translateY(2.75px) rotate(45deg)';
-              menuLines[1].style.transform = 'translateY(-2.75px) rotate(-45deg)';
+              menuLines[0].style.transform = "translateY(2.75px) rotate(45deg)";
+              menuLines[1].style.transform =
+                "translateY(-2.75px) rotate(-45deg)";
             }
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = "hidden";
           } else {
-            menuOverlay.classList.add('pointer-events-none', 'opacity-0');
-            menuOverlay.classList.remove('opacity-100');
+            menuOverlay.classList.add("pointer-events-none", "opacity-0");
+            menuOverlay.classList.remove("opacity-100");
             if (menuLines) {
-              menuLines[0].style.transform = 'none';
-              menuLines[1].style.transform = 'none';
+              menuLines[0].style.transform = "none";
+              menuLines[1].style.transform = "none";
             }
-            document.body.style.overflow = '';
+            document.body.style.overflow = "";
           }
         });
 
-        menuOverlay?.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
+        menuOverlay?.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
             menuBtn?.click();
           });
         });
@@ -909,7 +1057,7 @@ const skills = uniqueSkills.sort((a, b) => a.toLowerCase().localeCompare(b.toLow
           duration: 800,
           once: true,
           offset: 100,
-          easing: 'ease-out-cubic',
+          easing: "ease-out-cubic",
         });
       });
     </script>
