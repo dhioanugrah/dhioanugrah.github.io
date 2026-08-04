@@ -195,7 +195,7 @@ const skills = uniqueSkills.sort((a, b) =>
             >
               <!-- Subtle glow behind the image -->
               <div
-                class="absolute inset-0 bg-accent/20 blur-3xl rounded-full translate-y-1/4 scale-90 -z-10"
+                class="absolute inset-0 bg-accent/20 blur-3xl rounded-full translate-y-1/4 scale-90 -z-10 will-change-transform transform-gpu"
               >
               </div>
 
@@ -461,6 +461,8 @@ const skills = uniqueSkills.sort((a, b) =>
                         src={project.image}
                         alt={project.title}
                         class="block aspect-[4/3] w-full object-cover transition duration-700 md:group-hover:scale-[1.05] md:group-hover:-rotate-1"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </a>
                   </article>
@@ -505,6 +507,8 @@ const skills = uniqueSkills.sort((a, b) =>
                               src={project.image}
                               alt={project.title}
                               class="h-full w-full object-cover opacity-70 transition duration-500 hover:opacity-100 hover:scale-105"
+                              loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         )}
