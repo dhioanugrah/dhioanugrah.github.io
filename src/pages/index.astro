@@ -493,7 +493,7 @@ const skills = uniqueSkills.sort((a, b) =>
               >
                 {
                   otherProjects.map((project, index) => (
-                    <article class="w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
+                    <article class="group w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
                       <div>
                         <p class="font-mono text-xs text-accent">
                           0{index + 1}
@@ -509,7 +509,7 @@ const skills = uniqueSkills.sort((a, b) =>
                           </div>
                         )}
 
-                        <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2">
+                        <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2 text-white group-hover:text-paper transition-colors duration-500">
                           {project.title}
                         </h3>
                         <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted">
@@ -552,7 +552,7 @@ const skills = uniqueSkills.sort((a, b) =>
               >
                 {
                   otherProjects.map((project, index) => (
-                    <article class="w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
+                    <article class="group w-[320px] md:w-[380px] flex-shrink-0 flex flex-col justify-between rounded-[2rem] border border-line bg-[#111] p-6 md:p-8 transition-all duration-500 hover:border-accent hover:bg-ink">
                       <div>
                         <p class="font-mono text-xs text-accent">
                           0{index + 1}
@@ -568,7 +568,7 @@ const skills = uniqueSkills.sort((a, b) =>
                           </div>
                         )}
 
-                        <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2">
+                        <h3 class="mt-4 text-xl md:text-2xl font-medium tracking-tight line-clamp-2 text-white group-hover:text-paper transition-colors duration-500">
                           {project.title}
                         </h3>
                         <p class="mt-2 font-mono text-[0.65rem] uppercase tracking-widest text-muted">
@@ -826,7 +826,7 @@ const skills = uniqueSkills.sort((a, b) =>
             >
               <a
                 href="mailto:dhioanugrahh@gmail.com"
-                class="px-5 py-3 font-mono text-xs text-ink transition hover:bg-paper hover:text-white"
+                class="bg-paper px-5 py-3 font-mono text-xs text-ink transition hover:bg-ink hover:text-paper"
               >
                 Kirim Email ↗
               </a>
