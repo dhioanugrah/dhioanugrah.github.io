@@ -56,9 +56,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background: var(--paper);
-  overflow-x: hidden;
 }
 
 body {
@@ -66,15 +64,20 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: "Space Grotesk", sans-serif;
-  overflow-x: hidden;
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
-  
-  /* Subtle grain/noise or dot pattern */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-image: radial-gradient(var(--line) 1px, transparent 1px);
   background-size: 32px 32px;
   background-position: -19px -19px;
+  pointer-events: none;
 }
 
 ::selection {
