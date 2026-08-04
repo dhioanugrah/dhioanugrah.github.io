@@ -273,6 +273,7 @@ body {
   min-width: 100%;
   gap: 1rem;
   animation: scroll-x 20s linear infinite;
+  will-change: transform;
 }
 
 @keyframes scroll-x {

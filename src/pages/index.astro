@@ -158,7 +158,7 @@ const skills = uniqueSkills.sort((a, b) =>
     <!-- Mobile Menu Overlay -->
     <div
       id="mobile-menu-overlay"
-      class="fixed inset-0 z-50 bg-paper/95 backdrop-blur-md flex flex-col justify-center items-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+      class="fixed inset-0 z-50 bg-paper/95 backdrop-blur-md flex flex-col justify-center items-center gap-6 opacity-0 invisible pointer-events-none transition-all duration-300 md:hidden"
     >
       <nav
         class="flex flex-col items-center gap-6 text-xl font-serif"
@@ -898,7 +898,7 @@ const skills = uniqueSkills.sort((a, b) =>
         menuBtn?.addEventListener("click", () => {
           isMenuOpen = !isMenuOpen;
           if (isMenuOpen) {
-            menuOverlay.classList.remove("pointer-events-none", "opacity-0");
+            menuOverlay.classList.remove("pointer-events-none", "opacity-0", "invisible");
             menuOverlay.classList.add("opacity-100");
             if (menuLines) {
               menuLines[0].style.transform = "translateY(2.75px) rotate(45deg)";
@@ -907,7 +907,7 @@ const skills = uniqueSkills.sort((a, b) =>
             }
             document.body.style.overflow = "hidden";
           } else {
-            menuOverlay.classList.add("pointer-events-none", "opacity-0");
+            menuOverlay.classList.add("pointer-events-none", "opacity-0", "invisible");
             menuOverlay.classList.remove("opacity-100");
             if (menuLines) {
               menuLines[0].style.transform = "none";
@@ -980,6 +980,9 @@ const skills = uniqueSkills.sort((a, b) =>
 
     <script is:inline>
       document.addEventListener("DOMContentLoaded", () => {
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
         // Initialize Lenis
         const lenis = new Lenis({
           duration: 1.2,
@@ -987,15 +990,14 @@ const skills = uniqueSkills.sort((a, b) =>
           smooth: true,
         });
 
-        function raf(time) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
+        // Sync Lenis scroll with GSAP ScrollTrigger
+        lenis.on("scroll", ScrollTrigger.update);
 
-        requestAnimationFrame(raf);
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
 
-        // Initialize GSAP ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.ticker.lagSmoothing(0);
 
         // Hero Reveal
         gsap.fromTo(
