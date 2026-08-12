@@ -328,6 +328,13 @@ const skills = uniqueSkills.sort((a, b) =>
                 >
                   Hubungi Saya ↗
                 </a>
+
+                <button
+                  onclick="openCvModal()"
+                  class="border border-line px-5 py-3 font-mono text-xs transition hover:border-accent hover:text-accent"
+                >
+                  Lihat CV ↗
+                </button>
               </div>
             </div>
           </div>
@@ -855,6 +862,45 @@ const skills = uniqueSkills.sort((a, b) =>
       </footer>
     </div>
 
+    <!-- Modal CV -->
+    <div id="cv-modal" class="fixed inset-0 hidden items-center justify-center bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4" style="z-index: 999999;">
+      
+      <!-- Card Container -->
+      <div class="relative w-full max-w-2xl rounded-xl shadow-2xl flex flex-col overflow-hidden" style="max-height: 90vh; background-color: #1a1a1a; border: 1px solid #333;">
+        
+        <!-- Header -->
+        <div class="flex-none flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-800 z-10">
+          <div>
+            <h4 class="text-black dark:text-white font-serif text-lg font-medium tracking-wide">Curriculum Vitae</h4>
+            <p id="cv-modal-subtitle" class="text-gray-500 font-mono text-[0.65rem] uppercase tracking-widest mt-1"></p>
+          </div>
+          <button onclick="closeCvModal()" class="text-gray-500 hover:text-black dark:hover:text-white transition-colors p-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <!-- Image Container -->
+        <div id="cv-modal-img-container" class="relative w-full flex-1 flex items-center justify-center bg-black overflow-auto cursor-zoom-in" onclick="toggleCvZoom()" style="min-height: 300px;">
+          <img id="cv-modal-image" src="" alt="CV" class="w-auto h-auto object-contain transition-all duration-300 select-none mx-auto" style="max-height: 60vh; max-width: 100%;" />
+          
+          <!-- Controls Overlay (Always visible) -->
+          <button onclick="prevCvSlide(event)" class="absolute top-1/2 -translate-y-1/2 transition-colors p-2 rounded-full z-50" style="left: 12px; background-color: rgba(0,0,0,0.6); color: white; border: 1px solid rgba(255,255,255,0.2);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          
+          <button onclick="nextCvSlide(event)" class="absolute top-1/2 -translate-y-1/2 transition-colors p-2 rounded-full z-50" style="right: 12px; background-color: rgba(0,0,0,0.6); color: white; border: 1px solid rgba(255,255,255,0.2);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+        
+        <!-- Footer -->
+        <div class="flex-none flex items-center justify-between px-4 py-3 border-t z-10" style="background-color: #111; border-color: #333;">
+          <p class="font-mono text-[0.6rem] uppercase tracking-widest hidden md:block" style="color: #888;">Klik gambar untuk Zoom</p>
+          <div id="cv-modal-dots" class="flex gap-2 mx-auto md:mx-0"></div>
+        </div>
+      </div>
+    </div>
+
     <script is:inline>
       (() => {
         const root = document.documentElement;
@@ -1052,6 +1098,114 @@ const skills = uniqueSkills.sort((a, b) =>
             },
           );
         });
+      });
+
+      // --- CV Modal Lightbox Logic ---
+      const cvImages = [
+        "/cv-1.jpg", // Ganti dengan path gambar CV halaman 1
+        "/cv-2.jpg"  // Ganti dengan path gambar CV halaman 2
+      ];
+
+      let currentCvSlideIndex = 0;
+      let isCvZoomed = false;
+
+      window.openCvModal = () => {
+        const cvModal = document.getElementById('cv-modal');
+        currentCvSlideIndex = 0;
+        updateCvModalContent();
+        
+        cvModal.classList.remove('hidden');
+        cvModal.classList.add('flex');
+        // trigger reflow
+        void cvModal.offsetWidth;
+        cvModal.classList.remove('opacity-0');
+        cvModal.classList.add('opacity-100');
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+        
+        // Reset zoom
+        if(isCvZoomed) toggleCvZoom();
+      };
+
+      window.closeCvModal = () => {
+        const cvModal = document.getElementById('cv-modal');
+        cvModal.classList.remove('opacity-100');
+        cvModal.classList.add('opacity-0');
+        setTimeout(() => {
+          cvModal.classList.remove('flex');
+          cvModal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }, 300);
+      };
+
+      window.updateCvModalContent = () => {
+        const cvModalImage = document.getElementById('cv-modal-image');
+        const cvModalSubtitle = document.getElementById('cv-modal-subtitle');
+        const cvDotsContainer = document.getElementById('cv-modal-dots');
+
+        cvModalSubtitle.textContent = `Halaman ${currentCvSlideIndex + 1}`;
+        cvModalImage.src = cvImages[currentCvSlideIndex];
+        
+        // Update dots
+        cvDotsContainer.innerHTML = '';
+        cvImages.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = `w-2 h-2 rounded-full transition-all ${i === currentCvSlideIndex ? 'bg-accent scale-125' : 'bg-line hover:bg-muted'}`;
+          dot.onclick = (e) => {
+            e.stopPropagation();
+            currentCvSlideIndex = i;
+            if(isCvZoomed) toggleCvZoom();
+            updateCvModalContent();
+          };
+          cvDotsContainer.appendChild(dot);
+        });
+      };
+
+      window.prevCvSlide = (e) => {
+        if(e) e.stopPropagation();
+        if(isCvZoomed) toggleCvZoom();
+        currentCvSlideIndex = (currentCvSlideIndex - 1 + cvImages.length) % cvImages.length;
+        updateCvModalContent();
+      };
+
+      window.nextCvSlide = (e) => {
+        if(e) e.stopPropagation();
+        if(isCvZoomed) toggleCvZoom();
+        currentCvSlideIndex = (currentCvSlideIndex + 1) % cvImages.length;
+        updateCvModalContent();
+      };
+
+      window.toggleCvZoom = () => {
+        const cvModalImage = document.getElementById('cv-modal-image');
+        const cvImgContainer = document.getElementById('cv-modal-img-container');
+
+        isCvZoomed = !isCvZoomed;
+        if (isCvZoomed) {
+          cvModalImage.style.maxHeight = 'none';
+          cvModalImage.style.maxWidth = 'none';
+          cvModalImage.style.width = '150%';
+          
+          cvImgContainer.classList.remove('cursor-zoom-in', 'items-center', 'justify-center');
+          cvImgContainer.classList.add('cursor-zoom-out', 'items-start', 'justify-start');
+        } else {
+          cvModalImage.style.maxHeight = '60vh';
+          cvModalImage.style.maxWidth = '100%';
+          cvModalImage.style.width = 'auto';
+          
+          cvImgContainer.classList.add('cursor-zoom-in', 'items-center', 'justify-center');
+          cvImgContainer.classList.remove('cursor-zoom-out', 'items-start', 'justify-start');
+        }
+      };
+
+      // Close on escape key or right/left arrows
+      document.addEventListener('keydown', (e) => {
+        const cvModal = document.getElementById('cv-modal');
+        if (cvModal && cvModal.classList.contains('flex')) {
+          if (e.key === 'Escape') closeCvModal();
+          if (e.key === 'ArrowRight') nextCvSlide();
+          if (e.key === 'ArrowLeft') prevCvSlide();
+        }
       });
     </script>
 
