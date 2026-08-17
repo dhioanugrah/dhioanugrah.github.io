@@ -101,34 +101,55 @@ const certificates = [
     </div>
 
     <script is:inline>
-      document.addEventListener("DOMContentLoaded", () => {
+      (() => {
         const loader = document.getElementById("loading-screen");
         if (!loader) return;
-        const bar = document.getElementById("pixel-bar");
-        const progressText = document.getElementById("loading-progress");
         
         // Hanya tampilkan pertama kali di sesi ini
         if (sessionStorage.getItem("hasLoadedPortfolio")) {
           loader.style.display = "none";
           return;
         }
+
+        // Kunci scroll saat loading
+        document.body.style.overflow = "hidden";
+        
+        const bar = document.getElementById("pixel-bar");
+        const progressText = document.getElementById("loading-progress");
         
         let progress = 0;
+        let pageLoaded = false;
+
+        // Event saat seluruh aset (gambar, css, js) selesai dimuat
+        window.addEventListener("load", () => {
+          pageLoaded = true;
+        });
+
         const interval = setInterval(() => {
-          progress += Math.floor(Math.random() * 15) + 10;
-          if (progress >= 100) {
+          if (pageLoaded) {
             progress = 100;
+            bar.style.width = `${progress}%`;
+            progressText.innerText = `${progress}%`;
             clearInterval(interval);
+            
             setTimeout(() => {
               loader.classList.add("hidden");
               sessionStorage.setItem("hasLoadedPortfolio", "true");
+              // Kembalikan scroll
+              document.body.style.overflow = "";
               setTimeout(() => loader.remove(), 1000);
             }, 400);
+          } else {
+            // Simulasi progress hingga 90% selama aset masih diunduh
+            if (progress < 90) {
+              progress += Math.floor(Math.random() * 8) + 2;
+              if (progress > 90) progress = 90;
+              bar.style.width = `${progress}%`;
+              progressText.innerText = `${progress}%`;
+            }
           }
-          bar.style.width = `${progress}%`;
-          progressText.innerText = `${progress}%`;
-        }, 120);
-      });
+        }, 100);
+      })();
     </script>
     <header class="fixed inset-x-0 top-4 z-50 px-4 will-change-transform transform-gpu">
       <div
