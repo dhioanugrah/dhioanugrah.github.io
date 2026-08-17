@@ -34,6 +34,27 @@ const uniqueSkills = [...new Set(rawSkills.map((skill) => skill.trim()))];
 const skills = uniqueSkills.sort((a, b) =>
   a.toLowerCase().localeCompare(b.toLowerCase()),
 );
+
+const certificates = [
+  {
+    id: "bnsp",
+    title: "Sertifikasi BNSP",
+    subtitle: "Badan Nasional Sertifikasi Profesi - Web Developer",
+    cover: "/projects/sertif/bnsp/sertifikat_bnsp_web-3_page-0001.jpg",
+  },
+  {
+    id: "hki",
+    title: "Hak Kekayaan Intelektual",
+    subtitle: "Karya Cipta Program Komputer",
+    cover: "/projects/sertif/hki web/sertifikat_HKI_Web kkn-2_page-0001.jpg",
+  },
+  {
+    id: "hki-game",
+    title: "Hak Kekayaan Intelektual",
+    subtitle: "Karya Cipta Program Komputer (Game)",
+    cover: "/projects/sertif/haki game/sertifikat_HKI_Game-1_page-0001.jpg",
+  }
+];
 ---
 
 <html lang="id">
@@ -45,6 +66,7 @@ const skills = uniqueSkills.sort((a, b) =>
       name="description"
       content="Portfolio Dhio Anugrah Prakasa Putro — Fullstack Developer."
     />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <script is:inline>
       (() => {
@@ -80,8 +102,8 @@ const skills = uniqueSkills.sort((a, b) =>
         >
           <a href="#beranda" class="nav-link is-active">Beranda</a>
           <a href="#project" class="nav-link">Project</a>
-          <a href="/sertifikat" class="nav-link">Sertifikat</a>
           <a href="#riset" class="nav-link">Riset</a>
+          <a href="#sertifikat" class="nav-link">Sertifikat</a>
           <a href="#latar" class="nav-link">Profil</a>
           <a href="#kontak" class="nav-link">Kontak</a>
         </nav>
@@ -166,8 +188,8 @@ const skills = uniqueSkills.sort((a, b) =>
       >
         <a href="#beranda" class="nav-link">Beranda</a>
         <a href="#project" class="nav-link">Project</a>
-        <a href="/sertifikat" class="nav-link">Sertifikat</a>
         <a href="#riset" class="nav-link">Riset</a>
+        <a href="#sertifikat" class="nav-link">Sertifikat</a>
         <a href="#latar" class="nav-link">Profil</a>
         <a href="#kontak" class="nav-link">Kontak</a>
       </nav>
@@ -740,12 +762,64 @@ const skills = uniqueSkills.sort((a, b) =>
           </div>
         </section>
 
+        <!-- SERTIFIKAT -->
+        <section id="sertifikat" class="section-line">
+          <div class="container-main py-20 md:py-28">
+            <div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div data-aos="fade-up">
+                <p class="label">04 / Sertifikasi & Pencapaian</p>
+                <h2 class="mt-4 text-3xl font-medium tracking-[-0.05em] md:text-5xl">
+                  Validasi keahlian.
+                </h2>
+              </div>
+              <div class="max-w-sm" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-sm leading-relaxed text-muted">
+                  Beberapa sertifikasi dan penghargaan yang saya dapatkan sebagai bentuk pengakuan keterampilan.
+                </p>
+                <a
+                  href="/sertifikat"
+                  class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-xs uppercase tracking-widest text-ink transition hover:text-accent hover:border-accent"
+                >
+                  Lihat Selengkapnya ↗
+                </a>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {certificates.map((cert, index) => (
+                <a
+                  href="/sertifikat"
+                  class="group flex flex-col overflow-hidden rounded-[1.5rem] border border-line bg-paper transition duration-500 hover:-translate-y-2 hover:border-accent hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div class="aspect-[4/3] w-full overflow-hidden bg-ink/5 relative">
+                    <img
+                      src={cert.cover}
+                      alt={cert.title}
+                      class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition duration-500 group-hover:opacity-100 flex items-end p-6">
+                       <span class="font-mono text-xs text-white uppercase tracking-wider">Lihat Detail ↗</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-1 flex-col justify-center p-6">
+                    <h3 class="font-serif text-lg font-medium tracking-tight group-hover:text-accent transition-colors">{cert.title}</h3>
+                    <p class="mt-2 text-sm text-muted">{cert.subtitle}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <!-- PROFILE -->
         <section id="latar" class="section-line">
           <div class="container-main py-20 md:py-28">
             <div class="grid grid-cols-1 gap-10 md:grid-cols-[0.45fr_1fr]">
               <div>
-                <p class="label">04 / Latar Belakang</p>
+                <p class="label">05 / Latar Belakang</p>
 
                 <h2
                   class="mt-4 text-3xl font-medium tracking-[-0.05em] md:text-5xl"
