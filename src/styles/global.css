@@ -323,3 +323,68 @@ body::before {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* --- LOADING SCREEN --- */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background-color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+}
+
+#loading-screen.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pixel-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--ink);
+}
+.pixel-corner-tl { top: 20px; left: 20px; }
+.pixel-corner-tr { top: 20px; right: 20px; }
+.pixel-corner-bl { bottom: 20px; left: 20px; }
+.pixel-corner-br { bottom: 20px; right: 20px; }
+
+.loading-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  width: 240px;
+}
+
+.pixel-bar-container {
+  width: 240px;
+  height: 24px;
+  border: 3px solid var(--ink);
+  padding: 4px;
+  position: relative;
+  background-color: transparent;
+}
+
+.pixel-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ink),
+    var(--ink) 12px,
+    transparent 12px,
+    transparent 16px
+  );
+  transition: width 0.1s ease-out;
+}

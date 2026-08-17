@@ -84,6 +84,52 @@ const certificates = [
   </head>
 
   <body>
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen">
+      <div class="pixel-corner pixel-corner-tl"></div>
+      <div class="pixel-corner pixel-corner-tr"></div>
+      <div class="pixel-corner pixel-corner-bl"></div>
+      <div class="pixel-corner pixel-corner-br"></div>
+      
+      <div class="loading-text">
+        <span>Memuat</span>
+        <span id="loading-progress">0%</span>
+      </div>
+      <div class="pixel-bar-container">
+        <div id="pixel-bar" class="pixel-bar-fill"></div>
+      </div>
+    </div>
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const loader = document.getElementById("loading-screen");
+        if (!loader) return;
+        const bar = document.getElementById("pixel-bar");
+        const progressText = document.getElementById("loading-progress");
+        
+        // Hanya tampilkan pertama kali di sesi ini
+        if (sessionStorage.getItem("hasLoadedPortfolio")) {
+          loader.style.display = "none";
+          return;
+        }
+        
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += Math.floor(Math.random() * 15) + 10;
+          if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            setTimeout(() => {
+              loader.classList.add("hidden");
+              sessionStorage.setItem("hasLoadedPortfolio", "true");
+              setTimeout(() => loader.remove(), 1000);
+            }, 400);
+          }
+          bar.style.width = `${progress}%`;
+          progressText.innerText = `${progress}%`;
+        }, 120);
+      });
+    </script>
     <header class="fixed inset-x-0 top-4 z-50 px-4 will-change-transform transform-gpu">
       <div
         class="nav-shell mx-auto flex w-full max-w-[1440px] items-center justify-between rounded-full px-4 py-3 md:px-6 lg:py-4 relative z-[60]"
